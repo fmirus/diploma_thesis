@@ -1,0 +1,746 @@
+\chapter{Berechnung der Galoisgruppe für Gleichungen vom Grad 1}
+\label{chap_diff_gl_grad_1}
+
+In diesem Kapitel bezeichnen wir mit $R:=\galois{q}[t,s]$ den
+Polynomring in zwei Variablen über einem endlichen Körper
+$\galois{q}$ mit einer Primzahlpotenz $q=p^{d}$. Dieser Ring wird
+zu einem relativen Frobenius-Ring mit definierendem Ideal $Q=(t)$
+durch den Endomorphismus $\abbil{\phi}{R}{R}$ definiert durch
+$\phi|_{\galois{q}}=\phi_{p^m}$ und $\phi(t)=t$,
+$\phi(s)=s^{p^m}$, wobei $1 \leq m \leq d$ gilt. Ferner bezeichnen
+wir mit $F:=\Quot(R)=\galois{q}(t,s)$ den Quotientenkörper von
+$R$. Dieser wird in natürlicher Weise ein Frobenius-Körper mit
+Frobenius-Invarianten $F^{\phi}=\galois{p^m}(t)$, falls $d$ durch
+$m$ teilbar ist, sonst gilt $F^{\phi}=\galois{p}(t)$.
+
+\section{Multiplikative Gleichungen}
+
+Wir betrachten die lineare Differenzengleichung
+$L(y)=\phi(y)+a_{0}y$ vom Grad $1$ und suchen Lösungen für
+$L(y)=0$ bzw. $\phi(y)=a\cdot y$ mit $a:=-a_{0} \in F$. Nach Satz
+\ref{1.15satz-galois-obere-grenze} kommen für die Galoisgruppe
+$G:=\DGal(L)$ nur die $\Gm{F^{\phi}}=(F^{\phi})^{\times}$ oder endliche (zyklische)
+Untergruppen von $(F^{\phi})^{\times}$ in Frage. Wir benötigen ein
+Entscheidungskriterium, ob die volle Gruppe $(F^{\phi})^{\times}$
+oder eine echte Untergruppe als Galoisgruppe auftritt. Zunächst wollen wir sehen, wann
+eine Differenzengleichung eine rationale Lösung, d.h. eine Lösung
+im Grundkörper $F$ besitzt.
+
+\begin{satz} Eine Differenzengleichung $\phi(y)=ay$ hat genau dann
+eine rationale Lösung $\eta \in F$ mit
+$\frac{\phi(\eta)}{\eta}=a$, falls die triviale Gruppe als
+Galoisgruppe auftritt.
+\label{chap_diff_gl_grad_1_satz_triv_gruppe}
+\end{satz}
+
+\begin{bew} Die Differenzengleichung $\phi(y)=ay$ hat genau dann
+die triviale Gruppe als Galoisgruppe, wenn eine Lösung $\eta$ im
+Grundkörper $F$ existiert, d.h. $\phi(\eta)=a\eta$. Schreiben wir
+diese Identität um, so erhalten wir $\frac{\phi(\eta)}{\eta}=a$.
+\end{bew}
+
+Falls also eine rationale Lösung $\eta \in F$ mit $\frac{\phi(\eta)}{\eta}=a$ 
+existiert, so ist die Galoisgruppe $G$ die triviale Gruppe.\\
+Wir gehen nun davon aus, dass ein solches $\eta \in F$ existiert.
+Dann können wir sowohl $\eta$ als auch $a$ als Bruch teilerfremder
+Polynome darstellen, also $\eta=\frac{\eta_{1}(t)}{\eta_{2}(t)}$,
+$a=\frac{a_{1}(t)}{a_{2}(t)}$ mit $\eta_{1}(t), \eta_{2}(t) \in
+\galois{q}(s)[t]$ teilerfremd und $a_{1}(t), a_{2}(t) \in
+\galois{q}(s)[t]$ teilerfremd. Damit lässt sich obige Gleichung
+umschreiben zu
+\begin{equation}a=\frac{a_{1}(t)}{a_{2}(t)}=
+\frac{\phi(\eta)}{\eta}=\frac{\phi(\eta_{1}(t))}{\phi(\eta_{2}(t))}
+\frac{\eta_{2}(t)}{\eta_{1}(t)}.
+\label{chap_diff_gl_grad_1_equ_rat}
+\end{equation} Für die weiteren
+Betrachtungen benötigen wir das folgende Lemma.
+
+\begin{lemma}
+Sind die Polynome $f_{1}(t), f_{2}(t) \in \galois{q}(s)[t]$
+teilerfremd, so sind auch deren $\phi$-Bilder $\phi(f_{1}(t))$ und
+$\phi(f_{2}(t))$ teilerfremd.
+\label{chap_diff_gl_grad_1_lemma_teilerfremd}
+\end{lemma}
+
+\begin{bew}
+Wir nehmen an, dass $\phi(f_{1})$ und $\phi(f_{2})$ nicht
+teilerfremd sind, d.h. es existiert ein nicht-trivialer grö"ster
+gemeinsamer Teiler $1 \neq d :=\ggT(\phi(f_{1}), \phi(f_{2}))$ mit
+$\phi(f_{1})=d \cdot r_{1}$ und $\phi(f_{2})=d\cdot r_{2}$. Da
+$\phi(f_{1})$, $\phi(f_{2}) \in \Bild(\phi)$ liegen und $\phi(\galois{q}(s)[t])$ ein Hauptidealring ist, muss auch $d
+\in \Bild(\phi)$ liegen. Es existiert also ein Polynom $\tilde{d}
+\in \galois{q}(s)[t]$ mit $\phi(\tilde{d})=d$. Entsprechend finden wir Polynome $\tilde{r}_{1}$, $\tilde{r}_{2}\in \galois{q}(s)[t]$ mit
+$\phi(\tilde{r}_{1})=r_{1}$ und $\phi(\tilde{r}_{2})=r_{2}$. Damit erhalten wir die Zerlegungen
+$\tilde{d}\cdot \tilde{r}_{1}=f_{1}$ und $\tilde{d}\cdot
+\tilde{r}_{2}=f_{2}$. Da aber $f_{1}$ und $f_{2}$ als teilerfremd
+vorausgesetzt wurden, gilt $\tilde{d}=1$ und wir erhalten durch
+$d=\phi(\tilde{d})=\phi(1)=1$ einen Widerspruch.
+\end{bew}
+
+
+Mit Lemma \ref{chap_diff_gl_grad_1_lemma_teilerfremd} sehen wir,
+dass eine rationale Lösung nur existieren kann, wenn die
+Eingabedaten, also $a=\frac{a_{1}}{a_{2}}$ eine spezielle Gestalt
+haben, z.B. müssen die Grade in $t$ von $a_{1}$ und $a_{2}$
+übereinstimmten, also $\deg_{t}(a_{1})=\deg_{t}(a_{2})$. Au"serdem
+müssen die $\phi$-Bilder der Primfaktoren des Zählers im Nenner
+vorkommen und umgekehrt. Falls ein Primfaktor gemeinsame Teiler
+mit seinem $\phi$-Bild hat, kürzen sich diese und kommen in $a$
+nicht vor. Diese gemeinsamen Teiler kann man aber aus dem
+Restfaktor wieder berechnen. Also können wir aus der Form der
+obigen Gleichung \eqref{chap_diff_gl_grad_1_equ_rat} einen
+Algorithmus zur Bestimmung einer rationalen Lösung $\eta \in F$
+ableiten. Dazu benötigen wir noch die folgende Definition:
+
+\begin{defn}Es sei $R$ ein relativer Frobenius-Ring mit
+definierendem Ideal $Q$ und Endomorphismus $\phi$. Ein Element $r
+\in R$ hei"st \textbf{periodisch}, falls eine natürliche Zahl $k
+\in \korp{N}$ mit $\phi^{k}(r)=r$ existiert. Wir nennen das
+Minimum solcher Zahlen $k$ die \textbf{Länge der Periode}.
+\label{chap_diff_gl_grad_1_defn_per}
+\end{defn}
+
+\begin{bem} Es sei $R=\galois{q}[s,t]$ der relative Frobenius-Ring
+mit $q=p^m$ und definierendem Ideal $Q=(t)$ sowie dem
+Endomorphimus $\phi$, wobei $\phi(x)=x^{p}$ für alle $x \in
+\galois{q}[s]$ gilt. Dann gelten:\\
+(a) Ein Element $f=\sum\limits_{i=0}^{n} a_{i}(s)t^{i} \in
+R_{Q}=\galois{q}(s)[t]$ ist genau dann periodisch, falls alle
+$a_{i}(s)$ in $\galois{q}$ liegen, also nicht von $s$ abhängen.
+Dabei ist die Länge der Periode höchstens $m$.\\
+(b) Für zwei periodische Elemente $a_{1},a_{2} \in F$ mit Längen
+$k_{1},k_{2} \in \korp{N}$ sind auch die Summe und das Produkt von
+$a_{1}$ und $a_{2}$ periodisch von der Länge höchstens
+$\kgV\{k_{1},k_{2}\}$. \label{chap_diff_gl_grad_1_bem_per}
+\end{bem}
+
+\begin{bew} Es sei zunächst $f=\sum\limits_{i=0}^{n}
+a_{i}(s)t^{i}$ ein periodisches Element in $\galois{q}(s)[t]$,
+d.h. es existiert eine natürliche Zahl $k\in \korp{N}$ mit
+$\phi^{k}(f)=f$. Wir rechnen die linke Seite der Gleichung direkt
+aus und erhalten
+\[\phi^{k}(f)=\sum\limits_{i=0}^{n}\phi(a_{i}(s))t^{i}=\sum\limits_{i=0}^{n}a_{i}(s)^{p^k}t^{i}.\]
+Durch Koeffizientenvergleich erhalten wir, dass
+$a_{i}(s)=a_{i}(s)^{p^k}$ gelten muss. Da $\phi$ injektiv ist, ist
+dies nur möglich, falls $a_{i}(s)$ nicht von $s$ abhängt. Denn
+andernfalls würden die Grade in den $s$ kontinuierlich wachsen.\\
+Ist dagegen umgekehrt $f=\sum\limits_{i=0}^{n}a_{i}t^{i}$ mit
+$a_{i} \in \galois{q}$ gegeben, so ist direkt ersichtlich, dass
+$f$ periodisch sein muss. Au"serdem wird $f$ spätestens beim
+$m$-ten Schritt periodisch, denn für alle $x \in \galois{q}$ gilt
+$\phi^{m}(x)=x^{p^m}=x^q=x$. Dies beweist Teil (a). \\
+Um Teil (b) zu beweisen, zeigen wir zunächst, dass für das
+periodische Element $a_{1}$ mit Länge $k_{1}$, also
+$\phi^{k_{1}}(a_{1})=a_{1}$ für jede natürliche Zahl $n \in
+\korp{N}$ auch $\phi^{n \cdot k_{1}}(a_{1})=a_{1}$ gelten muss.
+Dies erhalten wir durch direktes Ausrechnen:
+\[\phi^{n \cdot k_{1}}(a_{1})=\phi^{(n-1)\cdot k_{1}}(\phi^{k_{1}}(a_{1}))=\phi^{(n-1)\cdot k_{1}}(a_{1})=\cdots =\phi^{k_{1}}(a_{1})=a_{1}.\]
+Dies impliziert, dass für jedes $\phi$-periodische Element $a_{1}$ mit 
+Länge $k_{1}$ auch $\phi^{k}(a_{1})=a_{1}$ gilt, wenn $k$ von der Länge $k_{1}$ 
+geteilt wird. Damit gilt also, dass für das Produkt $a_{1} \cdot a_{2}$ bzw. die 
+Summe $a_{1}+a_{2}$ spätestens bei $\kgV\{k_{1},k_{2}\}$-facher Anwendung von $\phi$
+\begin{align*}
+\phi^{\kgV\{k_{1},k_{2}\}}(a_{1}\cdot a_{2}) &= \phi^{g_{1}k_{1}}(a_{1})\cdot \phi^{g_{2}k_{2}}(a_{2})=a_{1}\cdot a_{2} \textrm{ bzw. }\\
+\phi^{\kgV\{k_{1},k_{2}\}}(a_{1}+a_{2}) &= \phi^{g_{1}k_{1}}(a_{1})+ \phi^{g_{2}k_{2}}(a_{2})=a_{1}+ a_{2}
+\end{align*}
+gilt. Damit sind sowohl das Produkt $a_{1} \cdot a_{2}$ als auch die 
+Summe $a_{1}+a_{2}$ periodisch von der Länge höchstens $\kgV\{k_{1},k_{2}\}$.
+\end{bew}
+
+
+\begin{algo} (zur Berechnung einer rationalen Lösung $\eta \in F$)\\
+Eingabe: Eine Differenzengleichung ersten Grades $\phi(y)=ay$ mit
+$a=\frac{a_{1}(t)}{a_{2}(t)} \in \galois{q}(s,t)$
+\begin{enumerate}
+    \item
+    \begin{algorithmic}
+    \IF{$\deg_{t}(a_{1})=\deg_{t}(a_{2})$}
+        \STATE setze $\eta_{1}=\eta_{2}=1$ und gehe zu Schritt 2
+    \ELSE
+        \STATE gehe zu Schritt 5.
+    \ENDIF
+    \end{algorithmic}
+    \item Zerlege $a_{1}$ und $a_{2}$ in Primfaktoren $p_{1j},p_{2k}$ mit Vielfachheit
+    $v_{1j},v_{2k}$ für $j=1, \ldots, r$ bzw. $k=1, \ldots s$.
+    Dabei sind $r$ bzw. $s$ die Anzahl der Primfaktoren von
+    $a_{1}$ bzw. $a_{2}$.
+    \item Gehe die Primfaktoren von $a_{1}$ durch
+    \begin{algorithmic}
+    \FOR{$j=1$ to $r$}
+        \IF{$p_{1j}$ nicht periodisch}
+            \IF{$p_{1j} \in \Bild(\phi)$}
+                \STATE setze $g:=\phi^{-1}(p_{1j}), \eta_{1}:=\eta_{1}\cdot g$.
+                \WHILE{$\phi^{-1}(g) \neq g$}
+                    \STATE setze $g:=\phi^{-1}(g), \eta_{1}:=\eta_{1}\cdot g$.
+                \ENDWHILE
+            \ENDIF
+        \ELSE
+            \FOR{$h=1$ to Periodenlänge von $p_{1j}$}
+                \IF{$\phi^{h}(p_{1j}^{v_{1j}}) \in (p_{2k})_{k=1}^{s}$}
+                    \STATE $\eta_{2}:=\prod\limits_{l=0}^{h-1} \phi^{l}(p_{1j}^{v_{ij}})$
+                \ENDIF
+            \ENDFOR
+        \ENDIF
+    \ENDFOR
+    \end{algorithmic}
+    \item Führe Schritt 3 für die Primfaktoren von $a_{2}$
+    durch und setze dann $\eta:=\frac{\eta_{1}}{\eta_{2}}$
+    \item
+    \begin{algorithmic}
+    \IF{$\frac{\phi(\eta)}{\eta} = a$}
+        \STATE Gib die rationale Lösung $\eta$ aus.
+    \ELSE
+        \STATE Es gibt keine rationale Lösung.
+    \ENDIF
+    \end{algorithmic}
+
+\end{enumerate}
+\label{chap_diff_gl_grad_1_algo_lin}
+\end{algo}
+
+\begin{bsp} Es sei $\phi(y)=ay$ mit
+\[a=\frac{(t-s)^2(t-s^{9})(t+s)}{(t^3-s)(t+s^3)}\] eine
+Differenzengleichung über dem Frobenius-Körper
+$F=\galois{9}(s,t)$ mit dem Frobenius-Endomorphismus $\phi$.
+Dabei operiert $\phi$ auf $\galois{9}(s)$ als $3$-te Potenz und
+lässt das Ideal $(t)$ invariant, d.h. $F^{\phi}=\galois{3}(t)$.
+Mit Hilfe von Algorithmus \ref{chap_diff_gl_grad_1_algo_lin}
+finden wir eine rationale Lösung
+\[\eta=\frac{(t^3-s)(t-s)(t-s^3)}{(t+s)}.\] Zur Probe berechnen wir
+\[\frac{\phi(\eta)}{\eta}=\frac{(t-s)^3(t-s^3)(t-s^9)(t+s)}{(t+s^3)
+(t^3-s)(t-s)(t-s^3)}=\frac{(t-s)^2(t-s^{9})(t+s)}{(t^3-s)(t+s^3)}=a.\]
+\label{chap_diff_gl_grad_1_bsp01_rat}
+\end{bsp}
+
+%\section{Bestimmung der Galoisgruppe}
+
+\begin{satz} Es sei $\phi(y)=ay$ mit $a \in F$ eine Differenzengleichung vom
+Grad $1$ mit zugehöriger Galoisgruppe $G$. Diese ist genau dann
+eine endliche zyklische Gruppe, falls eine natürliche Zahl $n \in
+\korp{N}$ existiert, so dass die Gleichung $\phi(y)=a^{n}y$
+triviale Galoisgruppe besitzt.
+\label{chap_diff_gl_grad_1_satz_potenz}
+\end{satz}
+
+\begin{bew} Es sei $E$ ein PV-Körper unserer
+Differenzengleichung und $f \in E$ eine Lösung, d.h. $\phi(f)=af$.
+Die Galoisgruppe $G$ ist nach Satz \ref{1.24satz-liouville} (a)
+genau dann endlich, falls $f$ algebraisch über $F$ ist. Dann muss
+aber nach Bemerkung \ref{1.23bem_alg_exp} eine natürliche Zahl $n
+\in \korp{N}$ und  ein Körperelement $k \in F$ existieren, so dass
+$f^{n}=k$. Setzen wir dies in unsere Differenzengleichung ein,
+ergibt sich
+\[\phi(k)=\phi(f^{n})=\phi(f)^{n}=(af)^{n}=a^{n}f^{n}=a^{n}k,\]
+d.h. die Gleichung $\phi(y)=a^{n}y$ hat eine Lösung $k$ im
+Grundkörper $F$ und damit triviale Galoisgruppe.
+\end{bew}
+
+\begin{satz} Es sei $\phi_{p^{m}}(y)=ay$ mit $a \in F=\galois{q}(s,t)$  eine
+Differenzengleichung vom Grad $1$ mit zugehöriger Galoisgruppe
+$G$. Diese ist genau dann die volle multiplikative Gruppe
+$G=(F^{\phi})^{\times}$, falls keine der potenzierten Gleichungen
+$\phi(y)=a^{h}y$  eine rationale Lösung besitzt, wobei $h$ ein
+Teiler von $p-1$ (falls $F^{\phi}=\galois{p}(t)$) bzw. $p^{m}-1$
+(falls $F^{\phi}=\galois{p^m}(t)$) ist.
+\label{chap_diff_gl_grad_1_satz_schranke}
+\end{satz}
+
+\begin{bew} Als Galoisgruppe kommen nur endliche Untergruppen von $\Mult(F^{\phi})$ oder $\Mult(F^{\phi})$
+selbst in Frage. Falls eine der potenzierten Gleichungen
+$\phi(y)=a^{h}y$ eine rationale Lösung besitzt, so ist die
+Galoisgruppe eine endliche zyklische Gruppe der Ordnung $h$ nach
+Satz \ref{chap_diff_gl_grad_1_satz_potenz}. Da die
+Frobeniusinvarianten $F^{\phi}$ durch $\galois{p}(t)$ bzw.
+$\galois{p^m}(t)$ gegeben sind, kann als endliche Galoisgruppe
+höchstens eine zyklische Gruppe der Ordnung $p-1$ bzw. $p^m-1$
+auftreten. Falls keine der potenzierten Gleichungen eine rationale
+Lösung besitzt, muss also die volle $\Mult(F^{\phi})$ als
+Galoisgruppe auftreten.
+\end{bew}
+
+Um zu entscheiden, ob die Galoisgruppe der Differenzengleichung
+$\phi(y)=ay$ endlich ist, genügt es also zu überprüfen, ob es eine
+natürliche Zahl $n \in \korp{N}$ gibt, so dass die potenzierte
+Gleichung $\phi(y)=a^{n}y$ die triviale Gruppe als Galoisgruppe
+besitzt. Dies ist aber äquvalent dazu, dass die potenzierte
+Gleichung eine rationale Lösung im Grundkörper $F$ besitzt. Wie
+man feststellt, ob eine Gleichung eine solche Lösung besitzt haben
+wir schon in Satz \ref{chap_diff_gl_grad_1_satz_triv_gruppe}
+gesehen, die Berechnung erhalten wir mit Algorithmus
+\ref{chap_diff_gl_grad_1_algo_lin}. Zusammen mit Satz
+\ref{chap_diff_gl_grad_1_satz_potenz} und Satz
+\ref{chap_diff_gl_grad_1_satz_schranke} liefert dies einen
+Algorithmus zur Bestimmung der Galoisgruppe.
+
+\begin{algo}(Zur Bestimmung der Galoisgruppe)\\
+Eingabe: Eine Differenzengleichung ersten Grades $\phi(y)=ay$ mit
+$a=\frac{a_{1}(t)}{a_{2}(t)} \in \galois{q}(s,t)$. Man setze
+$b:=p-1$ bzw. $b:=p^m-1$, $D:=\{ d_{i}\in \korp{N} \, | \, d_{i}
+\textrm{ teilt } b \}$ und $d:=d_{1}$.
+\begin{enumerate}
+    \item
+    \begin{algorithmic}
+    \IF{$d=b$}
+        \STATE die Galoisgruppe ist die volle $(F^{\phi})^{\times}$
+    \ELSE
+        \STATE gehe zu Schritt 2.
+    \ENDIF
+    \end{algorithmic}
+    \item Prüfe mit Algorithmus
+    \ref{chap_diff_gl_grad_1_algo_lin}, ob die Gleichung
+    $\phi(y)=a^{d}y$ eine rationale Lösung besitzt.
+    \begin{algorithmic}
+    \IF{es existiert eine rationale Lösung $\eta$}
+        \STATE die Gleichung $\phi(y)=ay$ hat eine zyklische
+        Gruppe der Ordnung $d$ als Galoisgruppe
+    \ELSE
+        \STATE setze $d:=d_{i+1}$ und gehe zu Schritt 1.
+    \ENDIF
+    \end{algorithmic}
+\end{enumerate}
+\label{chap_diff_gl_grad_1_algo_galois}
+\end{algo}
+
+Wir wollen Elemente, deren zugehörige Gleichung eine endliche
+Galoisgruppe besitzt, noch genauer charakterisieren. Dazu benötigen
+wir die folgenden Resultate.
+
+\begin{defn} Es sei $F:=\Quot(R)$ ein Frobenius-Körper über dem
+relativen Frobenius-Ring $(R,\phi)$ mit definierendem Ideal $Q$ und $\phi|_{R/Q}=\phi_{p}$. Ein
+Element $a=\frac{a_{1}}{a_{2}} \in F$ mit $a_{i}\in R$ hei"st
+\textbf{gewöhnlich}, falls $a$ in der Menge
+\[F^{ord}:=\{ x \in F \, | \, \phi(x)=x^{p}\}\]
+liegt. Ferner hei"st $a$ \textbf{multiplikativ transformierbar},
+falls ein Element $f \in F$ existiert, so dass
+$\frac{\phi(f)}{f}a$ gewöhnlich ist. Das Element $f$ nennen wir
+\textbf{Transformationselement}.
+\label{chap_diff_gl_grad_1_defn_gew}
+\end{defn}
+
+\begin{bem} Für einen Frobenius-Körper $F$ wie in Definition \ref{chap_diff_gl_grad_1_defn_gew} ist die Menge $F^{ord}$ ein 
+Körper, der alle Einheitswurzeln von $F$ enthält.
+\label{bem:gew_körper}
+\end{bem}
+
+\begin{bew} Offensichtlich liegen $0$ und $1$ in $F^{ord}$. Ferner ist 
+$F^{ord}$ abgeschlossen unter Addition und Multiplikation, da $\phi$ ein 
+Endomorphismus und $char(F)=p$ ist. Au"serdem gilt auch $\phi(x^{-1})=(x^{-1})^{p}$ 
+und $\phi(-x)=(-x)^{p}$ für jedes $x \in F^{ord}$ und damit ist $F^{ord}$ ein Körper. 
+Es sei nun $a \in F$ eine $n$-te Einheitswurzel, d.h. es gilt $a^{n}=1$. Also liegt $a$ in einem endlichen Körper $\galois{q^l}$. Da $\phi$ aber auf solchen endlichen Körpern als $p$-te Potenz operiert, gilt $a \in \galois{q^l} \subseteq F^{ord}$. Also enthält $F^{ord}$ alle Einheitswurzeln 
+von $F$, und damit ist die Aussage bewiesen.
+\end{bew}
+
+In der folgenden Bemerkung halten wir einige Eigenschaften
+multiplikativ transformierbarer Elemente fest.
+
+\begin{bem}Es sei $F:=\Quot(R)$ ein Frobenius-Körper über einem
+relativen Frobenius-Ring mit definierendem Ideal $Q$. Dann
+gelten:\\
+(a) Ein Element $a \in F$ ist genau dann gewöhnlich bzw.
+multiplikativ transformierbar, falls die Galoisgruppe der
+Differenzengleichung $\phi(y)=ay$ eine endliche Untergruppe von
+$\korp{G}_{m}(F^{\phi})$ ist.\\
+(b) Für zwei gewöhnliche bzw. multiplikativ transformierbare Elemente
+$a_{1}, a_{2} \in F$ sind sowohl das Produkt $a_{1}\cdot a_{2}$
+als auch die Quotient $\frac{a_{1}}{a_{2}}$ gewöhnlich bzw.
+multiplikativ transformierbar. \label{chap_diff_gl_grad_1_bem_gew}
+\end{bem}
+
+\begin{bew} Um Teil (a) zu beweisen, gehen wir zunächst davon aus,
+dass $a\in F$ multiplikativ transformierbar mit
+Transformationselement $f \in F$ ist. Wir können also auf die
+Differenzengleichung $\phi(y)=ay$ die Frobenius-Basiswechselmatrix
+$(f)$ anwenden. Damit erhalten wir die äquivalente Gleichung
+$\phi(y)=\frac{\phi(f)}{f}ay$, wobei $\frac{\phi(f)}{f}a$
+gewöhnlich ist. Dies ist aber eine Gleichung über dem gewöhnlichen
+Frobenius-Körper $F^{ord}$ und hat daher eine endliche Gruppe als
+Galoisgruppe. Wir gehen nun umgekehrt davon aus, dass die
+Gleichung $\phi(y)=ay$ eine endliche Gruppe als Galoisgruppe besitzt.
+Um zu beweisen, dass $a$ multiplikativ transformierbar ist, nehmen
+wir das Gegenteil an und wollen diese Annahme zu einem Widerspruch
+führen. Also gilt, dass für alle Elemente $f\in F$ das
+transformierte Element $\frac{\phi(f)}{f}a$ nicht gewöhnlich ist,
+also $\frac{\phi(f)}{f}a \in F\backslash F^{ord}$ gilt. Insbesondere
+gilt daher $\frac{\phi(f)}{f}a \neq 1$. Da $F^{ord}$ nach Bemerkung 
+\ref{bem:gew_körper} alle Einheitswurzeln von $F$ enthält, muss auch für jede
+natürliche Zahl $ k\in \korp{N}$ gelten, dass
+$(\frac{\phi(f)}{f}a)^k \neq 1$ ist. Daher kann für keine zu
+$\phi(y)=a^k y$ äquivalente Gleichung die triviale Gruppe als
+Galoisgruppe auftreten. Also muss aber die Galoisgruppe der
+Gleichung $\phi(y)=ay$ nach Satz
+\ref{chap_diff_gl_grad_1_satz_potenz} die volle $\Gm{F^{\phi}}$
+und damit eine
+unendliche Gruppe sein. Dies steht im Widerspruch zur Annahme.\\
+Es seien nun zwei multiplikativ transformierbare Elemente $a_{1},
+a_{2} \in F$ mit Transformationselementen $f_{1},f_{2} \in F$
+gegeben. Dann sind $a_{1}\cdot a_{2}$ und $\frac{a_{1}}{a_{2}}$
+multiplikativ transformierbar mit Transformationselementen
+$f_{1}\cdot f_{2}$ bzw. $\frac{f_{1}}{f_{2}}$, denn
+$\frac{\phi(f_{1}f_{2})}{f_{1}f_{2}}a_{1}a_{2}=\frac{\phi(f_{1})}{f_{1}}a_{1}
+\frac{\phi(f_{2})}{f_{2}}a_{2}$ ist gewöhnlich. Die Aussage
+erhalten wir für den Quotienten entsprechend, und damit ist auch
+Teil (b) bewiesen.
+\end{bew}
+
+\begin{anm} Die Bemerkungen \ref{bem:gew_körper} und \ref{chap_diff_gl_grad_1_bem_gew} gelten
+auch, falls $\phi$ als $p^{m}$-te Potenz operiert und für 
+\[F_{m}^{ord}:=\{ x \in F \, | \, \phi(x)=x^{p^{m}}\}.\] Die Beweise verlaufen analog.
+\end{anm}
+
+\begin{anm} Mit den Erkenntnissen aus Bemerkung
+\ref{chap_diff_gl_grad_1_bem_gew} und Satz
+\ref{chap_diff_gl_grad_1_satz_potenz} können wir jedes Element
+$a$, dessen zugehörige Gleichung $\phi(y)=ay$ eine endliche Galoisgruppe besitzt, folgenderma"sen
+darstellen:
+\[a=\underbrace{\omega}_{\textrm{$\in \galois{q}(s)$}} \cdot \frac{p_{1} p_{2} \cdots p_{r}
+\cdots \phi^{e_{r+1}}(p_{r+1}) \cdots
+\phi^{e_{x}}(p_{x})}{\phi^{e_{1}}(p_{1}) \cdots
+\phi^{e_{r}}(p_{r}) p_{r+1} \cdots p_{x}},\] wobei der hintere
+Bruch durch einen Frobenius-Basiswechsel mit einem
+Transformationselement $f$ entfernt werden kann, so dass nur noch
+das gewöhnliche Element $\omega$ übrig bleibt.
+\label{chap_diff_gl_grad_1_anm_gew}
+\end{anm}
+
+
+\begin{bsp} Wir wandeln Beispiel
+\ref{chap_diff_gl_grad_1_bsp01_rat} leicht ab und betrachten die
+Differenzengleichung $\phi(y)=ay$ mit
+\[a=s \frac{(t-s)^2(t-s^{9})(t+s)}{(t^3+s)(t+s^3)}.\]
+Für diese Gleichung finden wir keine rationale Lösung, aber die
+potenzierte Gleichung $\phi(y)=a^2y$ hat die rationale Lösung
+\[\eta=s \frac{(t^3-s)^2(t-s)^2(t-s^3)^2}{(t+s)^2}.\] Zur Probe berechnen wir
+\[\frac{\phi(\eta)}{\eta}=\frac{s^3(t-s)^6(t-s^3)^2(t-s^9)^2(t+s)^2}{s(t+s^3)^2
+(t^3-s)^2(t-s)^2(t-s^3)^2}=\frac{s^2(t-s)^4(t-s^{9})^2(t+s)^2}{(t^3+s)^2(t+s^3)^2}=a^2.\]
+Damit hat die Gleichung $\phi(y)=ay$ eine zyklische Gruppe der
+Ordnung $2$, also $\galois{3}^{\times}$ als Galoisgruppe.
+\label{chap_diff_gl_grad_1_bsp02_rat}
+\end{bsp}
+
+\begin{bsp}Es sei $\phi(y)=ay$ mit
+\[a=\frac{(t+s^9)(t+s)^8}{(t^9+s)}\] eine
+Differenzengleichung über dem Frobenius-Körper
+$F=\galois{9}(s,t)$ mit dem Frobenius-Endomorphismus $\phi$.
+Dabei operiert $\phi$ auf $\galois{9}(s)$ als $9$-te Potenz und
+lässt das Ideal $(t)$ invariant, d.h. $F^{\phi}=\galois{9}(t)$.
+Mit Hilfe von Algorithmus \ref{chap_diff_gl_grad_1_algo_lin}
+finden wir eine rationale Lösung $\eta=(t^9+s)(t+s)$, denn es gilt
+\[\frac{\phi(\eta)}{\eta}=\frac{(t+s)^9(t+s^9)}{(t^9+s)(t+s)}=\frac{(t+s^9)(t+s)^8}{(t^9+s)}=a,\]
+d.h. die Galoisgruppe der Differenzengleichung $\phi(y)=ay$ ist
+die triviale Gruppe.\\
+Betrachten wir nun die Differenzengleichung $\phi(y)=(s\cdot a)y$,
+so finden wir mit Algorithmus \ref{chap_diff_gl_grad_1_algo_lin}
+keine rationale Lösung. Aber die Gleichung $\phi(y)=(s \cdot
+a)^8y$ hat die rationale Lösung $s\cdot \eta^8$, denn es gilt
+\[\phi(s\cdot \eta^8)=s^9\phi(\eta)^8=(s\cdot a)^8(s\cdot \eta^8)\]
+und damit hat die Gleichung $\phi(y)=(s\cdot a)y$ eine zyklische
+Gruppe der Ordnung $8$, also $\galois{9}^{\times}$ als
+Galoisgruppe.
+ \label{chap_diff_gl_grad_1_bsp03_rat}
+\end{bsp}
+
+\section{Additive Gleichungen}
+In diesem Abschnitt betrachten wir $F=\galois{q}(s,t)$ als rationalen Funktionenkörper bezüglich $t$ und 
+beschränken uns auf den Spezialfall, dass $\phi$ auf  $F^{ord}=\galois{q}(s)$ als $p$-te Potenz operiert.\\
+Wir betrachten die nicht-lineare Differenzengleichung
+$L(y)=\phi(y)-y-a$ vom Grad $1$ und suchen Lösungen für
+$L(y)=0$ bzw. $\phi(y)= y + a$ mit $a \in F$. Nach Satz
+\ref{1.15satz-galois-obere-grenze} kommen für die Galoisgruppe
+$G:=\DGal(L)$ nur die $\Ga{F^{\phi}}=F^{\phi}$ oder endliche Untergruppen 
+von $\Ga{F^{\phi}}$ der Ordnung $p^k$ für 
+eine natürliche Zahl $k \in \korp{N}$ in Frage. Wir benötigen ein
+Entscheidungskriterium, ob die volle Gruppe $\Ga{F^{\phi}}$
+oder eine echte Untergruppe als Galoisgruppe auftritt. Zunächst wollen wir sehen, wann
+eine Differenzengleichung eine rationale Lösung, d.h. eine Lösung
+im Grundkörper $F$ besitzt.
+
+\begin{satz} Eine Differenzengleichung $\phi(y)=y+a$ hat genau dann
+eine rationale Lösung $\eta \in F$ mit
+$\phi(\eta)-\eta=a$, falls die triviale Gruppe als
+Galoisgruppe auftritt.
+\label{chap_diff_gl_grad_1_satz_triv_gruppe_add}
+\end{satz}
+
+\begin{bew} Die Differenzengleichung $\phi(y)=y+a$ hat genau dann
+die triviale Gruppe als Galoisgruppe, wenn eine Lösung $\eta$ im
+Grundkörper $F$ existiert, d.h. $\phi(\eta)=\eta+a$. Schreiben wir
+diese Identität um, so erhalten wir $\phi(\eta)-\eta=a$.
+\end{bew}
+
+Wir wollen nun analog zu Algorithmus \ref{chap_diff_gl_grad_1_algo_galois} einen Algorithmus zur Berechnung einer rationalen Lösung von additiven Differenzengleichungen erster Ordnung entwickeln. Die Eingabedaten $a\in \galois{q}(s,t)$ sind als gekürzter Bruch der From $\frac{a_{1}(t)}{a_{2}(t)}$ gegeben. Um daraus eine additive Lösung zu erhalten, berechnen wir zunächst die Partialbruchzerlegung von $a$ und verfahren dann mit den Summanden dieser Zerlegung wie mit den Primpolynomen des gekürzten Bruch im Algorithmus \ref{chap_diff_gl_grad_1_algo_galois} für multiplikative Gleichungen.
+
+\begin{algo} (zur Berechnung einer rationalen Lösung $\eta \in F$)\\
+Eingabe: eine Differenzengleichung ersten Grades $\phi(y)=y+a$ mit
+$a=\frac{a_{1}(t)}{a_{2}(t)} \in \galois{q}(s,t)$
+\begin{enumerate}
+		\item Setze $\eta=0$.
+    \item Berechne die Partialbruchzerlegung von $a$. Dies liefert die Darstellung
+    \[a=\sum\limits_{i=1}^{r} \frac{c_{i}}{P_{i}^{v_{i}}}\]
+    mit Polynomen $c_{i} \in \galois{q}(s)[t]$, irreduzibeln Polynomen $P_{i} \in \galois{q}(s)[t]$ und $v_{i}=v_{\mathfrak{p}_{P_{i}}}$
+    \item Gehe die Summanden $S_{i}:=\frac{c_{i}}{P_{i}^{v_{i}}}$ durch
+    \begin{algorithmic}
+    \FOR{$j=1$ to $r$}
+        \IF{$S_{j}$ nicht periodisch}
+            \IF{$S_{j} \in \Bild(\phi)$}
+                \STATE setze $g:=\phi^{-1}(S_{j}), \eta:=\eta_{1}+ g$.
+                \WHILE{$\phi^{-1}(g) \neq g$}
+                    \STATE setze $g:=\phi^{-1}(g), \eta:=\eta_{1} + g$.
+                \ENDWHILE
+            \ENDIF
+        \ELSE
+            \FOR{$h=1$ to Periodenlänge von $S_{j}$}
+                \IF{$\phi^{h}(S_{j}^{v_{1j}}) = S_{k} \textrm{ für } j \neq k \in \{1, \ldots, r\}$}
+                    \STATE $\eta:=\eta + \phi^{h}(S_{j}^{v_{1j}})$
+                \ENDIF
+            \ENDFOR
+        \ENDIF
+    \ENDFOR
+    \end{algorithmic}
+   	\item
+    \begin{algorithmic}
+    \IF{$\phi(\eta)-\eta = a$}
+        \STATE Gib die rationale Lösung $\eta$ aus.
+    \ELSE
+        \STATE Es gibt keine rationale Lösung.
+    \ENDIF
+    \end{algorithmic}
+
+\end{enumerate}
+\label{chap_diff_gl_grad_1_algo_lin_add}
+\end{algo}
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Wir wenden Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} auf die additive 
+Differenzengleichung $\phi(y)=y + a$ erster Ordnung mit $a=\frac{s-s^p}{t^2+s^{p}t+st+s^{p+1}}$ an. Durch Partialbruchzerlegung erhalten wir die 
+folgende Darstellung
+\[a=\frac{1}{t-s}-\frac{1}{t-s^p}=\frac{1}{t-s}-\phi\left(\frac{1}{t-s}\right).\]
+Also erhalten wir $\eta=-\frac{1}{t-s}$ als rationale Lösung der Differenzengleichung und die triviale Gruppe als Galoisgruppe.
+\label{bsp:add1}
+\end{bsp}
+
+\begin{defn} Ein
+Element $a \in F$ hei"st \textbf{additiv transformierbar},
+falls ein Element $f \in F$ existiert, so dass
+$a-(\phi(f)-f)$ gewöhnlich ist. Das Element $f$ nennen wir
+\textbf{Transformationselement}.
+\label{chap_diff_gl_grad_1_defn_gew_add}
+\end{defn}
+
+Für die folgenden Beweise benötigen wir einige Resultate über rationale Funktionenkörper einer Variablen. Wie oben fassen wir $F=\galois{q}(s,t)$ als rationalen Funktionenkörper einer Variablen $t$ über $K:=\galois{q}(s)$ auf. Wir bezeichnen mit $\korp{P}_{F/K}$ die Menge der Stellen bzw. der Primdivisoren von $F$ über $K$. Mit $v_{\mathfrak{p}}$ bezeichnen wir die zur Stelle $\mathfrak{p}$ gehörige Bewertung. 
+Au"serdem schreiben wir für ein Element $x \in F$
+\[(x)_{0}=\sum\limits_{\substack{\mathfrak{p} \in \korp{P}\\ v_{\mathfrak{p}}(x)> 0}} v_{\mathfrak{p}}(x)\mathfrak{p}\]
+für den \textbf{Nulldivisor} von $x$ und
+\[(x)_{\infty}=\sum\limits_{\substack{\mathfrak{p} \in \korp{P}\\ v_{\mathfrak{p}}(x)< 0}} -v_{\mathfrak{p}}(x)\mathfrak{p}\]
+für den \textbf{Poldivisor} von $x$. 
+Ferner bezeichnen wir den Bewertungsring mit
+\begin{align*}
+\mathcal{O}_{\mathfrak{p}}& =\{x \in F \, | \, v_{\mathfrak{p}}(x) \geq 0\} \textrm{ und das Bewertungsideal mit } \\
+\mathfrak{p} &= \{x \in F \, | \, v_{\mathfrak{p}}(x) > 0\}
+\end{align*}
+und definieren den Restklassenkörper durch $R_{\mathfrak{p}}=\mathcal{O}_{\mathfrak{p}}/\mathfrak{p}$. Der Grad eines Primdivisors sei definiert durch
+\[\deg(\mathfrak{p})=[ R_{\mathfrak{p}}:K ].\]
+Damit können wir den Grad eines beliebigen Divisors $D$ durch
+\[\deg(D)=\sum\limits_{\mathfrak{p} \in \korp{P}_{F/K}} v_{\mathfrak{p}}(D) \deg(\mathfrak{p})\]
+definieren. 
+
+\begin{defn} Ein
+Element $a \in F$ hei"st \textbf{additiv minimal}, falls 
+\[\deg((a)_{\infty}) \leq \deg\left((a-(\phi(f)-f))_{\infty}\right)\]
+%\[\# \{ \mathfrak{p} \in \korp{P}_{F/K} \mid v_{\mathfrak{p}}(a) \neq 0 \} \leq \# \{ \mathfrak{p} \in \korp{P}_{F/K} \mid v_{\mathfrak{p}}(a-(\phi(f)-f)) \neq 0 \}\]
+für alle Transformationselemente $f \in F$ ist. Entsprechend hei"st $a$ \textbf{multiplikativ minimal}, falls 
+\[\deg((a)_{\infty}) \leq \deg\left(\left(\frac{\phi(f)}{f}a\right)_{\infty}\right)\]
+%\[\# \{ \mathfrak{p} \in \korp{P}_{F/K} \mid v_{\mathfrak{p}}(a) \neq 0 \} \leq \# \{ \mathfrak{p} \in \korp{P}_{F/K} \mid v_{\mathfrak{p}}\left(\frac{\phi(f)}{f}a\right) \neq 0 \}\]
+für alle Transformationselemente $f \in F$ ist. Wir bezeichnen mit 
+%\[T_{a}:=\# \{ \mathfrak{p} \in \korp{P}_{F/K} \mid v_{\mathfrak{p}}(a) \neq 0 \}\] 
+\[T_{a}:=\deg((a)_{\infty})\]
+den \textbf{Transformationsindex} von $a$.
+\label{chap_diff_gl_grad_1_defn_min}
+\end{defn}
+
+\begin{anm} Es sei $a \in F$ ein beliebiges Körperelement. Dann gelten:\\
+(a) $a$ ist genau dann gewöhnlich, wenn $T_{a}=0$ gilt. In diesem Fall ist $a$ sowohl additiv als auch multiplikativ minimal.\\
+(b) Ist $a$ nicht additiv transformierbar, so finden wir dennoch mit Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} ein Transformationselement $f$, so dass 
+$\tilde{a}=a-(\phi(f)-f)$ additiv minimal ist. 
+\label{chap_diff_gl_grad_1_anm_min}
+\end{anm}
+
+Nach \cite[Theorem 1.2.2.]{Stich} sind alle Primdivisoren eines rationalen Funktionenkörpers von der Form $\mathfrak{p}_{\infty}=\mathfrak{p}_{\frac{1}{t}}$ oder $\mathfrak{p}_{P(t)}$ mit einem irreduziblen Polynom $P(t) \in \galois{q}(s)[t]$. Wir wollen nun eine Operation des Endomorphismus $\phi$ auf den Stellen von $F$ definieren. Für die unendliche Stelle definieren wir 
+\[\phi(\mathfrak{p}_{\frac{1}{t}}):=\mathfrak{p}_{\phi(\frac{1}{t})}=\mathfrak{p}_{\frac{1}{t}}\]
+und damit bleibt $\mathfrak{p}_{\infty}$ invariant unter $\phi$. Für ein irreduzibles Polynom $P(t) \in \galois{q}(s)[t]$, dessen $\phi$-Bild $\phi(P(t))$ ebenfalls irreduzibel ist, definieren wir
+\[\phi(\mathfrak{p}_{P}):=\mathfrak{p}_{\phi(P)}.\]
+Falls $\phi(P(t))$ reduzibel ist, lässt sich die $\phi$-Operation auf der Stelle $\mathfrak{p}_{P}$ nicht direkt definieren. Dann benötigen wir das folgende Lemma.
+
+\begin{lemma}Es sei $P(t)=\sum\limits_{i=0}^{n} a_{i}t^{i} \in \galois{q}(s)[t]$ ein irreduzibles Polynom. Das $\phi$-Bild $\phi(P(t))=\sum\limits_{i=0}^{n} a_{i}^{p}t^{i}$ ist genau dann reduzibel, falls ein Polynom $\tilde{P}(t) \in \galois{q}(s)[t]$ mit $\phi(P(t))=\tilde{P}(t)^p$ existiert. Dieses Polynom ist irreduzibel und es gilt $P(t)=\sum\limits_{j=0}^{m} b_{j}t^{jp}$ und $\tilde{P}(t)=\sum\limits_{j=0}^{m}b_{j}t^{j}$, also $\tilde{P}(t^p)=P(t)$.
+\label{lemma:phi_op}
+\end{lemma}
+
+\begin{bew} Falls $\phi(P(t))=\tilde{P}(t)^p$ ist, so ist klar, dass $\phi(P(t))$ reduzibel ist. Sei also umgekehrt $\phi(P(t))$ reduzibel in $\galois{q}(s,t)$. Wir wissen, dass $\galois{q}(s,t)/\galois{q}(s^p,t)$ eine inseparable Konstantenerweiterung ist. Au"serdem bildet 
+\[\abbil{\phi}{\galois{q}(s,t)}{\galois{q}(s^p,t)}\] 
+Primpolynome auf Primpolynome ab. Daher ist $\phi(P(t))$ als Polynom in $\galois{q}(s^p,t)$ irreduzibel, da $P(t) \in \galois{q}(s,t)$ nach Voraussetzung irreduzibel ist. Aus der Algebra wissen wir in diesem Fall, dass $\phi(P(t))$ als Polynom in $\galois{q}(s^p,t)$ genau dann inseparabel ist, falls ein Polynom $\hat{P}(t)\in \galois{q}(s^p,t)$ mit $\hat{P}(t^p)=\phi(P(t))$ existiert. Dann ist $\phi(P(t))$ ein $p$-Polynom und es muss ein Polynom $\tilde{P}(t) \in \galois{q}(s,t)$ mit $\tilde{P}(t)^p=\phi(P(t))$ existieren. Damit gilt dann auch $\tilde{P}(t^p)=P(t)$.
+Wir nehmen nun an, dass $\tilde{P}(t)=h_{1}(t)\cdot h_{2}(t)$ reduzibel ist. Dann ist auch 
+\[P(t)=\tilde{P}(t^p)=h_{1}(t^p)\cdot h_{2}(t^p)\]
+reduzibel, was im Widerspruch zur Voraussetzung steht, dass $P(t)$ irreduzibel ist. 
+\end{bew}
+
+Damit können wir jetzt eine Operation von $\phi$ auf den Stellen $\korp{P}_{F/K}$ definieren.
+\begin{defn} Es sei der Frobeniuskörper $F=\galois{q}(s,t)$ ein rationaler Funktionenkörper einer Variablen $t$ über $K:=\galois{q}(s)$. Dann operiert $\phi$ auf den Stellen $\korp{P}_{F/K}$ folgenderma"sen:
+\[\abb{\phi}{\korp{P}_{F/K}}{\korp{P}_{F/K}}{\mathfrak{p}}{\phi(\mathfrak{p})},\]
+wobei wir $\phi(\mathfrak{p})$ wie folgt definieren:
+\[
+\phi(\mathfrak{p}) := 
+\begin{cases}
+\mathfrak{p}								& \textrm{falls } \mathfrak{p}= \mathfrak{p}_{\infty}\\
+\mathfrak{p}_{\phi(P(t))}		& \textrm{falls } \mathfrak{p}= \mathfrak{p}_{P(t)} \textrm{ und } \phi(P(t)) \textrm{ irreduzibel}\\
+\mathfrak{p}_{\tilde{P}(t)}	& \textrm{falls } \mathfrak{p}= \mathfrak{p}_{P(t)} \textrm{ und } \phi(P(t))=\tilde{P}(t)^{p} \textrm{ reduzibel}\\
+\end{cases}
+.\]
+Ist $\phi(P((t)))$ irreduzibel, so nennen wir die zugehörige Stelle $\mathfrak{p}$ \textbf{separabel}. Ist dagegen $\phi(P((t)))=\tilde{P}(t)^{p}$ reduzibel, so nennen wir die zugehörige Stelle $\mathfrak{p}$ \textbf{rein inseparabel}. \\
+Eine separable Stelle $\mathfrak{p} \in \korp{P}_{F/K}$ hei"st \textbf{$\phi$-periodisch}, falls eine natürliche Zahl $k\in \korp{N}$ mit $\phi^{k}(\mathfrak{p})=\mathfrak{p}$ existiert. Falls sogar $\phi(\mathfrak{p})=\mathfrak{p}$ gilt, so nennen wir $\mathfrak{p}$ eine \textbf{$\phi$-invariante Stelle}.
+\end{defn}
+
+Die beiden folgenden Lemmata sind technische Resultate, die wir für den Beweis des folgenden Satzes \ref{chap_diff_gl_grad_1_galois_add} zur Charakterisierung der Galoisgruppe additiver Differenzengleichungen vom Grad $1$ benötigen.
+
+\begin{lemma} Für eine Polstelle $\mathfrak{p}$ von $a \in F$ ist $\phi(\mathfrak{p})$ eine Polstelle von $\phi(a)$.
+\label{lemma:help1}
+\end{lemma}
+
+\begin{bew} Es sei $a$ in der Darstellung $a=\frac{a_{1}}{a_{2}}$ mit teilerfremden Polynomen $a_{i} \in \galois{q}(s)[t]$ gegeben. Nach Lemma \ref{chap_diff_gl_grad_1_lemma_teilerfremd} sind dann auch die $\phi(a_{i})$ teilerfremde Polynome. Da $t$ in $F^{\phi}$ liegt, bleibt der Grad der $a_{i}$ unter $\phi$ invariant und die Aussage ist für die unendliche Stelle bewiesen. Für die anderen Stellen gehört $\mathfrak{p}$ zu einem irreduziblen Polynom, das $a_{2}$ teilt und $\phi(\mathfrak{p})$ zu einem irreduziblen Polynom, das $\phi(a_{2})$ teilt. Da die $\phi$-Bilder $\phi(a_{i})$ nach Lemma \ref{chap_diff_gl_grad_1_lemma_teilerfremd} teilerfremde Polynome sind, muss $\phi(\mathfrak{p})$ also eine Polstelle von $\phi(a)$ sein und das Lemma ist bewiesen.
+\end{bew}
+
+
+Wegen Anmerkung \ref{chap_diff_gl_grad_1_anm_min} (b) können wir ab sofort ohne Einschränkung davon ausgehen, dass $a \in F$ additiv minimal ist. Andernfalls finden 
+wir mit Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} ein Transformationselement $f$, so dass 
+$\tilde{a}=a-(\phi(f)-f)$ additiv minimal ist und können ohne Einschränkung $a$ durch $\tilde{a}$ ersetzen.
+
+\begin{lemma} Es sei $a \in F$ ein additiv minimales Körperelement mit einer nicht $\phi$-periodischen Polstelle $\mathfrak{p}$. Dann sind $\phi^k(\mathfrak{p})$ für alle natürlichen Zahlen mit $0\leq k \leq n$ Polstellen 
+von $\sum\limits_{i=0}^{n}\phi^{i}(a)$. 
+\label{lemma:help2}
+\end{lemma}
+
+\begin{bew} Es sei $a$ in der Darstellung $a=\frac{a_{1}}{a_{2}}$ als gekürzter Bruch mit teilerfremden Polynomen $a_{1}$, $a_{2}$ $\in \galois{q}(s)[t]$ gegeben. Nach Lemma \ref{chap_diff_gl_grad_1_lemma_teilerfremd} sind dann auch die $\phi$-Bilder $\phi^{k}(a)=\frac{\phi^{k}(a_{1})}{\phi^{k}(a_{2})}$ für jede natürliche Zahl $k \in \korp{N}$ gekürzte Brüche. Wir wollen zunächst durch Induktion nach $n$ zeigen, dass die Summe $\sum\limits_{i=0}^{n}\phi^{i}(a)$ als Bruch in der Darstellung
+\[\sum\limits_{i=0}^{n}\phi^{i}(a)=\frac{\sum\limits_{j=0}^{n}\phi^{j}(a_{1})\prod\limits_{\substack{l=0\\ l \neq j}}^{n}\phi^{l}(a_{2})}{\prod\limits_{k=0}^{n}\phi^{k}(a_{2})}\]
+gegeben ist. Es sei also zunächst $n=1$. Dann ist $a_{2}\phi(a_{2})$ der gemeinsame Nenner von 
+\[a+\phi(a)=\frac{a_{1}}{a_{2}} + \frac{\phi(a_{1})}{\phi(a_{2})}.\]
+Damit erhalten wir für die Summe die Darstellung
+\[a+\phi(a)=\frac{a_{1}\phi(a_{2})+\phi(a_{1})a_{2}}{a_{2}\phi(a_{2})}.\]
+Dies liefert den Induktionsanfang. Nun machen wir den Induktionsschritt von $n$ nach $n+1$. Wir betrachten die Summe 
+\[\sum\limits_{i=0}^{n+1}\phi^{i}(a)=\sum\limits_{i=0}^{n}\phi^{i}(a)+\phi^{n+1}(a)=\frac{\sum\limits_{j=0}^{n}\phi^{j}(a_{1})\prod\limits_{\substack{l=0\\ l \neq j}}^{n}\phi^{l}(a_{2})}{\prod\limits_{k=0}^{n}\phi^{k}(a_{2})} + \frac{\phi^{n+1}(a_{1})}{\phi^{n+1}(a_{2})}.\]
+ Der gemeinsame Nenner dieser beiden Summanden ist 
+\[\prod\limits_{k=0}^{n+1}\phi^{k}(a_{2}).\]
+Dies liefert den Bruch
+\[\sum\limits_{i=0}^{n+1}\phi^{i}(a)=\frac{\sum\limits_{j=0}^{n+1}\phi^{j}(a_{1})\prod\limits_{\substack{l=0\\ l \neq j}}^{n+1}\phi^{l}(a_{2})}{\prod\limits_{k=0}^{n+1}\phi^{k}(a_{2})}.\]
+Da $\galois{q}(s)[t]$ ein Euklidischer Ring ist, existiert ein grö"ster gemeinsamer Teiler $\ggT\{\phi^{k}(a_{2}) \mid 0 \leq k \leq n\}$. Ist dieser trivial, so ist der Bruch 
+\[\sum\limits_{i=0}^{n}\phi^{i}(a)=\frac{\sum\limits_{j=0}^{n}\phi^{j}(a_{1})\prod\limits_{\substack{l=0\\ l \neq j}}^{n}\phi^{l}(a_{2})}{\prod\limits_{k=0}^{n}\phi^{k}(a_{2})}.\]sogar gekürzt. Nun konmmen wir zur eigentlichen Behauptung. Da $\mathfrak{p}$ eine nicht $\phi$-periodische Polstelle von $a$ ist, kann $\mathfrak{p}$ nicht die unendliche Stelle sein. Also gehört die Stelle $\mathfrak{p}$ zu einem irreduziblen Polynom $P \in \galois{q}(s,t)$, welches ein Teiler von $a_{2}$ ist. Aus Lemma \ref{lemma:help1} wissen wir, dass $\phi^{k}(\mathfrak{p})$ eine Polstelle von $\phi^{k}(a)$ für jede natürliche Zahl $1 \leq k \in \korp{N}$ ist. Da $F/K$ Klassenzahl $1$ hat, muss auch $\phi^{k}(P)$ ein Teiler von $\phi^{k}(a_{2})$ für jede natürliche Zahl $1 \leq k \in \korp{N}$ sein. Da $a$ additiv minimal ist, können sich in der Summe keine Polstellen wegkürzen. Denn dann könnte man ein nicht-triviales Transformationselement $f$ finden und damit diese Polstelle aus $a$ durch einen Frobenius-Basiswechsel $a-(\phi(f)-f)$ kürzen, was im Widerspruch zur additiven Minimalität von $a$ stehen würde. Daher ist $\phi^{k}(P)$ für jede natürliche Zahl $1\leq k \leq n$ ein Teiler von
+\[\prod\limits_{k=0}^{n}\phi^{k}(a_{2}),\]
+also ist $\phi^{k}(\mathfrak{p})$ für jede natürliche Zahl $1\leq k \leq n$ eine Polstelle der Summe $\sum\limits_{i=0}^{n}\phi^{i}(a)$, falls $\ggT\{\phi^{k}(a_{2}) \mid 0 \leq k \leq n\}=1$ gilt. Andernfalls existieren gemeinsame Teiler der $\phi$-Bilder von $a_{2}$. In der Darstellung der Summe als Bruch kürzen sich aber die mehrfachen Faktoren wieder heraus. Auch in diesem Fall ist $\phi^{k}(P)$ für jede natürliche Zahl $1\leq k \leq n$ ein Teiler des Nenners von $\sum\limits_{i=0}^{n}\phi^{i}(a)$ und damit ist $\phi^{k}(\mathfrak{p})$ für jede natürliche Zahl $1\leq k \leq n$ eine Polstelle der Summe. Und damit ist das Lemma bewiesen.
+\end{bew}
+
+Damit haben wir alle theoretischen Resultate, die für die Bestimmung der Galoisgruppe einer additiven Differenzengleichung erster Ordnung notwendig sind, zusammengetragen.
+
+\begin{satz} Es sei $\phi(y)=y+a$ eine additive Differenzengleichung erster Ordnung mit $a \in F$ additiv minimal und Galoisgruppe $G$. Dann gelten:\\
+(a) Die Galoisgruppe $G$ ist die triviale Gruppe, falls $a=0$ ist.\\
+(b) Die Galoisgruppe $G$ ist eine endliche Gruppe der Ordnung $p$, falls $a$ in der Darstellung $a=\tilde{a}\cdot t^{k}$ mit $\tilde{a} \in F^{ord}=\galois{q}(s)$ und $0 \leq k \in \korp{N}$ gegeben ist.\\
+(c) Die Galoisgruppe $G$ ist eine endliche Gruppe der Ordnung $p^n$ mit $n\leq \deg(a)+1$, 
+falls $a \in \galois{q}(s)[t]$ liegt. \\
+(d) Die Galoisgruppe $G$ ist eine endliche Gruppe der Ordnung $p^n$ mit 
+$n\leq \deg(a_{1})+\deg(a_{2})(l-1)+1$, falls $a=\frac{a_{1}(t)}{a_{2}(t)} \in \galois{q}(s,t)$ nur $\phi$-periodische Polstellen besitzt und $l$ die Periodenlänge von $a_{2}(t)$ bezeichnet. \\
+(e) Die Galoisgruppe $G$ ist die volle $\Ga{F^{\phi}}=\Ga{\galois{p}(t)}$, falls $a$ mindestens eine nicht $\phi$-periodische Polstelle $\mathfrak{q}$ besitzt. 
+\label{chap_diff_gl_grad_1_galois_add}
+\end{satz}
+
+\begin{bew} Die erste Aussage (a) folgt direkt aus Satz \ref{chap_diff_gl_grad_1_satz_triv_gruppe_add}. Um (b) zu beweisen, wollen wir zunächst die triviale Gruppe als Galoisgruppe ausschlie"sen. Wenn die Gleichung $\phi(y)=y+a$ mit $a=\tilde{a}\cdot t^{k}$ triviale Galoisgruppe hätte, so würde nach Satz \ref{chap_diff_gl_grad_1_satz_triv_gruppe_add} eine rationale Lösung $\eta \in F$ mit $\phi(\eta)-\eta=a$ existieren. Dies wäre aber ein Widerspruch zur additiven Minimalität von $a$, denn $a-(\phi(\eta)-\eta)=a-a=0$. Also kann die triviale Gruppe nicht auftreten. Als nächstes betrachten wir die Differenzengleichung $\phi(y)=y+\tilde{a}$ erster Ordnung über dem gewöhnlichen Frobenius-Körper $F^{ord}$. Diese besitzt eine algebraische Lösung $\tilde{\eta}$ mit Minimalpolynom 
+\[g_{\tilde{\eta}}=X^p-X-\tilde{a}.\]
+Da aber $t^k$ für jede natürliche Zahl $0 \leq k \in \korp{N}$ invariant unter $\phi$ bleibt, ist $\frac{\tilde{\eta}}{t^k}$ eine Lösung von $\phi(y)=y+\tilde{a}$. Daher finden wir eine algebraische Lösung $\eta$ der Gleichung $\phi(y)=y+a=y+\tilde{a}t^k$ mit Minimalpolynom 
+\[g_{\eta}=X^p-(t^{k})^{p-1}X-(t^{k})^{p}a.\]
+Damit ist die Galoisgruppe von $\phi(y)=y+a$ eine endliche Gruppe der Ordnung $p$ und Aussage (b) ist bewiesen.\\
+Ist $a=\sum\limits_{i=0}^{r}a_{i}t^{i}$ ein Polynom in $\galois{q}(s)[t]$, so erhalten wir durch Anwendung von (b) für jeden Term $a_{i}t^{i}$ mit $a_{i} \neq 0$ eine algebraische Lösung $\eta_{i}$ mit Minimalpolynom
+\[g_{\eta_{i}}=X^p-(t^{i})^{p-1}X-(t^{i})^{p}a_{i}.\] Für $a_{i}=0$ setzen wir $\eta_{i}=0$.
+Durch $\eta:=\sum\limits_{i=0}^{r}\eta_{i}$ erhalten wir eine algebraische Lösung der Gleichung $\phi(y)=y+a$. Durch Resultantenbildung der Minimalpolynome $g_{\eta_{i}}$ erhalten wir ein Polynom vom Grad $p^{m}$ mit $m\leq \deg(a)+1$. Das Minimalpolynom $g_{\eta}$ vom Grad $n$ ist ein Teiler dieses Polynoms  
+und die Galoisgruppe ist eine Gruppe der Ordnung $p^{n}$ mit $n\leq \deg(a)+1$, was Aussage (c) beweist.\\
+Um (d) zu zeigen sei $a$ nun in der Darstellung $a=\frac{a_{1}}{a_{2}}$ mit teilerfremden Polynomen $a_{i} \in \galois{q}(s)[t]$ gegeben. Da $a$ nur $\phi$-periodische Polstellen besitzt, ist $a_{2}$ periodisch der Länge $l$ und liegt nach Bemerkung \ref{chap_diff_gl_grad_1_bem_per} sogar in $\galois{q}[t]$. Mit dem $\phi$-Invarianten Element
+\[ d:= \prod\limits_{i=0}^{l-1} \phi^{i}(a_{2})\]
+erhalten wir eine zu $\phi(y)=y+a$ äquivalente Gleichung, nämlich
+\[\phi(yd)=(y+ad)=yd+ad=yd+\underbrace{a_{1}\prod\limits_{i=1}^{l-1} \phi^{i}(a_{2})}_{\textrm{$:=\tilde{a}$}}\]
+mit $\tilde{a} \in \galois{q}(s)[t]$. Die Galoisgruppe dieser Gleichung ist nach (c) eine endliche Gruppe der Ordnung $p^{n}$ mit $n\leq \deg(a_{1})+\deg(a_{2})(l-1)+1$. Damit ist auch die Galoisgruppe von $\phi(y)=y+a$ eine endliche Gruppe der Ordnung $p^{n}$.\\
+Um schlie"slich (e) zu beweisen, sei nun $\eta$ eine Lösung der Gleichung $\phi(y)=y+a$. Die Galoisgruppe ist genau dann die volle $\Ga{F^{\phi}}$, falls $\eta$ transzendent ist. Wir wollen also annehmen, dass $\eta$ algebraisch ist und dies zu einem Widerspruch führen. 
+Da $\eta$ algebraisch
+über $F$ ist, müssen auch die $\phi$-Bilder
+$\phi^{n}(\eta)$ für $n \in \korp{N}$ algebraisch über $F$
+sein. Es gilt
+\begin{align*}
+\phi(\eta) &= \eta + a, \\
+\phi^2(\eta) &= \phi(\eta + a)=\eta + a  + \phi(a),  \\
+&\cdots\\
+\phi^{n}(\eta) &= \eta + \underbrace{
+\sum\limits_{i=0}^{n-1} \phi^{i}(a) }_{\textrm{$:=\mu_{n}$}}.
+\end{align*}
+Als nächstes betrachten wir den Poldivisor von $\eta$
+\[\Div{\eta}=\sum\limits_{\substack{\mathfrak{p} \in \korp{P}\\ v_{\mathfrak{p}}< 0}} -v_{\mathfrak{p}}(\eta)\mathfrak{p}.\]
+Da wir $\eta$ als algebraisch vorausgesetzt haben, hat
+$\eta$ nur endlich viele Polstellen. Au"serdem hat auch jedes $\phi^{n}(\eta)$ für $n \in \korp{N}$ nur endlich viele Polstellen. 
+Es sei 
+\[\mathfrak{P}_{0}:=\{ \mathfrak{p} \in \korp{P}_{F/K} \, | \, v_{\mathfrak{p}}(\eta) < 0 \}\]
+die Menge aller Polstellen von $\eta$. 
+Da für jedes $n \in \korp{N}$ auch $\phi^{n}(\eta)$ algebraisch ist, sind auch die Mengen 
+\[\mathfrak{P}_{n}:=\{ \mathfrak{p} \in \korp{P}_{F/K} \, | \, v_{\mathfrak{p}}(\phi^{n}(\eta)) < 0 \}\]
+aller Polstellen von $\phi^{n}(\eta)$ für alle natürlichen Zahlen $n \in \korp{N}$ endlich.
+Da $\phi$ ein injektiver Endomorphismus ist, werden beim Übergang von $\eta$ zu $\phi^{n}(\eta)$ Polstellen auf Polstellen abgebildet. Da au"ser diesen auch keine neuen Polstellen auftreten können, gilt sogar 
+\[s:=\# \mathfrak{P}_{0}= \#\mathfrak{P}_{n}\]
+für alle $n \in \korp{N}$. Jetzt wollen wir auch
+die Poldivisoren der $\phi$-Bilder von $\eta$ betrachten.
+Dazu untersuchen wir zunächst die Bewertungen
+\begin{align*}
+v_{\mathfrak{p}}(\phi^{n}(\eta)) &=v_{\mathfrak{p}}(\eta +
+ \sum\limits_{i=0}^{n-1} \phi^{i}(a)
+)\\
+&\geq \min\{ v_{\mathfrak{p}}(\eta),
+v_{\mathfrak{p}}\left(\sum\limits_{i=0}^{n-1}
+\phi^{i}(a)  \right) \}\\
+&= \min\{ v_{\mathfrak{p}}(\eta), v_{\mathfrak{p}}(\mu_{n}) \}.
+\end{align*}
+Mit Lemma \ref{lemma:help2} ergibt sich, dass $\mu_{n}$ mindestens $n$ verschiedene Polstellen, nämlich $\mathfrak{q}$, $\phi(\mathfrak{q})$, $\ldots$ , $\phi^{n-1}(\mathfrak{q})$ besitzt. Wir betrachten nun das algebraische Element $\phi^{2s+1}(\eta)$ mit $s$ Polstellen. Nach obiger Rechnung gilt aber auch 
+\[ v_{\mathfrak{p}}(\phi^{2s+1}(\eta)) \geq \min\{ v_{\mathfrak{p}}(\eta), v_{\mathfrak{p}}(\mu_{2s+1}) \},\]
+wobei sogar Gleichheit gilt, falls $v_{\mathfrak{p}}(\eta) \neq v_{\mathfrak{p}}(\mu_{2s+1})$ ist. Das Element $\eta$ besitzt genau $s$ Polstellen, $\mu_{2s+1}$ nach Lemma \ref{lemma:help2} mindestens $2s+1$. Also hat $\phi^{2s+1}(\eta)$ einerseits nach Voraussetzung $s$ Polstellen, aber andererseits nach obiger Rechnung mindestens $s+1$ Polstellen. Damit haben wir die Annahme, dass $\eta$ algebraisch ist, zu einem Widerspruch geführt. Also muss $\eta$ transzendent sein.
+\end{bew}
+
+Zum Abschluss des Kapitels führen wir noch einige Beispiele zur Berechnung der Galoisgruppe additiver Differenzengleichungen erster Ordnung vor. Dies erfolgt mit Hilfe von Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} und  der Charakterisierung aus Satz \ref{chap_diff_gl_grad_1_galois_add}.
+
+\begin{bsp} Die Gleichung in Beispiel \ref{bsp:add1} hat die triviale Gruppe als Galoisgruppe, denn $a-(\phi(\eta)-\eta)=0$.
+\end{bsp}
+
+\begin{bsp}Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Wir wenden Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} auf die additive 
+Differenzengleichung $\phi(y)=y + a$ erster Ordnung mit $a=\frac{st^3+s^{p+1}t^2 + s^{p-1}t^2 + s^{p+2}t +s^p - s}{t^2+s^{p}t+st+s^{p+1}}$ an. Durch Partialbruchzerlegung erhalten wir die 
+folgende Darstellung
+\[a=\frac{1}{t-s}-\frac{1}{t-s^p}+st=\frac{1}{t-s}-\phi\left(\frac{1}{t-s}\right) +st.\]
+Also erhalten wir mit $f=-\frac{1}{t-s}$ als Transformationselement das additiv minimale Element $\tilde{a}=a-(\phi(f)-f)=st$ und damit als Galoisgruppe nach Satz \ref{chap_diff_gl_grad_1_galois_add} (b) eine endliche Gruppe der Ordnung $p$.
+\end{bsp}
+
+\begin{bsp}Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Wir wenden Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} auf die additive 
+Differenzengleichung $\phi(y)=y + a$ erster Ordnung mit $a=s-t$ an. Mit Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} finden wir kein Transformationselement, also ist $a$ bereits additiv minimal. Wir berechnen das Minimalpolynom von $\eta$ mit $\phi(\eta)=\eta+s-t$. Dazu schreiben wir $\eta$ als Summe $\eta=\eta_{1}+\eta_{2}$ mit $\phi(\eta_{1})=\eta_{1}+s$ und $\phi(\eta_{1})=\eta_{1}-t$. Die zugehörigen Minimalpolynome sind 
+\begin{align*}
+g_{\eta_{1}}(X) &= X^p-X-s \quad \textrm{ bzw. }\\
+g_{\eta_{2}}(X) &= X^p-t^{p-1}X+t^{p}.
+\end{align*}
+Dann erhalten wir das Minimalpolynom $g_{\eta}$ als Teiler der Resultante
+\[\Resul_{T}(g_{\eta_{1}}(X-T),g_{\eta_{2}}(T)).\]
+Dies ist ein Polynom vom Grad $p^2$. 
+Daher erhalten wir als Galoisgruppe nach Satz \ref{chap_diff_gl_grad_1_galois_add} (c) eine endliche Gruppe der Ordnung höchstens $p^2$. Für den Spezialfall $p=3$ und $q=p^2=9$ ergibt sich für die Resultante
+\begin{align*}
+\Resul_{T}(g_{\eta_{1}}(T),g_{\eta_{2}}(X-T))=2X^9&+(t^6+t^4+t^2+1)X^3\\
+	&+(2t^6+2t^4+2t^2)X\\
+	&+2t^9+t^7+2st^6+t^5+2st^4+t^3+2st^2+s^3.
+\end{align*}
+Dies ist ein irreduzibles Polynom. Damit ist $g_{\eta}=\Resul_{T}(g_{\eta_{1}}(T),g_{\eta_{2}}(X-T))$ das Minimalpolynom von $\eta$ und die Galoisgruppe ist eine endliche Gruppe der Ordnung $3^2=9$.
+\label{bsp:add}
+\end{bsp}
+
+\begin{bsp}Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Wir wenden Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} auf die additive 
+Differenzengleichung $\phi(y)=y + a$ erster Ordnung mit $a=\frac{1}{s-t}$ an. Mit Algorithmus \ref{chap_diff_gl_grad_1_algo_lin_add} finden wir kein Transformationselement, also ist $a$ bereits additiv minimal. Da die Fälle (a) bis (d) von Satz \ref{chap_diff_gl_grad_1_galois_add} nicht auftreten und $a$ eine nicht $\phi$-periodische Polstelle $\mathfrak{p}=\mathfrak{p}_{s-t}$ besitzt, ist die Galoisgruppe der Gleichung $\phi(y)=y+a$ die volle additive Gruppe $\Ga{F^{\phi}}$.
+\end{bsp}

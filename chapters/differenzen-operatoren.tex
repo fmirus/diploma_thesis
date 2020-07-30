@@ -1,0 +1,504 @@
+\chapter{Differenzen-Operatoren}
+\label{chap_diff_op}
+
+\section{Der Ring der Differenzen-Operatoren}
+
+Wir bezeichnen hier im gesamten Kapitel mit $F$ den
+Quotientenkörper des Semi-Frobenius-Rings $R$ mit Endomorphismus
+$\phi$. Um die Begriffe der Irreduzibilität und Faktorisierung von
+Differenzengleichungen einzuführen definieren
+wir den Ring der Differenzen-Operatoren. \\
+Wir folgen dabei den Ideen von Oystein Ore in \cite{Ore01}, denn
+die vorliegenden Differenzen-Operatoren sind ein Spezialfall der
+von ihm entdeckten Schiefpolynome.
+
+\begin{defn}
+Wir definieren den (nicht-kommutativen) \textbf{Ring der
+Differenzen-Operatoren} durch
+$$\mathfrak{S}:=F[\tau,\phi]:=\{ \sum\limits_{i=0}^{n} a_{i} \tau^{i} \, | \, a_{i} \in F, \tau a=\phi(a)\tau \}.$$
+Zu einer Differenzengleichung
+$$ L(y):= \phi^{n}(y) + \sum\limits_{i=0}^{n-1} a_{i} \phi^{i}(y) \, \textrm{ mit } a_{i} \in F $$
+definieren wir den \textbf{assoziierten Differenzen-Operator}
+$$ P_{L}(\tau):= \tau^n + \sum\limits_{i=0}^{n-1} a_{i} \tau^{i} \, \textrm{ mit } a_{i} \in F.$$
+Durch $\deg_{\tau}(P)$ definieren wir den \textbf{Grad} des
+Differenzen-Operators $P$.
+\end{defn}
+
+\begin{anm} Die Menge der Differenzen-Operatoren wird mit der
+gewöhnlichen Addition und der Multiplikation via der Regel $\tau
+a=\phi(a) \tau$ zu einem nicht-kommutativen Ring, der gewisse
+Ähnlichkeit mit dem Ring der gewöhnlichen Polynome über $F$ hat.
+Da die Multiplikation aber nicht kommutativ ist muss man z.B. bei
+Division mit Rest auf die Reihenfolge achten.
+\end{anm}
+
+\begin{defn} Ein Differenzen-Operator $P(\tau) \in
+\mathfrak{S}$ von Grad $\deg_{\tau}(P)=n$ heisst
+\textbf{reduzibel}, falls es Differenzen-Operatoren $P_{1}, P_{2}
+\in \mathfrak{S}$ von Grad $0 < \deg_{\tau}(P_{1})$,
+$\deg_{\tau}(P_{2}) < n$ mit $P(\tau)=P_{1}(\tau)P_{2}(\tau)$
+gibt. Andernfalls heisst $P$ \textbf{irreduzibel}. Eine
+Differenzengleichung $L(y)$ heisst \textbf{reduzibel} bzw.
+\textbf{irreduzibel}, falls der zugehörige Differenzen-Operator
+$P_{L}(\tau)$ reduzibel bzw. irreduzibel ist.
+\label{chap_diff_op_defn_reduzibel}
+\end{defn}
+
+\begin{defn} Es sei $P(\tau)=Q_{1}(\tau)Q_{2}(\tau) \in \mathfrak{S}$ ein
+reduzibler Differenzen-Operator. Wir nennen $Q_{1}(\tau)$ einen
+\textbf{links-Teiler} und $Q_{2}(\tau)$ einen
+\textbf{rechts-Teiler} von $P(\tau)$. Weiterhin schreiben wir für
+$P,Q, M \in \mathfrak{S}$
+\begin{eqnarray*}
+P \equiv Q &\,& (\lmod M) \textrm{ , falls ein $D_{1}(\tau) \in
+\mathfrak{S}$ existiert, so dass }
+P-Q=D_{1}M \textrm{, bzw.}\\
+(\lmod M) &\,& P \equiv Q  \textrm{ , falls ein $D_{2}(\tau) \in
+\mathfrak{S}$ existiert, so dass } P-Q=MD_{2}.
+\end{eqnarray*}
+\end{defn}
+
+\begin{bem} Es seien $P_{1}(\tau),P_{2}(\tau) \in
+\mathfrak{S}$ Differenzen-Operatoren. Dann existieren ein
+Differenzen-Operator $g(\tau) \in \mathfrak{S}$ und
+Differenzen-Operatoren $Q_{1}(\tau)$, $Q_{2}(\tau) \in
+\mathfrak{S}$ mit $P_{1}=Q_{1}g$ und $P_{2}=Q_{2}g$.
+\label{chap_diff_op_ggrt}
+\end{bem}
+
+\begin{bew}
+Es seien $P_{1}(\tau)=\sum\limits_{i=0}^{n}a_{i}\tau^{i}$ und
+$P_{2}(\tau)=\sum\limits_{j=0}^{m}b_{j}\tau^{j}$ und wir gehen
+ohne Einschränkung davon aus, dass $n \geq m$. Dann hat der
+Operator
+\begin{eqnarray*}
+P(\tau)&:=& P_{1}(\tau) -
+a_{n}\phi^{n-m}(b_{m}^{-1})\tau^{n-m}P_{2}(\tau)\\
+&=& \sum\limits_{i=0}^{n}a_{i}\tau^{i} - (a_{n} \tau^{n-m}
+b_{m}^{-1}\sum\limits_{j=0}^{m}b_{j}\tau^{j})\\
+&=& \sum\limits_{i=0}^{n}a_{i}\tau^{i} - a_{n} \tau^{n-m}
+( \tau^{m} + \sum\limits_{j=0}^{m-1}b_{j}\tau^{j})\\
+ &=& \sum\limits_{i=0}^{n-1} a_{n}\tau^{i} -
+\sum\limits_{j=0}^{m-1} a_{n} \phi^{n-m}(b_{j})\tau^{j+n-m}.
+\end{eqnarray*}
+höchstens Grad $n-1$, d.h. wir erhalten die Darstellung
+$$P_{1}=Q_{1}P_{2}+P_{3} \textrm{ mit } deg_{\tau}(Q_{1})=n-m \textrm{ und } \deg_{\tau}(P_{3})<\deg_{\tau}(P_{2})=m.$$
+Mit diesem Verfahren erhalten wir sukzessive eine euklidische
+Schiefpolynomrestfolge mit abnehmenden Graden der Gestalt
+\begin{eqnarray*}
+P_{1} &=& Q_{1}P_{2}+P_{3} \\
+P_{2} &=& Q_{2}P_{3}+P_{4} \\
+&\vdots& \\
+P_{l-2} &=& Q_{l-2}P_{l-1}+P_{l} \\
+P_{l-1} &=& Q_{l-1}P_{l}.  \\
+\end{eqnarray*}
+Wie beim gewöhnlichen euklidischen Algorithmus setzen wir
+$g:=P_{l}$ und erhalten damit die Behauptung.
+\end{bew}
+
+\begin{defn} Wir nennen den eindeutig bestimmten normierten
+Differenzen-Operator $g$ aus Bemerkung \ref{chap_diff_op_ggrt} den
+\textbf{grö"sten gemeinsamen rechts-Teiler} von $P_{1}$ und
+$P_{2}$ und bezeichnen diesen mit $\ggrT(P_{1},P_{2}):=g$.
+\end{defn}
+
+\begin{bem} Es seien $P_{1}, P_{2} \in \mathfrak{S}$
+Differenzen-Operatoren. Dann existieren Differenzen-Operatoren
+$Q_{1},Q_{2} \in \mathfrak{S}$, so dass
+$$Q_{1}P_{1} + Q_{2}P_{2}=\ggrT(P_{1},P_{2}).$$
+\end{bem}
+
+\begin{bew}Wir erhalten die Operatoren $Q_{1}$ und $Q_{2}$ aus der
+Restfolge aus dem Beweis zu Satz \ref{chap_diff_op_ggrt} wie beim
+erweiterten Euklidischen Algorithmus für Polynome durch
+rückwärtiges Einsetzen.
+\end{bew}
+
+\begin{defn} Zwei Differenzen-Operatoren $P_{1},P_{2} \in
+\mathfrak{S}$ heissen \textbf{teilerfremd}, falls
+$\ggrT(P_{1},P_{2})=1$.
+\end{defn}
+
+\begin{anm} Im Allgemeinen ist eine entsprechende Links-Division
+nur dann möglich, wenn $\phi$ ein Automorphismus ist.
+\end{anm}
+
+\begin{defn} Es seien $P_{1},P_{2} \in \mathfrak{S}$
+Differenzen-Operatoren. Wir nennen den normierten
+Differenzen-Operator $M \in \mathfrak{S}$ kleinsten Grades, so
+dass Differenzen-Operatoren $Q_{1},Q_{2} \in \mathfrak{S}$ mit
+$$M=Q_{1}P_{1}=Q_{2}P_{2}$$
+existieren, das \textbf{kleine gemeinsame links-Vielfache} von
+$P_{1}$ und $P_{2}$. Diesen bezeichnen wir fortan mit
+$M=:\kglV(P_{1},P_{2})$.
+\end{defn}
+
+\begin{satz} Es seien $P_{1},P_{2} \in \mathfrak{S}$
+Differenzen-Operatoren mit euklidischer Restfolge
+$(P_{i})_{i=1}^{n}$. Dann lässt sich das kleinste gemeinsame
+Links-Vielfache folgendermassen darstellen:
+$$ \kglV(P_{1},P_{2})=a P_{n-1}P_{n}^{-1}P_{n-2}P_{n-1}^{-1} \cdots P_{3}P_{4}^{-1}P_{2}P_{3}^{-1}P_{1},$$
+wobei $a \in F$ so gewählt wird, dass die rechte Seite normiert
+ist. \label{chap_diff_op_kglV}
+\end{satz}
+
+Zum Beweis dieses Satzes benötigen wir das folgende Lemma.
+
+\begin{lemma} Es seien $P,Q,M \in \mathfrak{S}$
+Differenzen-Operatoren mit $P \equiv Q (\lmod M)$. Dann existiert
+ein $k \in F$, so dass
+$$\kglV(P,M)=k \cdot \kglV(Q,M) Q^{-1}P.$$
+\label{chap_diff_op_kglV_Lemma}
+\end{lemma}
+
+\begin{bew}
+Existiert $L:=\kglV(P,M)$ so existiert ein $M_{1} \in
+\mathfrak{S}$ minimalen Grades, so dass $L=M_{1}P$ gilt. Nach
+Voraussetzung existiert ein $Q_{1} \in \mathfrak{S}$, so dass
+$P=Q+Q_{1}M$ und damit
+$$L=M_{1}P=M_{1}Q+M_{1}Q_{1}M$$
+gilt. Da aber $L$ nach Voraussetzung durch $M$ rechtsteilbar ist,
+muss auch $M_{1}Q$ rechtsteilbar durch $M$ sein. Nach Definition
+nimmt also $M_{1}$ den niedrigsten Grad an, wenn
+$M_{1}Q=\kglV(Q,M)$ gilt. Dies liefert die gewünschte Darstellung
+$$\kglV(P,M)=k \cdot \kglV(Q,M) Q^{-1}P$$ mit normierendem
+Körperelement $k \in F$.
+\end{bew}
+
+\begin{bew} zu Satz \ref{chap_diff_op_kglV}\\
+Um die gewünschte Darstellung für $\kglV(P_{1},P_{2})$ zu gewinnen
+wenden wir wiederholt Lemma \ref{chap_diff_op_kglV_Lemma} an. Wir
+erhalten also:
+\begin{eqnarray*}
+\kglV(P_{1},P_{2})&=&a_{1} \kglV(P_{2},P_{3})P_{3}^{-1}P_{1}\\
+&=& a_{2} \kglV(P_{3},P_{4}) P_{4}^{-1}P_{2}P_{3}^{-1}P_{1}\\
+&\vdots& \\
+&=&a_{n-1} \kglV(P_{n},P_{n-1}) P_{n}^{-1}P_{n-2}P_{n-1}^{-1}
+\cdots P_{2}P_{3}^{-1} P_{1} \\
+&=&a_{n} P_{n-1}P_{n}^{-1}P_{n-2}P_{n-1}^{-1} \cdots
+P_{3}P_{4}^{-1}P_{2}P_{3}^{-1}P_{1}.
+\end{eqnarray*}
+Damit haben wir die gewünschte Darstellung konstruiert. Wir müssen
+allerdings noch zeigen, dass die rechte Seite tatsächlich im Ring
+$\mathfrak{S}$ der Differenzen-Operatoren liegt und dass sie durch
+$P_{1},P_{2}$ rechtsteilbar ist. Dies wollen wir durch Induktion
+beweisen und setzen
+$$\tilde{L}_{i}:=P_{n-1}P_{n}P_{n-2}P_{n-1}^{-1} \cdots P_{i+1}P_{i+2}^{-1}P_{i}.$$
+Dann ist $\tilde{L}_{n-1}=P_{n-1} \in \mathfrak{S}$ und durch
+$P_{n}$ und $P_{n-1}$ rechtsteilbar. Wir gehen nun davon aus, dass
+bereits gezeigt wurde, dass $\tilde{L}_{i+1} \in \mathfrak{S}$
+liegt und durch $P_{i+1}$ und $P_{i+2}$ rechtsteilbar ist. Dann
+liegt aber $\tilde{L}_{i}=\tilde{L}_{i+1}P_{i+2}^{-1}P_{i}$ in
+$\mathfrak{S}$ und ist durch $P_{i}$ rechtsteilbar. Wegen dem
+euklidischen Algorithmus gilt ausserdem, dass
+$P_{i}=Q_{i}P_{i+1}+P_{i+2}$ und damit
+$\tilde{L}_{i}=\tilde{L}_{i+1}P_{i+2}^{-1}Q_{i}P_{i+1} +
+\tilde{L}_{i+1}$. Da aber $\tilde{L}_{i+1}$ nach Induktionsannahme
+durch $P_{i+1}$ rechtsteilbar ist, ist auch $\tilde{L}_{i}$ durch
+$P_{i+1}$ rechtsteilbar und damit ist der Beweis erbracht.
+\end{bew}
+
+\begin{defn}Es seien $P(\tau)=\sum\limits_{i=0}^{n} a_{i}\tau^{i},
+Q(\tau)=\sum\limits_{j=0}^{m}b_{j}\tau^{j} \in \mathfrak{S}$
+Differenzen-Operatoren. Bezeichnen wir mit
+$\delta_{PQ}:=\deg_{\tau}(\ggrT(P,Q))$ den Grad des grö"sten
+gemeinsamen rechts-Teilers von $P$ und $Q$, so heisst der
+Differenzen-Operator
+$$\mathfrak{T}_{P,Q}(\tau):=a_{n}\phi^{n-\delta_{PQ}}(b_{m})\kglV(P,Q)Q^{-1}$$
+die \textbf{Transformierte} von $P$ durch $Q$. Falls $P$ und $Q$
+teilerfremd sind so gilt
+$\deg_{\tau}(P)=\deg_{\tau}(\mathfrak{T}_{P,Q})$.
+Differenzen-Operatoren, die aus $P$ durch Transformation mit einem
+teilerfremden Differenzen-Operator gewonnen werden heissen
+\textbf{ähnlich} zu $P$.
+\end{defn}
+
+\begin{bem}
+Es seien $P=\sum\limits_{i=0}^{n} a_{i} \tau^{i}, Q_{1},
+Q_{2}=\sum\limits_{j=0}^{m}b_{j}\tau^{j} \in \mathfrak{S}$
+Differenzen-Operatoren mit der Eigenschaft, dass das Produkt
+$Q_{1} Q_{2}$ durch $P$ rechtsteilbar ist und für die die
+Kongruenz $Q_{1} \equiv Q_{2} (\lmod P)$ erfüllt ist, so ist
+$Q_{1} $ durch $ \mathfrak{T}_{P,Q_{2}} $ rechtsteilbar.
+\label{chap_diff_op_transform_prod}
+\end{bem}
+
+\begin{bew}
+Das Produkt $Q_{1}Q_{2}$ ist sowohl durch $Q_{2}$ als auch durch
+$P$ rechtsteilbar, also auch durch $\kglV(P,Q_{2})$. Es existiert
+also ein Differenzen-Operator $H \in \mathfrak{S}$, so dass
+$Q_{1}Q_{2}=H a_{n} \phi^{n-\delta_{PQ_{2}}}(b_{m})\kglV(P,Q_{2})$
+und damit gilt
+$$Q_{1}=H a_{n} \phi^{n-\delta_{PQ_{2}}}(b_{m})\kglV(P,Q_{2}) Q_{2}^{-1} =H \mathfrak{T}_{P,Q_{2}}.$$
+\end{bew}
+
+Die folgende Bemerkung halten wir nur der Vollständigekeit halber
+fest. Für einen Beweis und weitere Informationen über
+Schiefpolynome verweisen wir auf \cite{Ore01}.
+
+\begin{bem}(a) Jeder zu einem irreduziblen Differenzen-Operator
+ähnliche Operator ist ebenfalls irreduzibel.\\
+(b) Ist ein Produkt $Q_{1}Q_{2}$ von Differenzen-Operatoren durch
+einen irreduziblen Operator $P$ rechtsteilbar und $Q_{2}$ ist
+nicht durch $P$ rechtsteilbar, so ist $Q_{1}$ durch
+$\mathfrak{T}_{P,Q_{2}}$ rechtsteilbar.
+\end{bem}
+
+\begin{defn}
+Es seien $P,Q \in \mathfrak{S}$ Differenzen-Operatoren. $P$ heisst
+mit $Q$ \textbf{austauschbar}, falls es einen zu $P$ ähnlichen
+Differenzen-Operator $P_{1}$ gibt, so dass
+$P=\mathfrak{T}_{P_{1},Q}$ gilt.
+\end{defn}
+
+\begin{satz}Jeder normierte Differenzen-Operator besitzt eine
+Darstellung als Produkt irreduzibler Faktoren. Zwei verschiedene
+Zerlegungen des gleichen Differenzen-Operators haben diesselbe
+Anzahl an Primfaktoren und diese sind paarweise ähnlich. Man
+erhält eine Darstellung aus der anderen durch Austausch der
+Faktoren.
+\end{satz}
+
+\begin{bew}
+Es gibt offensichtlich mindestens eine Zerlegung eines
+Differenzen-Operators $F \in \mathfrak{S}$ in irreduzible
+Faktoren. Es seien nun zwei verschiedene Zerlegungen
+\begin{eqnarray*}
+F &=& P_{r} \cdots P_{1} \\
+&=& Q_{s} \cdots Q_{1}
+\end{eqnarray*}
+gegeben. Also teilt $Q_{1}$ das Produkt $P_{r} \cdots P_{1}$ von
+rechts. Wir unterscheiden zwei Fälle. Ist $P_{1}=Q_{1}$ so kann
+dieser Faktor gekürzt werden. Andernfalls sei $k \in \{ 1, \ldots,
+r\}$ der minimale Index, so dass $P_{k} \cdots P_{1}$ durch
+$Q_{1}$ rechtsteilbar ist. Dann ist aber das Produkt $H:=P_{k-1}
+\cdots P_{1}$ teilerfremd zu $Q_{1}$. Nach Bemerkung
+\ref{chap_diff_op_transform_prod} ist dann aber $P_{k}$
+rechtsteilbar durch das zu $Q_{1}$ ähnliche Primpolynom
+$\tilde{Q}_{1}=\mathfrak{T}_{Q_{1},H}$. Da aber $P_{k}$ ebenfalls
+irreduzibel ist, muss $P_{k}=\mathfrak{T}_{Q_{1},H}=\tilde{Q}_{1}$
+gelten. Also ist $P_{k}$ austauschbar mit $H=P_{k-1} \cdots P_{1}$
+und damit erhalten wir die folgende Darstellung für das Produkt
+$P_{k} \cdots P_{1}=\mathfrak{T}_{H,Q_{1}}Q_{1}$. Wir können also
+durch Austausch der Faktoren $Q_{1}$ kürzen. Nun können wir mit
+dem gekürzten Produkt und den übrigen Primfaktoren analog
+verfahren und erhalten damit die Behauptung.
+\end{bew}
+
+
+\section{Konstruktionen mit Differenzen-Operatoren}
+
+Wir haben schon im Kapitel \ref{chap-frob-mod} gesehen, dass es
+einen Zusammenhang zwischen Faktorisierung von
+Differenzen-Operatoren und der Galoisgruppe der zugehörigen
+Differenzengleichung gibt. Diesen Zusammenhang wollen wir noch
+genauer verstehen. Dazu müssen wir den Begriff der symmetrischen
+Potenz einführen.
+
+\begin{satz} Es sei $L(y):= \phi^{n}(y) + \sum\limits_{i=0}^{n-1} a_{i} \phi^{i}(y)$ mit $a_{i} \in F$
+eine lineare Differenzengleichung vom Grad $n$ über $F$ mit
+Lösungskörper $E$ und einem Fundamentalsystem von Lösungen $\{
+\eta_{1}, \ldots, \eta_{n}\}$. Dann existiert eine
+Differenzengleichung $\Sym_{m}(L)(y)$ vom Grad höchstens
+$\binom{n+m-1}{n-1}$, deren Lösungsraum von $\{ \eta_{1}^{i_{1}}
+\cdots \eta_{n}^{i_{n}} \, | \, \sum\limits_{j=1}^{n} i_{j}=m\}$
+aufgespannt wird. \label{chap_diff_op_sym_power}
+\end{satz}
+
+\begin{bew}
+Um die gewünschte Differenzengleichung zu konstruieren definieren
+wir $v:=u^{m}$ mit $u \in \{ \eta_{1}, \ldots, \eta_{n}\}$
+beliebig. Auf dieses $v$ wenden wir wiederholt $\phi$ an, bis sich
+eine lineare Abhängigkeit ergibt, also
+\begin{eqnarray*}
+v &=& u^m \\
+\phi(v) &=& \phi(u)^m\\
+\phi^2(v) &=& \phi^2(u)^m \\
+& \vdots& \\
+\phi^n(v) &=& \phi^n(u)^m=(-1)^m (\sum\limits_{i=0}^{n-1} a_{i}
+\phi^{i}(u))^m\\
+\phi^{n+1}(v) &=& \phi(\phi^{n}(u)^m)\\
+&\vdots& \\
+\phi^r(v) &=& \sum\limits_{I} c_{r,I} \cdot \varepsilon^{I},
+\end{eqnarray*}
+wobei $\varepsilon^{I}=u^{i_{0}}\cdot \phi(u)^{i_{1}} \cdot
+\phi^2(u)^{i_{2}} \cdots \phi^{n-1}(u)^{i_{n-1}}$ und $I=\{
+(i_{0}, \ldots, i_{n-1}) \, | \, \textrm{ mit }
+\sum\limits_{j=0}^{n-1} i_{j}=m \}$. Da es für solche Tupel in $I$
+höchstens $\binom{n+m-1}{n-1}$ verschiedene Möglichkeiten gibt,
+ergibt sich spätestens bei $r=\binom{n+m-1}{n-1}$ eine lineare
+Abhängigkeit über $F$. Diese liefert ein lineares Gleichungssystem
+und durch dessen Lösung eine Differenzengleichung $\Sym_{m}(L)$
+für $v=u^m$ vom Grade höchstens $\binom{n+m-1}{n-1}$, deren
+Lösungsraum nach Konstruktion von $\{ \eta_{1}^{i_{1}} \cdots
+\eta_{n}^{i_{n}} \, | \, \sum\limits_{j=1}^{n} i_{j}=m\}$
+aufgespannt wird.
+\end{bew}
+
+\begin{defn} Es sei $L(y)$ eine lineare Differnzengleichung vom
+Grad $n$. Wir nennen die in Satz \ref{chap_diff_op_sym_power}
+definierte Differenzengleichung $\Sym_{m}(L)$ die \textbf{$m$-te
+symmetrische Potenz} von $L$.
+\end{defn}
+
+\begin{anm} Ist $M_{L}$ der zu der Differenzen-Gleichung $L$
+gehörige Frobenius-Modul, so ist $\Sym_{m}(M_{L})=M_{\Sym_{m}(L)}$
+der zu $\Sym_{m}(L)$ gehörige Frobenius-Modul.
+\end{anm}
+
+\begin{satz}
+Es sei $L(y)$ eine lineare Differenzengleichung vom Grad $n$ über
+$F$ mit Lösungskörper $E$ mit einem rationalen Punkt, Galoisgruppe
+$G$ und Lösungsraum $V:=\Sol{\Phi}{E}{M_{L}}$. Ferner sei
+$\Sym_{m}(V)$ die $m$-te symmetrische Algebra über $V$. Wir
+definieren die natürliche Abbildung
+$$\abb{\Psi_{m}}{\Sym_{m}(V)}{E}{v_{1} \circledS v_{2}
+\circledS \cdots \circledS v_{m}}{v_{1} \cdot v_{2} \cdot \ldots
+\cdot v_{m}},$$ mit
+$\Bild(\Psi_{m})=\Sol{\Phi}{E}{M_{\Sym_{m}(L)}}$. Dann gelten:\\
+(a) $\Psi_{m}$ ist ein $G$-Morphismus von $G$-Moduln.\\
+(b) Falls alle Darstellungen von $G$ komplett reduzibel sind, so
+ist der Lösungsraum von $\Sym_{m}(L)$ isomorph zu einem direkten
+Summanden von $\Sym_{m}(V)$.\\
+(c) Falls $n=2$, so ist $\Psi_{m}$ injektiv und $\Sym_{m}(L)$ hat
+Grad $m+1$.\\
+(d) Falls $n=3$ und $\Psi_{i}$ für alle Indizes $i < m$ injektiv
+ist, so hat $\Kern(\Psi_{m})$ höchstens Dimension $1$ und
+$\Sym_{m}(L)$ hat entweder Ordnung $\frac{1}{2}(m+2)(m+1)$ oder
+$\frac{1}{2}(m+2)(m+1)-1$. \\
+(e) Falls $n=3$ und $\Psi_{i}$ für alle Indizes $i < m-1$ injektiv
+ist, so hat $\Kern(\Psi_{m})$ höchstens Dimension $3$ und
+$\Sym_{m}(L)$ hat mindestens Ordnung $\frac{1}{2}(m+2)(m+1)-3$.
+\label{chap_diff_op_sym_power_sol}
+\end{satz}
+
+\begin{bew}
+Die Aussagen (a) und (b) sind klar. Nach Anmerkung
+\ref{chap_lin_alg_konstr_sym_poly} können wir die symmetrische
+Algebra $\Sym_{2}(V)$ als homogene Polynome vom Grad $2$ über
+$F^{\phi}$ auffassen. Wir müssen also zeigen, dass, falls für zwei
+linear unabhängige Lösungen $\eta_{1},\eta_{2}$ von $L$, für die
+$P(\eta_{1},\eta_{2})=0$ mit einem Polynom $P \in
+F^{\phi}[X_{1},X_{2}]$ homogen vom Grad $2$ gilt, es sich bei $P$
+nur um das Nullpolynom handeln kann. Der Lösungskörper $E$ ist ein
+Teilkörper von $\hat{F_{Q}^{ur}}$, dessen Restklassenkörper mit
+$F^{\phi}$ übereinstimmt, da wir die Existenz eines rationalen
+Punktes vorausgesetzt hatten. Es gilt also
+$$
+0 =
+\overline{P(\eta_{1},\eta_{2})}=R(\overline{\eta}_{1},\overline{\eta}_{2}),$$
+mit $\overline{\eta}_{1},\overline{\eta}_{2} \in F^{\phi}$. D.h.
+$\overline{\eta}_{1}-c \overline{\eta}_{2}$ teilt $P$, wobei
+$c=\frac{\overline{\eta}_{1}}{\overline{\eta}_{2}}$. Mit dem
+Hensel'schen Lemma können wir diesen Faktor liften und erhalten
+damit, dass $\eta_{1}-c\eta_{2}$ also auch $P(\eta_{1},\eta_{2})$
+teilt. Für den Grad von $Sym_{m}(L)$ gilt
+$\binom{2+m-1}{2-1}=\binom{m+1}{1}=m+1$ und damit ist
+Behauptung (c) gezeigt.\\
+Wir nehmen nun an, dass $n=3$ gilt und $\Psi_{i}$ für alle Indizes
+$i <m$ injektiv ist. Es sei weiter $\{\eta_{1}, \eta_{2},
+\eta_{3}\}$ eine Basis des Lösungsraums $V=\Sol{\Phi}{E}{M_{L}}$.
+Falls ein Polynom $P\in F^{\phi}[X_{1},X_{2},X_{3}]$ homogen vom
+Grad $i <m $ nicht das Nullpolynom ist, so gilt
+$P(\eta_{1},\eta_{2},\eta_{3}) \neq 0$ nach Voraussetzung. Es sei
+$$W=\{ Q \in F^{\phi}[X_{1},X_{2},X_{3}] \, | Q \textrm{ homogen vom Grad $m$ mit } Q(\eta_{1},\eta_{2},\eta_{3})=0 \,\},$$
+dann muss jedes Polynom $0 \neq Q \in W$ irreduzibel sein, denn
+sonst wäre $P(\eta_{1},\eta_{2},\eta_{3})=0$ für ein homogenes
+Polynom $P$ vom Grad echt kleiner als $m$. Wir nehmen nun an, dass
+$\Kern(\Psi_{m})$ mindestens Dimension $2$ hat und wollen dies zu
+einem Widerspruch führen. Dann existieren zwei teilerfremde
+irreduzible Polynome $Q_{1},Q_{2}$ homogen vom Grad $m$ mit
+$0=Q_{1}(\eta_{1},\eta_{2},\eta_{3})=Q_{2}(\eta_{1},\eta_{2},\eta_{3})$.
+Dann ist aber die Resultante
+$Q(\eta_{1},\eta_{2})=\Resul_{\eta_{3}}(Q_{1},Q_{2})$ ein
+homogenes Polynom vom Grad $m^{2}$ in $\eta_{1}$ und $\eta_{2}$
+mit $Q(\eta_{1},\eta_{2})=0$. Jetzt können wir wie in Teil (c)
+vorgehen und einen nicht-trivialen Faktor finden und erhalten
+dadurch einen Widerspruch.\\
+Wir gehen jetzt davon aus, dass $n=3$ gilt und $\Psi_{i}$ für alle
+Indizes $i <m-1$ injektiv ist. Wieder sei $\{\eta_{1}, \eta_{2},
+\eta_{3}\}$ eine Basis des Lösungsraums $V=\Sol{\Phi}{E}{M_{L}}$.
+Falls $\Psi_{m-1}$ injektiv ist, so hat der Kern von $\Psi_{m}$
+höchstens Dimension $1$ nach Teil (d). Nehmen wir nun an, dass
+$\Psi_{m-1}$ nicht injektiv ist, so hat $\Kern(\Psi_{m-1})$
+Dimension $1$. Wir identifizieren die symmetrische Algebra wieder
+mit den homogenen Poynomen vom Grad $m-1$ nach Anmerkung
+\ref{chap_lin_alg_konstr_sym_poly}. Sei $P \in
+F^{\phi}[X_{1},X_{2},X_{3}]$ ein homogenes Polynom vom Grad $m-1$,
+das $\Kern{\Psi_{m-1}}$ erzeugt. Wie wir in Teil (d) schon gesehen
+haben, muss dieses Polynom irreduzibel sein. Sei
+$$W=\{ Q \in F^{\phi}[X_{1},X_{2},X_{3}] \, | Q \textrm{ homogen vom Grad $m$ mit } Q(\eta_{1},\eta_{2},\eta_{3})=0 \,\}$$
+und falls $Q\in W$ nicht von $P$ geteilt wird, so erhalten wir mit
+demselben Argument der Resultantenbildung aus Teil (d) einen
+Widerspruch. Also teilt $P$ jedes Element aus $W$. Daher ist $W$
+ein Unterraum der homogenen Polynome vom Grad $m$ und wird von den
+Elementen $X_{1}P, X_{2}P, X_{3}P$ aufgespannt. Und damit ist die
+Dimension von $W$ höchstens $3$, was die letzte Behauptung (e)
+beweist.
+\end{bew}
+
+%\section{Äussere Potenzen}
+
+\begin{satz} Es sei $L(y):= \phi^{n}(y) + \sum\limits_{i=0}^{n-1} a_{i} \phi^{i}(y)$ mit $a_{i} \in F$
+eine lineare Differenzengleichung vom Grad $n$ über $F$ mit
+Lösungskörper $E$ und einem Fundamentalsystem von Lösungen $\{
+\eta_{1}, \ldots, \eta_{n}\}$. Dann existiert eine
+Differenzengleichung $\Lambda^{m}(L)(y)$ vom Grad höchstens
+$\binom{n}{m}$, deren Lösungsraum von $\{
+\Moore{\phi}{\eta_{i_{1}}, \ldots, \eta_{i_{m}}} \, | \, 1 \leq
+i_{1} < \ldots < i_{m} \leq n\}$ aufgespannt wird.
+\label{chap_diff_op_ext_power}
+\end{satz}
+
+\begin{bew} Dieser Beweis verläuft analog zum Beweis von Satz
+\ref{chap_diff_op_sym_power}. Um die gewünschte
+Differenzengleichung zu konstruieren definieren wir $v:=u \wedge
+\phi(u) \wedge \cdots \wedge \phi^{m-1}(u)$ mit $u \in \{
+\eta_{1}, \ldots, \eta_{n}\}$ beliebig. Auf dieses $v$ wenden wir
+widerholt $\phi$ an, bis sich eine lineare Abhängigkeit ergibt.
+Dabei operiert $\phi$ auf einem äusseren Produkt $u_{1} \wedge
+\cdots \wedge u_{m}$ via $\phi(u_{1} \wedge \cdots \wedge
+u_{m})=\sum\limits_{i=1}^{m} u_{1} \wedge \cdots \wedge
+\phi(u_{i}) \wedge \cdots \wedge u_{m}$. Es gilt also
+\begin{eqnarray*}
+v &=& u \wedge \phi(u) \wedge \cdots \wedge \phi^{m-1}(u)\\
+\phi(v) &=& u \wedge \cdots \wedge \phi^{m-2}(u) \wedge
+\phi^{m}(u)\\
+\phi^{2}(v) &=& u \wedge \cdots \wedge \phi^{m-3}(u) \wedge
+\phi^{m-1}(u) \wedge \phi^{m}(u) + u \wedge \cdots \wedge
+\phi^{m-2}(u) \wedge \phi^{m+1}(u) \\
+&\vdots& \\
+\phi^{n-m}(v)&=& \sum\limits_{I} \phi^{i_{1}}(u) \wedge \cdots
+\phi^{i_{m}}(u) + u \wedge \cdots \wedge \phi^{m-2}(u) \wedge
+\phi^{n}(u)\\
+&=&\sum\limits_{I} \phi^{i_{1}}(u) \wedge \cdots \phi^{i_{m}}(u) +
+u \wedge \cdots \wedge \phi^{m-2}(u) \wedge
+-\sum\limits_{i=0}^{n-1} a_{i} \phi^{i}(y)\\
+&\vdots& \\
+\phi^{r}(v)&=& \sum\limits_{I} \alpha_{I} \varepsilon^{I},
+\end{eqnarray*}
+wobei $\varepsilon^{I}=\phi^{i_{0}}(u) \wedge \phi^{i_{1}}(u)
+\wedge \cdots  \wedge \phi^{i_{m-1}}(u)$ und $I=\{ (i_{0}, \ldots,
+i_{m-1}) \, | \, \textrm{ mit } \sum\limits_{j=0}^{m-1} i_{j}=m
+\}$. Da es für solche Tupel in $I$ höchstens $\binom{n}{m}$
+verschiedene Möglichkeiten gibt, ergibt sich spätestens bei
+$r=\binom{n}{m}$ eine lineare Abhängigkeit über $F$. Diese liefert
+ein lineares Gleichungssystem und durch dessen Lösung eine
+Differenzengleichung $\Lambda^{m}(L)$ für $v=u \wedge \cdots
+\wedge \phi^{m-1}(u)$ vom Grade höchstens $\binom{n}{m}$, deren
+Lösungsraum nach Konstruktion von $\{ \Moore{\phi}{\eta_{i_{1}},
+\ldots, \eta_{i_{m}}} \, | \, 1 \leq i_{1} < \ldots < i_{m} \leq
+n\}$ aufgespannt wird.
+\end{bew}
+
+\begin{defn} Es sei $L(y)$ eine lineare Differnzengleichung vom
+Grad $n$. Wir nennen die in Satz \ref{chap_diff_op_ext_power}
+definierte Differenzengleichung $\Lambda^{m}(L)$ die
+\textbf{$m$-te äussere Potenz} von $L$.
+\end{defn}
+
+\begin{anm} Ist $M_{L}$ der zu der Differenzengleichung $L$
+gehörige Frobenius-Modul, so ist
+$\Lambda^{m}(M_{L})=M_{\Lambda^{m}(L)}$ der zu $\Lambda^{m}(L)$
+gehörige Frobenius-Modul.
+\end{anm}

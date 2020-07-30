@@ -1,0 +1,93 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Diplomarbeit: Galois-Gruppen von relativen Frobenius-Moduln
+%Autor: Florian Mirus
+%Letzte Aenderung: 11.01.2011
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11 pt,twoside, BCOR11mm]{book}
+
+\include{preamble/packages}
+
+\title{Galoisgruppen von relativen Frobenius-Moduln}
+\author{\textbf{\large Diplomarbeit}}
+\date{zur Erlangung des Grades
+eines Diplom-Mathematikers\\
+der Mathematischen Fakultät\\
+der Ruprecht-Karls-Universität Heidelberg}
+
+\include{preamble/style}
+\include{preamble/commands}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------------------------
+
+\pagenumbering{roman}
+
+\pagestyle{empty}
+
+\setcounter{page}{-1}
+
+%-- Titelblatt -----------------------------------------------------------------
+
+
+\include{frontmatter/titelblatt}
+
+\cleardoublepage
+
+\pagenumbering{arabic}
+%-------------------------------------------------------------------------------
+%Fuer die Kopfzeilen
+%\pagenumbering{roman} 
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries
+\leftmark}]{\fancyplain{}{\bfseries\thepage}} \cfoot{}
+
+%-- Vorwort --------------------------------------------------------------------
+
+\addcontentsline{toc}{chapter}{Vorwort}
+\include{frontmatter/Vorwort}
+
+
+
+
+%-- Inhaltsverzeichnis ---------------------------------------------------------
+\tableofcontents
+%\addcontentsline{toc}{chapter}{Danksagung}
+%\chaptermark{Inhaltsverzeichnis}
+\newpage
+\thispagestyle{empty} \cleardoublepage
+
+
+%----Kapitel--------------------------------------------------------------------
+%\pagenumbering{arabic}
+
+\include{chapters/frobenius-moduln}
+\include{chapters/lineare-algebra-konstruktionen}
+\include{chapters/faktorisierung-differenzen-operatoren}
+\include{chapters/differenzengleichungen-grad-1}
+\include{chapters/differenzengleichungen-grad-2}
+\include{chapters/berechenbarkeit}
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\renewcommand{\bibname}{Literaturverzeichnis}
+% to avoid overfull lines in the bibliography
+\setlength{\emergencystretch}{3em}
+\printbibliography
+
+\thispagestyle{empty}
+\cleardoublepage
+
+\include{backmatter/Danksagung}
+
+\thispagestyle{empty}
+\cleardoublepage
+
+\include{backmatter/Erklaerung}
+
+\end{document}

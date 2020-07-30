@@ -1,0 +1,377 @@
+\chapter{Faktorisierung von Differenzen-Operatoren}
+\label{chap_fakt_diff}
+
+Bei der Berechnung der Galoisgruppe einer Differenzengleichung
+wird die Faktorisierung von Differenzen-Operatoren eine
+wichtige Rolle spielen. Dazu wollen wir zunächst ein Kriterium,
+ähnlich dem Eisenstein-Kriterium für gewöhnliche Polynome, für die
+Irreduzibilität solcher Operatoren beweisen. Dann wollen wir zwei
+Methoden zur Faktorisierung einführen, um letztendlich daraus einen
+möglichst effizienten Faktorisierungsalgorithmus zu erhalten.
+
+\section{Ein Eisenstein-Irreduzibilitäts-Kriterium}
+
+Dieses Irreduzibilitäts-Kriterium für Differenzen-Operatoren geht
+auf eine Arbeit von Kovacic \cite{Kovacic01} zurück, in der er
+dieses Kriterium allgemeiner für Schiefpolynome entwickelt. Wir
+wollen seine Ideen auf den Spezialfall unserer
+Differenzen-Operatoren übertragen. Wie im Kapitel
+\ref{chap_diff_op} bezeichnen wir mit $(R,\phi)$ einen relativen
+Frobenius-Ring mit Quotientenkörper $F$. Ferner bezeichnen wir mit
+$\mathfrak{D}_{R}=R[\tau,\phi]$ den Ring der
+Differenzen-Operatoren über $R$.
+
+\begin{defn} Ein Differenzen-Operator $L=\sum\limits_{i=0}^{n}a_{i}\tau^{i} \in
+\mathfrak{D}_{R}$ hei"st \textbf{($\phi$-)primitiv}, falls für das
+($\phi$-)Ideal $I_{L}:=(a_{i} \, | \, 0\leq i \leq n) \unlhd R$
+gilt: $I_{L}=R$.
+\end{defn}
+
+\begin{anm} Für jeden Differenzen-Operator $L\in \mathfrak{D}_{R}$
+existiert ein Ringelement $c_{L}$ und ein primitiver
+Differenzen-Operator $L^{*}\in \mathfrak{D}_{R}$, so dass
+$L=c_{L}L^{*}$. Dabei sind $c_{L}$ und $L^{*}$ bis auf (Links-)
+Multiplikation mit Einheiten eindeutig.
+\end{anm}
+
+\begin{bem} Es sei $\mathfrak{P}\unlhd R$ ein $\phi$-Primideal und
+der lokale Ring $R_{\mathfrak{P}}$ ein diskreter Bewertungsring. Falls ein
+Differenzen-Operator $L\in \mathfrak{D}_{R}$ $\phi$-primitiv über
+$R_{\mathfrak{P}}$ ist, so ist $L$ primitiv über
+$R_{\mathfrak{P}}$. \label{chap_fakt_diff_bem_eisen_01}
+\end{bem}
+
+\begin{bew} Es sei $L=\sum\limits_{i=0}^{n}a_{i}\tau^{i}$.
+Dann existiert ein Ringelement $c_{L}\in R$ und ein primitiver
+Differenzen-Operator $L^{*}$, so dass $L=c_{L}L^{*}$ gilt. Wir
+unterscheiden nun zwei Fälle. Liegt $c_{L}$ nicht in
+$\mathfrak{P}R_{\mathfrak{P}}$, so ist $c_{L}$ eine Einheit in
+$R_{\mathfrak{P}}$ und damit ist $L$ primitiv. \\
+Liegt aber $c_{L}$ in $\mathfrak{P}R_{\mathfrak{P}}$, so gilt
+für das $\phi$-Ideal $I_{L}$:
+\[I_{L} \unlhd (c_{L})_{\phi} \subsetneq \mathfrak{P}R_{P},\]
+wobei $(c_{L})_{\phi}$, das von $c_{L}$ erzeugte $\phi$-Hauptideal
+bezeichnet. Dies steht aber im Widerspruch zur Voraussetzung, dass
+$L$ ein $\phi$-primitiver Differenzen-Operator über
+$R_{\mathfrak{P}}$ ist, d.h. $I_{L}=R_{\mathfrak{P}}$.
+\end{bew}
+
+\begin{bem} Es sei $R$ ein diskreter Bewertungsring mit der
+Eigenschaft, dass jedes echte $\phi$-Ideal in einem
+$\phi$-Primideal enthalten ist. Dann ist für $\phi$-primitive
+(über $R$) Differenzen-Operatoren $M,N \in \mathfrak{D}_{R}$ auch
+das Produkt $L=MN$ ein $\phi$-primitiver Operator.
+\label{chap_fakt_diff_bem_eisen_02}
+\end{bem}
+
+\begin{bew}
+Die beiden Differenzen-Operatoren $M,N$ seien in der Darstellung
+$M=\sum\limits_{i=0}^{m} a_{i}\tau^{i},
+N=\sum\limits_{j=0}^{n}b_{j}\tau^{j}$ gegeben. Dann gilt für das
+Produkt
+\begin{eqnarray*}
+L&=& MN= \sum\limits_{i=0}^{m} a_{i}\tau^{i}
+\sum\limits_{j=0}^{n}b_{j}\tau^{j} =
+\sum\limits_{i=0}^{m}\sum\limits_{j=0}^{n} a_{i}
+\tau^{i}b_{j} \tau^{j} \\
+&=& \sum\limits_{i=0}^{m}\sum\limits_{j=0}^{n} a_{i}
+\phi^{i}(b_{j}) \tau^{i+j} = \sum\limits_{l=0}^{m+n}
+c_{l}\tau^{l}.
+\end{eqnarray*}
+Wir wollen nun annehmen, dass $L$ nicht $\phi$-primitiv über $R$
+ist und dies zu einem Widerspruch führen. Dazu sei $\mathfrak{P}
+\unlhd R$ ein $\phi$-Primideal, dass alle Koeffizienten $c_{l}$
+für $0 \leq l \leq m+n$ enthält, also $I_{L} \subseteq
+\mathfrak{P}$. Da $M$ und $N$ aber $\phi$-primitiv sind,
+existieren maximale Indizes $0 \leq r \leq m$ bzw. $0 \leq s \leq
+n$, so dass $a_{r}$ und $b_{s}$ nicht in $\mathfrak{P}$ liegen.
+Dann gilt für den ($r+s$)-ten Produktkoeffizienten
+\[c_{r+s}=\sum\limits_{i=0}^{r} \sum\limits_{j+i=r+s} a_{i} \phi^{i}(b_{j}).\]
+Für die Indizes gilt $r+s=j+i \leq j+r$ und damit $s\leq j$,
+wobei Gleichheit im Falle von $i=r$ auftritt. Daraus erhalten wir,
+dass $a_{r} \phi^{r}(b_{s}) \equiv 0 \lmod \mathfrak{P}$, wobei
+aber nach Voraussetzung $a_{r}\notin \mathfrak{P}$ gilt. Da
+$\mathfrak{P}$ ein Primideal ist, muss also $\phi^{r}(b_{s})$ in
+$\mathfrak{P}$ liegen und damit auch $b_{s} \in \mathfrak{P}$.
+Dies steht im Widerspruch zur Annahme, dass $b_{s} \notin
+\mathfrak{P}$ gilt.
+\end{bew}
+
+\begin{bem} Es sei $R$ ein diskreter Bewertungsring mit
+Quotientenkörper $F$. Ist ein Differenzen-Operator $L\in
+\mathfrak{D}_{R}$ reduzibel über $F$, so existieren Ringelemente
+$P,Q \in R$ und Differenzen-Operatoren $M,N \in \mathfrak{D}_{R}$,
+primitiv über $R$, so dass $QL=PMN$ gilt.
+\label{chap_fakt_diff_bem_eisen_03}
+\end{bem}
+
+\begin{bew}
+Es sei die Faktorisierung $L=\tilde{M}\tilde{N}$ mit $\tilde{M},
+\tilde{N} \in \mathfrak{D}_{F}$, wobei
+$\tilde{M}=\sum\limits_{i=0}^{m}a_{i} \tau^{i}$ gegeben. Wir
+wählen nun ein Element $f \in F$, so dass $N:=f\tilde{N}$ in
+$\mathfrak{D}_{R}$ liegt und primitiv über $R$ ist. Weiterhin
+wählen wir Ringelemente $P,Q\ \in R$ mit $PQ \neq 0$, so dass
+\[M:=\frac{Q}{P}\sum\limits_{k=0}^{m}\sum\limits_{i=k}^{m} a_{i}\phi^{k}(\frac{1}{f}) \tau^{k}\]
+in $\mathfrak{D}_{R}$ liegt und primitiv über $R$ ist. Dann gilt
+für das Produkt
+\begin{eqnarray*}
+QMN &=& P \frac{Q}{P} (\sum\limits_{k=0}^{m}\sum\limits_{i=k}^{m}
+a_{i}\phi^{k}(\frac{1}{f}) \tau^{k}) f \tilde{N}\\
+&=&Q (\sum\limits_{k=0}^{m}\sum\limits_{i=k}^{m} a_{i}
+\tau^{k}) \frac{1}{f}f \tilde{N}\\
+&=& Q \tilde{M} \tilde{N}=QL
+\end{eqnarray*}
+und damit ist die Behauptung bewiesen.
+\end{bew}
+
+\begin{cor}
+Es sei $R$ ein $\phi$-Integritätsbereich mit Quotientenkörper $F$
+und $\mathfrak{P} \unlhd R$ ein $\phi$-Primideal. Ferner sei der
+lokale Ring $R_{\mathfrak{P}}$ ein diskreter Bewertungsring. Ist dann ein
+Differenzen-Operator $L \in \mathfrak{D}_{R_{\mathfrak{P}}}$
+reduzibel über $F$, so ist $L$ reduzibel über $R_{\mathfrak{P}}$.
+\label{chap_fakt_diff_cor_eisen_01}
+\end{cor}
+
+\begin{bew} Da $L$ reduzibel über $F$ ist, existieren nach
+Bemerkung \ref{chap_fakt_diff_bem_eisen_03} Ringelemente $P,Q \in
+R_{\mathfrak{P}}$ mit $PQ\neq 0$ und Differenzen-Operatoren $M,N
+\in \mathfrak{D}_{R_{\mathfrak{P}}}$, primitiv über
+$R_{\mathfrak{P}}$, so dass $QL=PMN$ gilt. Ferner existiert ein
+Ringelement $c_{L} \in R_{\mathfrak{P}}$ und ein
+Differenzen-Operator $L^{*}\in \mathfrak{D}_{R_{\mathfrak{P}}}$,
+primitiv über $R_{\mathfrak{P}}$, so dass $L=c_{L}L^{*}$ gilt. Für
+jedes echte $\phi$-Ideal $I\unlhd R_{\mathfrak{P}}$ gilt $I\unlhd
+\mathfrak{P}R_{\mathfrak{P}}$ und $\mathfrak{P}R_{\mathfrak{P}}$
+ist $\phi$-Ideal. Dann ist das Produkt $MN$ nach Bemerkung
+\ref{chap_fakt_diff_bem_eisen_02} $\phi$-primitiv und darüber
+hinaus nach Bemerkung \ref{chap_fakt_diff_bem_eisen_01} primitiv
+über $R_{\mathfrak{P}}$. Es existiert also eine Einheit $u \in
+R_{\mathfrak{P}}$, so dass $P=Qc_{L}u$ gilt. Daraus ergibt sich
+für \[L=Q^{-1}PMN=(c_{L}uP^{-1})P MN=c_{L}uMN\] und damit ist $L$
+reduzibel über $R_{\mathfrak{P}}$.
+\end{bew}
+
+\begin{satz}(Eisenstein-Kriterium)\\
+Es sei $R$ ein $\phi$-Integritätsbereich mit Quotientenkörper $F$,
+$\mathfrak{P} \unlhd R$ ein $\phi$-Primideal und der lokale Ring
+$R_{\mathfrak{P}}$ sei ein diskreter Bewertungsring. Dann ist ein
+Differenzen-Operator $L=\sum\limits_{i=0}^{l}c_{i}\tau^{i} \in
+\mathfrak{D}_{R}$ mit $c_{i} \in \mathfrak{P}$ für $1 \leq i \leq
+l$, $c_{0}\notin \mathfrak{P}$ und $c_{l} \notin \mathfrak{P}^{2}$
+irreduzibel über $F$.
+\end{satz}
+
+\begin{bew}
+Da $L$ reduzibel über $F$ ist, existieren nach Folgerung
+\ref{chap_fakt_diff_cor_eisen_01} Differenzen-Operatoren
+$M=\sum\limits_{i=0}^{m} a_{i}\tau^{i}, N=\sum\limits_{j=0}^{n}
+b_{j}\tau^{j}\in \mathfrak{D}_{R_{\mathfrak{P}}}$ mit
+\[L=MN=\sum\limits_{i=0}^{m} \sum\limits_{j=0}^{n} a_{i} \phi^{i}(b_{j}) \tau^{i+j}\]
+und $c_{m+n}=a_{m}\phi^{m}(b_{n})$. Wir unterscheiden zwei Fälle.
+Wir nehmen zunächst an, dass $a_{m} \in
+\mathfrak{P}R_{\mathfrak{P}}$ und $\phi^{m}(b_{n}) \notin
+\mathfrak{P}R_{\mathfrak{P}}$ gilt. Sei nun $0 \leq r \leq m$ der
+minimale Index, so dass $a_{i} \mathfrak{P}R_{\mathfrak{P}}$ für
+alle $i \geq r$ gilt. Da $c_{0}=a_{0}b_{0}$ nicht in
+$\mathfrak{P}$ liegt, muss $r>0$ sein. Also liegt $c_{n+r-1}$ in
+$\mathfrak{P}$. Au"serdem hat dieser Koeffizient die Darstellung
+\[c_{n+r-1}=\sum\limits_{i=0}^{m} \sum\limits_{j+i=n+r-1} a_{i}\phi^{i}(b_{j}),\]
+wobei für die Indizes $n+r-1=j+i\leq n+i$ und damit $r-1 \leq i$
+gilt. Es tritt Gleichheit auf, falls $j=n$ ist. Dies liefert die
+Kongruenz $0 \equiv a_{r-1}\phi^{r-1}(b_{n}) \lmod
+\mathfrak{P}R_{\mathfrak{P}}$, wobei $a_{r-1} \notin
+\mathfrak{P}R_{\mathfrak{P}}$ gilt. Dies induziert aber, dass
+$\phi^{r-1}(b_{n})$ und damit auch $\phi^{m}(b_{n})$ in
+$\mathfrak{P}R_{\mathfrak{P}}$ liegt, was im Widerspruch zur
+Annahme steht.\\
+Jetzt gelte andererseits $a_{m} \notin
+\mathfrak{P}R_{\mathfrak{P}}$ und $\phi^{m}(b_{n}) \in
+\mathfrak{P}R_{\mathfrak{P}}$. Sei $0 \leq s \leq n$ der minimale
+Index, so dass $\phi^{m}(b_{j}) \in \mathfrak{P}R_{\mathfrak{P}}$
+für alle $j \geq s$. Da
+$\phi^{m}(c_{0})=\phi^{m}(a_{0})\phi^{m}(b_{0})$ nicht in
+$\mathfrak{P}$ liegt, muss $s>0$ sein und damit $c_{m+s-1} \in
+\mathfrak{P}$ liegen. Dieser Koeffizient besitzt die folgende
+Darstellung
+\[c_{m+s-1}=\sum\limits_{i=0}^{m} \sum\limits_{j+i=m+s-1} a_{i}\phi^{i}(b_{j}),\]
+wobei für die Indizes $m+s-1=j+i\leq j+m$ und damit $s-1 \leq j$
+gilt. Gleichheit tritt auf, falls $i=m$ ist. Dies liefert die
+Kongruenz $0 \equiv a_{m}\phi^{m}(b_{s-1}) \lmod
+\mathfrak{P}R_{\mathfrak{P}}$, wobei $\phi^{m}(b_{s-1})$ nicht in
+$\mathfrak{P}R_{\mathfrak{P}}$ liegt. Also muss $a_{m} \in
+\mathfrak{P}R_{\mathfrak{P}}$ gelten, was im Widerspruch zur
+Annahme steht. Wir haben beide Fälle zum Widerspruch geführt,
+folglich muss $L$ irreduzibel über $F$ sein.
+\end{bew}
+
+\section{Der Eigenring und Reduzibilität}
+In diesem Abschnitt bezeichnet wieder $R$ einen relativen
+Frobenius-Ring mit Quotientenkörper $F$ und
+$\mathfrak{D}=\mathfrak{D}_{F}=F[\tau,\phi]$ den Ring der
+Differenzen-Operatoren über $F$.
+
+\begin{defn}Es sei $L \in \mathfrak{D}$ ein Differenzen-Operator.
+Wir definieren die \textbf{Idealisierung} des Ideals
+$\mathfrak{D}L$ durch
+\[I(L):=\{ u \in \mathfrak{D} \, | \, Lu \in \mathfrak{D}L\}.\]
+Der dadurch erhaltene Quotient
+\begin{eqnarray*}
+\Ei(L)&:=&I(L)/\mathfrak{D}L \\
+&\cong& \{u \in \mathfrak{D} \, | \, \textrm{ es existiert ein }
+\tilde{u} \in \mathfrak{D}: Lu=\tilde{u}L \textrm{ und }
+\deg_{\tau}(u)< \deg_{\tau}(L) \}
+\end{eqnarray*} hei"st der
+\textbf{Eigenring} von $L$.
+\end{defn}
+
+\begin{anm} Die Idealisierung $I(L)$ ist die grö"ste Unteralgebra von $\mathfrak{D}$, so
+dass $\mathfrak{D}L$ ein zweiseitiges Ideal darin bildet.
+Au"serdem ist der Eigenring $\Ei(L)$ eine assoziative Algebra über
+$F^{\phi}$.
+\end{anm}
+
+\begin{bem} Es sei $L \in \mathfrak{D}$ ein Differenzen-Operator.
+Dann ist der Eigenring $\Ei(L)$ eine $F^{\phi}$-Unteralgebra von
+$\End(\mathfrak{D}/ \mathfrak{D}L)$.
+\end{bem}
+
+\begin{bew}
+Die $F^{\phi}$-lineare Abbildung
+\[\abb{\Psi}{\Ei(L)}{\End(\mathfrak{D}/ \mathfrak{D}L)}{u}{\abb{\psi_{u}}
+{\mathfrak{D}/ \mathfrak{D}L}{\mathfrak{D}/
+\mathfrak{D}L}{f}{fu}}\] ist offensichtlich injektiv.
+\end{bew}
+
+\begin{satz}
+Es sei $L \in \mathfrak{D}$ ein Differenzen-Operator. Existieren
+im Eigenring $\Ei(L)$ nicht-triviale Nullteiler $u,v \in
+I(L)\backslash \mathfrak{D}L$, d.h. $u\cdot v \in \mathfrak{D}L$
+bzw. $u\cdot v =0 $ in $\Ei(L)$, so ist $L$ reduzibel über $F$,
+d.h. es existieren Differenzen-Operatoren $L_{1},L_{2} \in
+\mathfrak{D}\backslash F$ mit $L=L_{1}L_{2}$.
+\label{chap_fakt_diff_satz_eigenring_fakt}
+\end{satz}
+
+\begin{bew}
+Wir gehen davon aus, dass im Eigenring $\Ei(L)$ nicht-triviale
+Nullteiler $u$ und $v$ mit $u\cdot v \in \mathfrak{D}L$
+existieren. Wir wollen zeigen, dass $L_{2}:=\ggrT(L,u) \neq 1$
+und dass $L$ rechtsteilbar durch $L_{2}$ ist. Die zweite
+Behauptung ist klar, da $L_{2}=\ggrT(L,u)$ ist. Also nehmen wir
+an, dass $L_{2}=1$ gilt und wollen dies zu einem Widerspruch
+führen. Dann existieren Differenzen-Operatoren $Q_{1},Q_{2}\in
+\mathfrak{D}$ mit $Q_{1}L + Q_{2}u=1$. Multiplizieren wir diese
+Gleichung von rechts mit $v$, so erhalten wir
+\[Q_{1}\underbrace{Lv}_{\textrm{$\in \mathfrak{D}L$}} + Q_{2}\underbrace{uv}_{\textrm{$\in \mathfrak{D}L$}}=v\]
+und damit, dass $v$ in $\mathfrak{D}L$ liegt. Dies steht im
+Widerspruch zu unserer Annahme, also gilt $L_{2}\neq 1$. Da
+$\deg_{\tau}(u)$ und $\deg_{\tau}(v)$ ohne Einschränkung kleiner
+sind als $\deg_{\tau}(L)$, erhalten wir die Faktorisierung
+$L=L_{1}L_{2}$ und damit ist der Satz bewiesen.
+\end{bew}
+
+
+\begin{algo}(Eigenring-Faktorisierungsalgorithmus)\\
+Eingabe: Ein Differenzen-Operator $L \in \mathfrak{D}$.
+\begin{enumerate}
+    \item Finde nicht-triviale Nullteiler $u,v$ im Eigenring
+    $\Ei(L)$ mit $u\cdot v \in \mathfrak{D}L$. Falls keine
+    Nullteiler gefunden wurden, beende den Algorithmus mit der
+    Nachricht, dass keine Faktorisierung gefunden wurde.
+    \item Berechne $L_{2}:=\ggrT(L,u)$.
+    \item Teile $L$ von rechts durch $L_{2}$. Dies liefert
+    Faktorisierung $L=L_{1}L_{2}$.
+    \item Starte bei Schritt 1 für $L_{1}$ und $L_{2}$ bis eine
+    vollständige Faktorisierung gefunden wurde oder keine weitere
+    Faktorisierung mehr möglich ist.
+\end{enumerate}
+\label{chap_fakt_diff_algo_eigen}
+\end{algo}
+
+
+Mit Satz \ref{chap_fakt_diff_satz_eigenring_fakt} haben wir jetzt
+eine Möglichkeit gefunden einen Differenzen-Operator $L$ zu
+faktorisieren. Es könnte jedoch sein, dass wir keine Nullteiler im
+Eigenring $\Ei(L)$ finden aber $L$ trotzdem nicht irreduzibel ist.
+Für diesen Fall können wir das
+Eisenstein-Irreduzibilitäts-Kriterium anwenden. Falls wir damit
+auch nicht entscheiden können, ob $L$ irreduzibel ist, benötigen
+wir einen anderen Algorithmus. Dieser sollte die Irreduzibilität von
+$L$ garantieren, falls keine Rechtsfaktoren von $L$ gefunden werden.
+
+\section{Die Beke-Faktorisierungsmethode}
+Diese Faktorisierungsmethode geht auf einen Algorithmus von Beke \cite{Beke01} zur
+Faktorisierung von Differentialgleichungen 
+aus dem Jahr 1894 zurück. Da Differential-Operatoren sehr
+ähnlich zu unseren Differenzen-Operatoren sind, wollen wir diesen
+Algorithmus auf unser Setting übertragen. Der Beke-Algorithmus liefert entweder eine vollständige
+Faktorisierung des Differenzen-Operators $L$ oder die Irreduzibilität, 
+falls keine Faktoren gefunden werden. Im Laufe der Zeit wurde dieser 
+Algorithmus hinsichtlich Effizienz wesentlich verbessert. Dennoch ist 
+er nicht laufzeit-optimal. Dies liegt darin begründet, dass man viele 
+Operatoren bzw. Moduln von hohen Graden konstruieren muss. Daher wollen 
+wir diesen Algorithmus erst benutzen, wenn wir mit der Eigenring-Methode bzw. 
+dem Eisenstein-Irreduzibilitäts-Kriterium keine weiteren Information erhalten, 
+aber noch keine vollständige Faktorisierung gefunden haben. 
+
+\begin{algo}(Beke-Faktorisierungsalgorithmus)\\
+Eingabe: Ein Differenzen-Operator $L \in \mathfrak{D}$ mit
+zugehörigem Frobenius-Modul $M$. Setze $d:=1$.
+\begin{enumerate}
+    \item Falls $d=n$ gehe zu Schritt 6, sonst berechne die äu"sere Algebra $\Lambda^{d}(M)$.
+    \item Finde zerlegbare Elemente $\mathfrak{a}_{i}$ in $\Lambda^{d}(M)$ gemäss
+    Satz \ref{chap_lin_alg_konstr_satz_decomp_elm}. Wurden keine
+    zerlegbaren Elemente gefunden, setze $d:=d+1$ und gehe zu Schritt 1.
+    \item $\mathfrak{a}_{i}=m_{i1}\wedge \cdots \wedge m_{id}$ liefert nach Satz
+    \ref{chap_lin_alg_konstr_satz_decomp_mod} einen
+    $d$-dimensionalen Untermodul $N_{i} \leq M$ mit Basis $\{m_{i1}, \ldots, m_{id}\}$.
+    \item Der zum Modul $N_{i}$ gehörige Differenzen-Operator
+    $L_{i}$ vom Grad $d$ ist ein Kandidat für einen Rechtsfaktor
+    von $L$. Teile $L$ von rechts durch $L_{i}$, um zu testen,
+    welcher Kandidat in Frage kommt.
+    \item Wurde ein Faktor vom Grad $d$ gefunden, faktorisiere
+    diesen weiter. Sonst setze $d:=d+1$ und gehe zu Schritt 1.
+    \item Gib die gefundene Faktorisierung $L=L_{r} \cdots L_{1}$
+    aus oder, falls keine Faktorisierung gefunden wurde, eine
+    Nachricht, dass $L$ irreduzibel ist.
+\end{enumerate}
+\label{chap_fakt_diff_algo_beke}
+\end{algo}
+
+Mit Algorithmus \ref{chap_fakt_diff_algo_beke} finden wir entweder
+eine vollständige Faktorisierung oder wir wissen, dass $L$
+irreduzibel ist. Man sieht aber, dass wir für jedes $d$ die
+äu"sere Algebra vom Grad $\binom{n}{d}$ berechnen und darin
+zerlegbare Vektoren finden müssen. Dies ist nicht sonderlich
+effizient. Daher wollen wir den Beke-Algorithmus nur dann verwenden,
+wenn alle anderen Faktorisierungsmethoden kein Ergebnis geliefert
+haben.
+
+\section{Der kombinierte Faktorisierungsalgorithmus}
+
+Wir wollen nun aus den bekannten Faktorisierungsmethoden und
+Irreduzibilitätskriterien einen kombinierten, möglichst
+effizienten Algorithmus erhalten.
+
+\begin{algo}(Faktorisierungsalgorithmus für
+Differenzen-Operatoren)\\
+Eingabe: Ein Differenzen-Operator $L\in \mathfrak{D}$ mit
+zugehörigem Frobenius-Modul $M$.
+\begin{enumerate}
+    \item Wende das Eisenstein-Irreduziblitäts-Kriterium auf $L$
+    an. Falls $L$ irreduzibel ist, gehe zu Schritt 5.
+    \item Faktorisiere $L$ soweit wie möglich mit dem
+    Eigenring-Algorithmus \ref{chap_fakt_diff_algo_eigen}.
+    \item Wende auf die Faktoren das
+    Eisenstein-Irreduzibilitäts-Kriterium an. Sind alle Faktoren
+    irreduzibel sind, gehe zu Schritt 5.
+    \item Wende auf die gefundenen reduziblen Faktoren den Beke-Algorithmus
+    \ref{chap_fakt_diff_algo_beke} an.
+    \item Gib die gefundene Faktorisierung $L=L_{r} \cdots L_{1}$
+    aus oder, falls keine Faktorisierung gefunden wurde, eine
+    Nachricht, dass $L$ irreduzibel ist.
+\end{enumerate}
+\label{chap_fakt_diff_algo_fakt_komb}
+\end{algo}

@@ -1,0 +1,402 @@
+\chapter{Allgemeine Berechenbarkeit}
+\label{chap_berechen}
+
+
+Nachdem wir für lineare Differenzengleichungen bis Grad 2 die
+Galoisgruppe berechnen können, wollen wir im abschlie"senden
+Kapitel noch einige Anmerkungen zur allgemeinen Berechenbarkeit
+der Galoisgruppe von linearen Differenzengleichungen vom Grad $n
+\in \korp{N}$ machen. Dazu benötigen wir die Sprache der
+Tannaka-Kategorien. Für die grundlegenden Definitionen und Sätze
+der Kategorien-Theorie verweisen wir an dieser Stelle auf
+\cite{McLane} und \cite{Deligne} sowie den Anhang von \cite{vdPut}. 
+Schlie"slich werden wir sehen, wie sich diese Theorie
+auf unsere Gleichungen bzw. die zugrundeliegenden Frobenius-Moduln
+anwenden lassen.
+
+\section{Tannaka-Kategorien}
+
+\begin{defn} Es sei $\mathfrak{C}=(\Ob{\mathfrak{C}}, \Mor{\mathfrak{C}}{A}{B})$ ein Paar, das
+aus einer Klasse von Ojekten $\Ob{\mathfrak{C}}$ sowie disjunkten
+Mengen $\Mor{\mathfrak{C}}{A}{B}$ von Morphismen für alle $A,B \in
+\Ob{\mathfrak{C}}$ besteht. Ein solches Paar hei"st
+\textbf{Kategorie}, falls die folgenden Bedingungen erfüllt sind:
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item Es existiert ein Identitäsmorphismus $\id_{A} \in
+    \Mor{\mathfrak{C}}{A}{A}$für alle $A \in \Ob{\mathfrak{C}}$.
+    \item Es existiert eine Komposition von Morphismen, d.h. für
+    alle $A,B,C \in \Ob{\mathfrak{C}}$ existieren Abbildungen
+    $$\abb{\circ}{\Mor{\mathfrak{C}}{B}{C} \times \Mor{\mathfrak{C}}{A}{B}}{ \Mor{\mathfrak{C}}{A}{C}}{(g,f)}{g \circ f},$$
+    so dass für alle $f \in \Mor{\mathfrak{C}}{A}{B}, g \in \Mor{\mathfrak{C}}{B}{C}, h \in
+    \Mor{\mathfrak{C}}{C}{D}$ mit $A,B,C,D \in
+    \Ob{\mathfrak{C}}$ gilt:
+    \begin{itemize}
+        \item $(h \circ g) \circ f= h \circ (g \circ f)$
+        \item $\id_{B} \circ f= f= f \circ \id_{A}$.
+    \end{itemize}
+\end{enumerate}
+\end{defn}
+
+
+\begin{defn} Ein (kovarianter) \textbf{Funktor} $\abbil{F}{\mathfrak{A}}{\mathfrak{C}}$ von einer Kategorie
+$\mathfrak{A}$ in eine andere Kategorie $\mathfrak{C}$ ist eine
+Vorschrift,
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item die jedem Objekt $A \in \mathfrak{A}$ ein Objekt $F(A) \in
+    \mathfrak{C}$ zuordnet und
+    \item die jedem Morphismus $f \in
+    \Mor{\mathfrak{A}}{A_{1}}{A_{2}}$ einen Morphismus $F(f)$
+    $\in$\linebreak
+    $\Mor{\mathfrak{C}}{F(A_{1})}{F(A_{2})}$ zuordnet. Darüber
+    hinaus soll $F(\id_{A})=\id_{F(A)}$ für alle $A \in \mathfrak{A}$
+    und $F(f\circ g)=F(f) \circ F(g)$ für alle Morphismen $g \in \Mor{\mathfrak{A}}{A_{1}}{A_{2}}, f\in
+    \Mor{\mathfrak{A}}{A_{2}}{A_{3}}$ gelten.
+\end{enumerate}
+Ist $\abbil{G}{\mathfrak{A}^{\circ}}{\mathfrak{C}}$ ein Funktor,
+so hei"st der aus $G$ resultierende Funktor
+$\abbil{F}{\mathfrak{A}}{\mathfrak{C}}$ \textbf{kontravariant}.
+\end{defn}
+
+\begin{defn} Eine Kategorie $\mathfrak{A}$ hei"st \textbf{additive
+Kategorie}, falls die folgenden Bedingungen erfüllt sind:
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item Für alle Objekte $A,B \in \mathfrak{A}$ trägt
+    $\Mor{\mathfrak{A}}{A}{B}$ die Struktur einer abelschen
+    Gruppe.
+    \item Die Komposition ist distributiv bezüglich der Addition,
+    d.h. für alle Objekte $A$, $B$, $C$, $D$ und Morphismen $f \in
+    \Mor{\mathfrak{A}}{A}{B}$, $g, \tilde{g} \in
+    \Mor{\mathfrak{A}}{B}{C}$, $h \in \Mor{\mathfrak{A}}{C}{D}$,
+    also
+    $$\xymatrix{
+        A \ar[r]^{f} & B  \ar@<2pt>[r]^{g} \ar@<-2pt>[r]_{\tilde{g}}  &   C \ar[r]^{h} &  D
+    }$$
+    gilt $h \circ (g+\tilde{g}) \circ f = h \circ g \circ f  + h \circ \tilde{g} \circ
+    f$ in $\Mor{\mathfrak{A}}{A}{D}$.
+    \item Es existiert ein Nullobjekt $0 \in \mathfrak{A}$.
+    \item Für alle Objekte $A,B \in \mathfrak{A}$ existieren das
+    Produkt $A \times B$ und das Koprodukt $A \coprod B$.
+\end{enumerate}
+\end{defn}
+
+\begin{bem} In additiven Kategorien ist der Nullhomomorphismus das
+neutrale Element in den Gruppen $\Mor{\mathfrak{A}}{A}{B}$.
+\end{bem}
+
+\begin{defn} Eine additive Kategorie $ \mathfrak{A}$ hei"st \textbf{abelsche
+Kategorie}, die die folgenden Eigenschaften erfüllt.
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item Für alle Morphismen existieren Kerne und Kokerne.
+    \item Zu je zwei Objekten $X_{1},X_{2} \in \mathfrak{A}$
+    existiert ein Objekt \textbf{direkte Summe} $X_{1} \oplus X_{2}$ zusammen mit Morphismen
+    \begin{align*}
+        & \abbil{p_{i}}{X_{1} \oplus X_{2}}{X_{i}}\\
+        &\abbil{q_{i}}{X_{i}}{X_{1} \oplus X_{2}},
+    \end{align*}
+    so dass $p_{i} \circ q_{i}=\id_{X_{i}}$ und $q_{1}\circ p_{1} + q_{2} \circ p_{2}=\id_{X_{1} \oplus
+    X_{2}}$ gilt.
+    \item Jeder Monomorphismus ist ein Kern und jeder
+    Epimorphismus ist ein Kokern.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+Eine Kategorie $\mathfrak{A}$ hei"st \textbf{Tensorkategorie},
+falls ein bis auf eindeutige Isomorphie eindeutig bestimmtes
+(Eins-) Objekt $I \in \mathfrak{A}$ und ein Funktor
+$\abbil{\otimes}{\mathfrak{A} \times \mathfrak{A}}{\mathfrak{A}}$
+mit den folgenden Eigenschaften existiert, wobei $A,B,C,D$
+beliebige Objekte aus $\mathfrak{A}$ darstellen.
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item Es existiert ein natürlicher Isomorphismus $\abbil{\alpha_{A,B,C}}{(A \otimes B) \otimes C}{A \otimes (B \otimes
+    C)}$.
+    \item Es existieren zwei natürliche Isomorphismen $\abbil{\lambda_{A}}{I \otimes
+    A}{A}$ und $\abbil{\rho_{A}}{A \otimes I}{A}$.
+    \item Die beiden folgenden Diagramme sollen für alle Objekte
+    $A,B,C,D \in \mathfrak{A}$ kommutieren.
+\end{enumerate}
+$$
+    \xymatrix{
+        ((A \otimes B) \otimes C) \otimes D   \ar[rr]^{\alpha_{A,B,C} \otimes D} \ar[d]_{\alpha_{A\otimes B,C,D}}  & &   (A \otimes (B \otimes C)) \otimes
+        D  \ar[rr]^{\alpha_{A,B\otimes C,D}} &  &  A \otimes ((B \otimes C) \otimes D)\ar[d]^{A\otimes \alpha_{B,C,D}}   \\
+        (A \otimes B) \otimes (C \otimes D) \ar[rrrr]_{\alpha_{A,B,C\otimes D}}   &   &   &  &A \otimes (B \otimes (C \otimes
+        D))
+    }
+$$
+Dieses Diagramm stellt eine allgemeinere Assoziativität sicher,
+während das folgende Diagramm eine Art Kürzungsregel für das
+Einsobjekt darstellt.
+$$
+    \xymatrix{
+    (A \otimes I) \otimes B  \ar[rr]^{\alpha_{A,I,B}} \ar[rd]_{\rho_{A} \otimes B}   &   &    A \otimes(I \otimes B) \ar[ld]^{A \otimes \lambda_{B}}\\
+                                & A \otimes B &
+    }
+$$
+
+\end{defn}
+
+
+
+\begin{defn}
+Es sei $R$ ein kommutativer Ring mit $1$. Die Menge
+$$ \Spek(R):= \{ P \unlhd R \, | \, P \textrm{ ist Primideal }\}$$
+der Primideale von $R$ hei"st das \textbf{Spektrum} von $R$.
+\end{defn}
+
+Wir benötigen für den Hauptsatz über Tannaka-Kategorien den
+Begriff des affinen Schemas. Wir geben dabei der Einfachheit
+halber nicht die allgemeine Definition über die Strukturgarbe
+sondern lediglich die folgende etwas vereinfachte Version an.
+
+\begin{defn}
+Es sei $K$ ein Körper und $A$ eine $K$-Algebra. Das Paar
+$(\Spek(A),A)$ hei"st \textbf{affines Schema} über $K$.\\
+Ein Morphismus $\psi=(f,\varphi)$ von zwei affinen Schemata
+$(\Spek(A),A)$ und $(\Spek(B),B)$ besteht aus einem
+$K$-Algebra-Homomorphismus
+$$\abbil{\varphi}{A}{B}$$
+und der durch $\varphi$ induzierten Abbildung
+$$\abb{f}{\Spek(B)}{\Spek(A)}{P}{\varphi^{-1}(P)}.$$
+\end{defn}
+
+\begin{defn}
+Es sei $K$ ein Körper und $A$ eine $K$-Algebra. Ein affines
+$K$-Schema $G:=(\Spek(A),A)$ mit einer Gruppenstruktur hei"st
+\textbf{affines Gruppenschema} über $K$. Die Gruppenstruktur wird
+durch die Existenz von Morphismen $\abbil{m}{G \times_{K} G}{G}$ ,
+$\abbil{i}{G}{G}$ und $\abbil{e}{(\Spek(K),K)}{G}$ und die
+Kommutativität der folgenden Diagramme induziert:
+$$
+\xymatrix{
+    G \times_{K} G \times_{K} G \ar[r]^/.7em/{m \times \id_{G}} \ar[d]_{\id_{G}\times m}    &       G \times_{K} G  \ar[d]^{m}    & \textrm{ (Assoziativität)} \\
+    G\times_{K} G  \ar[r]_{m}                                                         &       G &\\
+    G   \ar[r]^{p \times \id_{G}} \ar[d]_{\id_{G} \times p} \ar[rd]^{\id_{G}}            &      G\times_{K} G \ar[d]^{m}          &    \textrm{ (neutrales Element)}\\
+    G\times_{K}  \ar[r]_{m}   &      G                       &\\
+    G \ar[r]^{i \times \id_{G}} \ar[d]_{\id_{G} \times i} \ar[rd]^{p}  &   G\times_{K} G \ar[d]^{m}   &   \textrm{ (inverses Element)}\\
+    G\times_{K} G \ar[r]_{m}   &   G   &
+}.
+$$
+Dabei ist $\abbil{p}{G}{G}$ definiert durch $p =e\circ \kappa $,
+wobei $\abbil{\kappa}{G}{(\Spek(K),K)}$ der durch die $K$-Algebra
+Inklusion $K\hookrightarrow A$ induzierte Morphismus ist.
+\end{defn}
+
+Der duale Begriff zum affinen Schema $(\Spek(A),A)$ ist die
+$K$-Algebra, also definieren wir nun den dualen Begriff zum
+Gruppenschema $G:=(\Spek(A),A)$.
+
+\begin{defn}Es sei $K$ ein Körper. Eine kommutative $K$-Algebra
+$A$ hei"st \textbf{kommutative Hopf-Algebra}, falls
+$K$-Algebra-Homomorphismen $\abbil{\Delta}{A}{A\otimes_{K} A}$
+(Komultiplikation), $\abbil{\iota}{A}{A}$ (Koinverse) und
+$\abbil{\epsilon}{A}{K}$ (Augmentation) existieren, durch welche
+die folgenden Diagramme kommutieren:
+$$
+\xymatrix{
+    A \otimes_{K} A \otimes_{K} A     &       A \otimes_{K} A  \ar[l]_/-.7em/{\Delta \otimes \id_{A} }    & \textrm{ (Koassoziativität)} \\
+    A\otimes_{K} A  \ar[u]^{\id_{A} \otimes \Delta}  &       A \ar[l]^{\Delta} \ar[u]_{\Delta} &\\
+    A              &      A\otimes_{K} A  \ar[l]_{p^{*} \otimes \id_{A}}         &    \textrm{ (Augmentation)}\\
+    A\otimes_{K} A \ar[u]^{\id_{A} \otimes p^{*}}    &      A  \ar[u]_{\Delta} \ar[l]^{\Delta} \ar[lu]_{\id_{A}}                     &\\
+    A   &   A\otimes_{K} A \ar[l]_{\iota \otimes \id_{A}}   &   \textrm{ (Koinverse)}\\
+    A\otimes_{K} A \ar[u]^{\id_{A} \otimes \iota}   &   A \ar[u]_{\Delta} \ar[l]^{\Delta} \ar[lu]_{p^{*}}   &
+}.
+$$
+\end{defn}
+
+\begin{defn}
+Es sei $K$ ein Körper, $A$ eine $K$-Algebra und $G=(\Spek(A),A)$
+ein affines Gruppenschema. Ein Paar $(V,\tau)$ bestehend aus einem
+$K$-Vektorraum $V$ und einer $K$-linearen Abbildung
+$\abbil{\tau}{V}{A\otimes_{K} V}$ hei"st eine \textbf{Darstellung}
+bzw. ein \textbf{$G$-Modul}, falls gelten:
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item Die Abbildung
+    $$
+    \xymatrix{
+        V  \ar[r]^/-.5em/{\tau} &   A\otimes V \ar[r]^{\epsilon \otimes \id_{V}} &     K\otimes V  \ar[r]_/.5em/{\lambda \otimes v \mapsto \lambda v}   &   V
+    }
+    $$
+    ist die Identität.
+    \item Das folgende Diagramm kommutiert:
+    $$
+    \xymatrix{
+        A\otimes_{K} A \otimes_{K} V        &  A\otimes_{K} V  \ar[l]_/-.7em/{\Delta\otimes \id_{V}}\\
+        A\otimes_{K} V \ar[u]^{\id_{A} \otimes \tau}                     &
+        A \ar[u]_/-.3em/{\tau} \ar[l]^/-.3em/{\tau}
+    }.$$
+\end{enumerate}
+Ein Morphismus $\abbil{f}{(V,\tau_{1})}{(W,\tau_{2}})$ zwischen
+zwei Darstellungen ist eine $K$-lineare Abbildung mit $\tau_{2}
+\circ f=f \circ \tau_{1}$.
+\end{defn}
+
+\begin{defn} Es sei $K$ ein Körper und $G$ ein affines
+Gruppenschema über $K$. Alle endlichdimensionalen Darstellungen
+von $G$ bilden eine Kategorie, die wir mit $\Rep{G}$ bezeichnen.
+\end{defn}
+ Man sieht direkt, dass $\Rep{G}$ viele Eigenschaften von
+ $\Vek{K}$ erbt, beispielsweise ist $\Rep{G}$ eine abelsche
+ Tensorkategorie mit dem durch $(V,\tau_{1}) \otimes (W, \tau_{2}):=(V \otimes W, \tau_{1} \otimes \tau_{2})$
+ defininierten Tensorprodukt. \\
+ Wir bezeichnen ab sofort mit $\Alg{K}$ die Kategorie
+ der $K$-Algebren und mit $\Grp{K}$ die Kategorie der affinen
+ Gruppenschemata über $K$.
+
+ \begin{defn}
+ Es sei $G=(\Spek(A),A)$ ein affines Gruppenschema über einem
+ Körper $K$. Dann ist $$\abbil{FG}{\Alg{K}}{\Grp{K}}$$
+ ein Funktor. Dieser wird folgenderma"sen definiert:\\
+ Für eine $K$-Algebra $R$ ist $$FG(R):=G(R)$$ die Menge der
+ $K$-Algebra-Homomorphismen $\abbil{\varphi}{A}{R}$. Diese Menge
+ erhält für zwei $K$-Algebra-Homomorphismen $\varphi$ und $\psi$
+ eine Gruppenstruktur durch
+ $$
+ \xymatrix{
+    A \ar[r]^/-.7em/{\Delta}  &   A\otimes_{K} A  \ar[r]^/-.2em/{\varphi \otimes \psi}    & R \otimes_{K} R  \ar[r]^/.5em/{m}     &
+    R
+ },$$
+ wobei die letzte Abbildung definiert ist durch
+ $$\abb{m}{R\otimes_{K} R}{R}{r_{1} \otimes r_{2}}{r_{1} \cdot r_{2}}.$$
+ \end{defn}
+
+ \begin{satz}
+ Es sei $G$ ein affines Gruppenschema. Durch den folgenden
+ Vergiss-Funktor
+ $$\abb{\omega}{\Rep{G}}{\Vek{K}}{(V,\rho)}{V}$$
+erhalten wir einen Funktor
+$$\abbil{\Fas}{\Rep{G}}{\Grp{K}}$$
+folgenderma"sen: Für eine $K$-Algebra $R$ ist ein Element $\sigma
+\in G^{'}(R):=\Fas(R)$ durch eine Kollektion von Elementen
+$\{\sigma(X)\}_{X \in \Rep{G}}$ gegeben. Dabei ist jedes
+$\sigma(X)$ ein $R$-linearer Automorphismus von $R\otimes
+\omega(X)$ mit den folgenden Eigenschaften:
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item $\sigma(1)=\id_{R\otimes \omega(1)}=\id_{R}$.
+    \item Für jeden $R$-linearen Morphismus $\abbil{f}{X}{Y}$
+    kommutiert das folgende Diagramm
+    $$
+    \xymatrix{
+        R\otimes_{K} \omega(X) \ar[r]^{\sigma(X)} \ar[d]_{\id_{R} \otimes \omega(f)}  &       R\otimes_{K} \omega(X) \ar[d]^{\id_{R} \otimes \omega(f)} \\
+        R\otimes_{K} \omega(Y) \ar[r]_{\sigma(Y)} &       R\otimes_{K} \omega(Y)
+    }.
+    $$
+    \item $\sigma(X \otimes Y)=\sigma(X) \otimes \sigma(Y)$.
+\end{enumerate}
+ \end{satz}
+
+ \begin{satz}(Tannaka)\\
+ Es sei $G=(\Spek(A),A)$ ein affines Gruppenschema über einem
+ Körper $K$ und $\omega$ der oben definierte Funktor. Dann
+ existiert ein Isomorphismus von Funktoren $FG \rightarrow \Fas$.
+ \end{satz}
+
+ Für einen ausführlichen Beweis dieses Satzes sei an dieser Stelle
+ auf Appendix B in \cite{vdPut} verwiesen.
+
+\begin{defn}
+Es sei $K$ ein Körper und $\mathfrak{C}$ eine Tensorkategorie.
+Diese hei"st \textbf{neutrale Tannaka-Kategorie} über $K$, falls
+gelten:
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item Es existieren interne $\Hom$, d.h. für je zwei Objekte
+    $X,Y \in \mathfrak{C}$ existiert ein $\Hom(X,Y)$, so dass die
+    beiden Funktoren
+    $$T \rightarrow \Homo(T \otimes X, Y) \textrm{ und } T\rightarrow \Homo(T,\Hom(X,Y))$$
+    kanonisch isomorph sind.
+    \item Für $\Hom(X,1)=:X^{*}$ ist der kanonische Morphismus $X \rightarrow
+    (X^{*})^{*}$ ein Isomorphismus.
+    \item Der kanonische Morphismus $$\Hom(X_{1},Y_{1}) \otimes \Hom(X_{2},Y_{2}) \rightarrow \Hom(X_{1} \otimes X_{2}, Y_{1}\otimes
+    Y_{2})$$ ist ein Isomorphismus.
+    \item $\mathfrak{C}$ ist eine abelsche Kategorie.
+    \item Es gibt einen Isomorphimus zwischen $\End(1)$ und $K$.
+    \item Es ist ein $K$-linearer, exakter, treuer Funktor, der
+    mit dem Tensorprodukt verträglich ist (ein sogenannter \textbf{Faserfunktor}) $\abbil{\omega}{\mathfrak{C}}{\Vek{K}}$ gegeben.
+\end{enumerate}
+\end{defn}
+
+\begin{satz} (Tannaka)\\
+Eine neutrale Tannaka-Kategorie $\mathfrak{C}$ über einem Körper
+$K$ mit Faserfunktor $\abbil{\omega}{\mathfrak{C}}{\Vek{K}}$ ist
+kanonisch isomorph zur Kategorie $\Rep{G}$, wobei $G$ den Funktor
+$\Fas$ darstellt.
+\end{satz}
+
+\section{Anwendung auf Frobenius-Moduln}
+
+\begin{satz} Es sei $R$ ein relativer Frobenius-Integritätsbereich. Die Kategorie der Frobenius-Moduln über $R$ 
+mit Faserfunktor gegeben durch einen PV-Ring $E$ bildet eine
+neutrale Tannaka-Kategorie. 
+\end{satz}
+
+Ein Beweis dieses Satzes findet sich beispielsweise in
+\cite[Theorem 3.3.15]{Papa}.  Die Kategorie der relativen
+Frobenius-Moduln mit Endomorphimus $\Phi$ ist darüber hinaus als
+Tannaka-Kategorie äquivalent zur Kategorie der
+Differential-Frobenius-Moduln mit einer iterativen Derivation
+$\nabla$, falls die jeweiligen Konstanten übereinstimmen. Dies
+liefert insbesondere den in \cite{Matzat01} bewiesenen
+Zusammenhang zwischen den jeweiligen Galoisgruppen-Schemata
+$$\underline{\DGal}^{\nabla}(R/F)=\Spek(C_{S}) \times_{S^{\phi}}
+\underline{\DGal}^{\Phi}(R/F),
+$$
+wobei $F$ den Quotientenkörper eines relativen Frobenius-Rings mit
+PV-Ring $R$ und $C_{S}$ die Differential-Konstanten bezeichnet.
+Damit sind diese bis auf einen $C_{S}$-Basiswechsel identisch.
+Daher erhalten wir durch die Berechnung der
+Differenzen-Galoisgruppe des Frobenius-Moduls die
+Differential-Galoisgruppe des entsprechenden iterativen
+Frobenius-Moduls, was unser ursprüngliches Ziel war.\\
+Wir wollen nun eine Unterkategorie $\{\{M\}\}$ in der Kategorie
+der Frobenius-Moduln über einem relativen Frobenius-Körper $F$
+betrachten. Für einen fest gewählten Frobenius-Modul $M$ über $F$
+bezeichnen wir für ganze Zahlen $m,n > 0$ den Modul
+$$M_{n}^{m}:=\underbrace{M \otimes \cdots \otimes M}_{\textrm{ $n$-mal}} \otimes \underbrace{M^{*} \otimes \cdots \otimes M^{*}}_{\textrm{ $m$-mal}},$$
+wobei $M^{*}$ der zu $M$ duale Module ist. Für einen Modul $N$
+nennen wir einen Frobenius-Modul $\tilde{N}$ einen Submodul, falls
+er von der Form $\tilde{N}=N_{1} / N_{2}$ mit $N_{2}\subset N_{1}
+\subset N$ ist. Die Objekte der Kategorie $\{\{M\}\}$ sind
+definiert als Subquotienten von direkten Summen von Moduln der
+Form $M_{n}^{m}$. $\Homo$ hat dabei dieselbe Bedeutung wie in der
+ursprünglichen Kategorie der Frobenius-Moduln. Man sagt
+$\{\{M\}\}$ ist eine volle Unterkategorie von der Kategorie der
+relativen Frobenius-Moduln. Au"serdem ist $\{\{M\}\}$ die kleinste
+Unterkategorie, die $M$ enthält und unter allen
+Lineare-Algebra-Konstruktionen ( z.B. direkte Summen,
+Tensorprodukte, usw.) abgeschlossen ist.
+
+\begin{satz} Für einen Frobenius-Moduls $M$ über einem relativen
+Frobenius-Integritätsbereich $R$ mit PV-Ring $E$ ist die
+oben definierte Kategorie $\{\{ M\}\}$ eine neutrale
+Tannaka-Kategorie und damit äquivalent zu $\Rep{G}$, wobei $G$ das
+Galoisgruppen-Schema des Frobenius-Moduls $M$ bezeichnet.
+\end{satz}
+
+Dieser Satz liefert den Ansatz für die allgemeine Berechenbarkeit
+der Galoisgruppe eines relativen Frobenius-Moduls. Mit Hilfe der
+Konstruktionen aus der Linearen Algebra konnten wir in dieser Arbeit schrittweise
+die Galoisgruppe für Gleichungen bzw. Moduln
+der Ordnung 1 und 2 bestimmen. Theoretisch ist dies
+durch obigen Satz auch für Differenzengleichungen $n$-ten Grades bzw. die zugehörigen Frobenius-Moduln möglich. Sei
+also $M$ nun ein solcher Frobenius-Modul mit PV-Körper $E$,
+Lösungsvektorraum $V:=\Sol{\Phi}{E}{M}$, d.h. es gilt $n=\dim_{F^{\phi}}(V)$ und Galoisgruppe $G$. Nach
+Satz \ref{1.18satz-gl-red-gruppe-red} stehen die Untermoduln von
+$M$ in einer 1-1 Korrespondenz mit den $G$-invarianten Unterräumen
+von $V$. Diese Aussage lässt sich auch auf Moduln der Form
+$\bigoplus\limits_{i=1}^{m} M_{b_{i}}^{a_{i}}$ aus der Kategorie
+$\{\{M\}\}$ und den Vektorraum $\bigoplus\limits_{i=1}^{m} V_{b_{i}}^{a_{i}}$ übertragen. Wir definieren nun für einen Index $d \geq
+1$ den Modul $M(d):=\bigoplus\limits_{a\leq d , b \leq d}
+M_{b}^{a}$. Die Kenntnis der Untermoduln aller $M(d)$ liefert die
+Galoisgruppe, da man dann auch alle $G$-invarianten Unterräume von $V$ kennt. Denn kennt man alle Untermoduln von $M(d)$, liefert
+dies eine algebraische Gruppe $G(d) \leq \GenL(V)$ mit $G \subset
+G(d)$ für alle $d$. Nach Konstruktion gilt au"serdem $G(d+1) \subset G(d)$. Um
+nun daraus einen Algorithmus zu entwickeln, ist ein
+Entscheidungskriterium notwendig, ob die Gruppe $G(d)$ und die Galoisgruppe $G$
+übereinstimmen. Dazu benötigt man eine von $G$ unabhängige Schranke $B(n)$ für $d$, so dass die Folge $G(d)$ für $d \geq B(n)$ stationär wird. In diesem Fall gilt dann $G=G(d)$. Diese Schranke würde
+sicherstellen, dass der Algorithmus in endlicher Laufzeit
+terminiert. Beides lieferte Hrushovski mit seinem Algorithmus  für
+Differentialgleichungen in Charakteristik $0$ in \cite{Hrushovski}. Einige der benötigten
+Schranken im Falle positiver 
+Charakteristik konnten wir im Rahmen dieser Arbeit finden, z.B. Satz 
+\ref{1.31satz-algebr-beschr} oder Satz \ref{chap_diff_gl_grad_2_satz_tori_schranke}. 
+Es liegt also nahe zu vermuten, dass sich der Hrushovski-Algorithmus auch auf 
+Frobenius-Differenzengleichungen in positiver Charakteristik verallgemeinern lässt. 

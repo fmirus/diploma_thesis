@@ -1,0 +1,90 @@
+\chapter*{Vorwort}
+
+In der klassischen Galoistheorie, basierend auf den Ideen des
+französischen Mathematikers Évariste Galois (1811-1832), werden
+Symmetrien der Nullstellen von Polynomen untersucht. Dazu wird
+einem Polynom die sogenannte Galoisgruppe zugeordnet, die durch
+ihre Struktur viele Informationen über die Nullstellen des
+Polynoms enthält. Diese lässt sich in die symmetrische Gruppe
+einbetten. Dieser klassische Ansatz lässt sich auch auf andere
+Gebiete verallgemeinern. Die Galoistheorie für homogene lineare
+Differentialgleichungen hat ihren Ursprung im 19. Jahrhundert und
+wurde in der Mitte des 20. Jahrhunderts  durch Kolchin (vgl.
+\cite{Kol}) auf ein solides Fundament gestellt. Auch hier wird
+jeder Gleichung die sogenannte Differential-Galoisgruppe, in
+diesem Fall eine lineare algebraische Gruppe, zugeordnet. Ein
+Differentialkörper ist dann ein Körper $K$ mit einer Abbildung
+$\abbil{\delta}{K}{K}$, einer sogenannten Derivation. An die
+Stelle des Zerfällungskörpers tritt hier der
+Picard-Vessiot-Körper, der alle Lösungen der Differentialgleichung
+enthält. Den ersten praktisch anwendbaren Algorithmus zur Lösung
+(und damit zur Bestimmung der Galoisgruppe) solcher Gleichungen
+bis zum Grad 2 stellte Kovacic in seiner Arbeit \cite{Kovacic02}
+vor. Lange Zeit beschränkte sich die Differential-Galoistheorie auf
+Gleichungen in Charakteristik 0. Um diese Theorie auf Gleichungen
+in positiver Charakteristik zu verallgemeinern geht man von einer
+Derivation $\delta$ zu einer Familie von Derivationen
+$(\delta^{(k)})_{k \in \korp{N}}$, einer sogenannten iterativen
+Derivation, über. Viele der ursprünglichen Aussagen lassen sich
+dann auf dieses Setting übertragen (vgl. \cite{Matzat04}).\\
+Eine weitere Verallgemeinerung der klassischen Galoistheorie ist
+die Galoistheorie linearer Differenzengleichungen. Diese verhält
+sich recht analog zur Theorie der linearen
+Differentialgleichungen. Der Unterschied besteht darin, dass ein
+Differenzenkörper $K$ anstatt einer Derivation $\delta$ einen
+Automorphismus (oder einen Endomorphismus) $\phi$ als zusätzliche
+Struktur trägt (vgl. \cite{vdPut01}). Für Differenzengleichungen
+in Charakteristik 0 findet sich ein Analogon zum
+Kovacic-Algorithmus in der
+Dissertation von P.A. Hendriks (vgl. \cite{Hend}).\\
+
+In dieser Arbeit befassen wir uns mit Differenzengleichungen in
+positiver Charakteristik. Die zugrundeliegenden Strukturen sind
+die sogenannten Frobenius-Moduln. Dies sind Moduln über einem
+Frobenius-Ring $R$ zusammen mit dem Frobenius-Endomorphimus
+$\Phi$. Die Motivation hierfür ist die Lösung bzw. Berechnung der
+Galoisgruppe von Differentialgleichungen über Frobenius-Moduln mit
+iterativen Derivationen $\nabla$. Man kann zeigen, dass die
+$\Phi$- bzw. $\nabla$-Moduln als neutrale Tannaka-Kategorien
+äquivalent sind und dass ihre Galoisgruppen-Schemata bis auf einen
+Basiswechsel übereinstimmen (vgl. Kapitel \ref{chap_berechen} bzw.
+\cite{Matzat02} und \cite{Matzat03}). Der Vorteil die Moduln von
+der Differenzen-Seite zu betrachten besteht darin, dass man nur
+eine Gleichung statt einer Familie von Gleichungen untersuchen
+muss. Andererseits haben die Differenzengleichungen in positiver
+Charakteristik viele Gemeinsamkeiten mit Differentialgleichungen
+in Charakteristik 0. Diese Gemeinsamkeiten begründen sich
+hauptsächlich durch die Analogie der Operator-Ringe (vgl. Kapitel
+\ref{chap_diff_op} bzw. \cite{Ore01}), aber auch dadurch, dass
+auch die Differential-Moduln in Charakteristik 0 eine neutrale
+Tannaka-Kategorie bilden (vgl. \cite[Appendix B]{vdPut}). \\
+Dies versetzt uns in die Lage den klassischen Kovacic-Algorithmus
+für Differentialgleichungen, bzw. dessen Analogon von Hendriks für
+Differenzengleichungen in Charakteristik 0 auf unsere
+Differenzengleichungen über Frobenius-Ringen zu übertragen. Dabei
+müssen natürlich einige Modifikationen vorgenommen werden. 
+Dies sind unter anderem die Berechnung des $\Add$-Anteils bei reduziblen Galoisgruppen 
+(vgl. Abschnitt \ref{sec:red} Satz \ref{chap_diff_gl_grad_2_satz_ga}). Da die $\Add$ in 
+Charakteristik $0$ keine nicht-trivialen algebraischen Untergruppen besitzt, tritt dieser Fall 
+im klassischen Kovacic-Algorithmus nicht auf. Au"serdem können in positiver Charakteristik auch 
+nicht-zerfallende Tori als Galoisgruppe auftreten (vgl. Abschnitt \ref{sec:non-split-tori} Satz \ref{chap_diff_gl_grad_2_satz_tori}). 
+Die dritte Hauptmodifikation ist die Untersuchung der Zwischengruppen von $\SL{2}{F^{\phi}}$ und $\GL{2}{F^{\phi}}$ (vgl. Satz \ref{satz:zwischengruppen}). Auch dieser Fall tritt im klassischen Kovacic-Algorithmus nicht auf, da man die Galoisgruppe von Differentialgleichungen in Charakteristik $0$ nach \cite[Theorem 3.3.]{Singer01} in die $\SL{2}{\korp{C}}$ einbetten kann.\\
+Die Arbeit ist folgenderma"sen aufgebaut: In Kapitel
+\ref{chap-frob-mod} werden die wichtigsten Resultate über
+Frobenius-Moduln und Galoistheorie von Differenzengleichungen
+zusammengetragen und bewiesen. Kapitel \ref{chap_diff_op} befasst
+sich mit Linearen Konstruktionen, die später im Algorithmus
+verwendet werden sollen, sowie der Theorie der
+Differenzen-Operatoren. In Kapitel \ref{chap_fakt_diff} betrachten
+wir verschiedene Möglichkeiten zur Faktorisierung solcher
+Operatoren. In Kapitel \ref{chap_diff_gl_grad_1} lösen wir
+Differenzengleichungen vom Grad 1, bzw. berechnen deren
+Galoisgruppe. In Kapitel \ref{chap_diff_gl_grad_2} gehen wir zu
+Differenzengleichungen vom Grad 2 über und übertragen den Kovacic-
+bzw. Hendriks-Algorithmus auf unser Setting. Schlie"slich werden
+wir noch in Kapitel \ref{chap_berechen} einiges zur
+Berechenbarkeit der Galoisgruppe von Gleichungen beliebiger
+Ordnung sagen. Dieses letzte Kapitel, in dem wir weitgehend auf
+Beweise verzichten, befasst sich vor allem mit der Sprache der
+Tannaka-Kategorien und deren Anwendung auf Frobenius-Moduln.\\
+Zum Abschluss sei allerdings noch erwähnt, dass das Thema aus zeitlichen Gründen im Rahmen dieser Diplomarbeit nicht abschlie"send behandelt werden konnte. Basierend auf den Ergebnissen der vorliegenden Arbeit gäbe es verschiedene Möglichkeiten das Thema zu vertiefen. Einerseits könnte man die Methoden aus den Kapiteln \ref{chap_diff_gl_grad_1} und \ref{chap_diff_gl_grad_2} für $\galois{q}(s,t)$ auf weitere Anwendungsbeispiele, wie zum Beispiel den Witt-Ring, übertragen. Andererseits könnte man auch versuchen, mit Hilfe der Faktorisierungsalgorithmen in Kapitel \ref{chap_fakt_diff} einen Algorithmus zur Berechnung der Galoisgruppe für Gleichungen vom Grad $3$ und höher zu entwickeln. Dafür wurden schon einige Grundlagen in den Sätzen \ref{1.24satz-liouville}, \ref{1.31satz-algebr-beschr}, sowie  \ref{chap_diff_op_sym_power_sol} (d) und (e) bewiesen, auf denen man wie in \cite{Singer01} aufbauen könnte, um einen solchen Algorithmus zumindest für Gleichungen vom Grad $3$ zu entwickeln. Schlie"slich könnte man auch ausgehend von Kapitel \ref{chap_berechen} versuchen, einen allgemeinen Algorithmus zur Berechnung der Galoisgruppe von Differenzengleichungen beliebiger Ordnung zu finden. Wir haben in Kapitel \ref{chap_berechen} lediglich angedeutet, dass es aufgrund der Existenz eines entsprechenden Algorithmus für Differentialgleichungen in Charakteristik 0 (vgl. \cite{Hrushovski}) nahe liegt, dass auch ein solcher Algorithmus für Differenzengleichungen in positiver Charakteristik existiert. Mit dem Beweis für die Existenz eines solchen Algorithmus wäre das Thema dann abschlie"send behandelt.

@@ -1,0 +1,1483 @@
+\chapter{Berechnung der Galoisgruppe für Gleichungen vom Grad 2}
+\label{chap_diff_gl_grad_2}
+Wir betrachten in diesem Kapitel Differenzengleichungen zweiten
+Grades der Form $L(y)=\phi^2(y)+a\phi(y)+by=0$. Diesen liegt wieder
+der relative Frobenius-Körper
+\[F=\Quot(R)=\Quot(\galois{q}[s,t])=\galois{q}(s,t)\] mit
+Semi-Frobenius-Endomorphismus \[\abbil{\phi}{R}{R}\] zugrunde.
+Dieser Endomorphismus wird definiert durch
+$\phi|_{\galois{q}}=\phi_{p^m}$ und $\phi(t)=t$, $\phi(s)=s^{p^m}$
+mit $1 \leq m \leq d$. Wir beschränken uns auf den
+Spezialfall $m=1$, d.h. $\phi=\phi_{p}$ und
+$F^{\phi}=\galois{p}(t)$. Die Gleichung $L(y)=0$ bzw. deren
+assoziierte Matrixgleichung
+\[\phi(\multi{y})=A_{L}\cdot \multi{y}  \, \textrm{ mit } \multi{y}=(y,\phi(y))^{tr} \textrm{ und } A_{L}=\left(%
+\begin{array}{cc}
+  0 & 1 \\
+  -b & -a \\
+\end{array}%
+\right)\] induziert einen Frobenius-Modul $M_{L}$ mit einem
+PV-Körper $E$. Ferner sei $G:=\DGal(L)$ die
+Galoisgruppe und $V:=\Sol{\phi}{E}{M_{L}}$ der Lösungsraum von
+$L$.\\
+Um die möglichen Gruppen, die als Galoisgruppe einer multiplikativen
+Differenzengleichung erster Ordnung $\phi(y)=ay$ auftreten können,
+zu unterscheiden, haben wir die potenzierten Gleichungen
+$\phi(y)=a^dy$ für $d=1,2,\ldots$ bis zu einer gewissen Schranke
+$b$ berechnet und daraus Rückschlüsse auf die Gruppe gezogen.
+Diese potenzierten Gleichungen sind aber nichts anderes als die
+$d$-te symmetrische Potenz der ursprünglichen Gleichung, denn für
+zwei Lösungen $\eta_{1}, \eta_{2}$ dieser Gleichung gilt
+\[\phi(\eta_{1}\eta_{2})=\phi(\eta_{1})\phi(\eta_{2})=(a\eta_{1})
+(a\eta_{2})=a^2(\eta_{1}\eta_{2}).\] Wir haben also einen
+Zusammenhang zwischen Lösungen gewisser symmetrischer Potenzen und
+der Galoisgruppe einer Differenzengleichung erster Ordnung
+hergestellt. Ein solches Verfahren wollen wir auch für Gleichungen
+höherer Ordnungen anwenden. Dabei werden aber die Grade der
+symmetrischen Potenzen wachsen, d.h. es wird nicht nur darum gehen
+rationale Lösungen der symmetrischen Potenzen zu suchen, sondern
+diese zu faktorisieren. Beginnend mit der Faktorisierung der ursprünglichen Gleichung 
+$L(y)=\phi^2(y)+a\phi(y)+by=0$ (erste symmetrischen Potenz) lässt sich bestimmen, ob 
+die Galoisgruppe in der Borel-Gruppe $\B{F^{\phi}}$ enthalten ist (Abschnitte \ref{sec:red} über reduzible Gruppen und \ref{sec:split_tori} über zerfallende Tori). 
+Bei der genauen Bestimmung der Gruppe werden dann auch die Ergebnisse aus Kapitel \ref{chap_diff_gl_grad_1} über Differenzengleichungen erster Ordnung einflie"sen und auf die Faktoren bzw. den additiven Teil der assoziierten Matrix-Gleichung angewandt. Ist die ursprüngliche Gleichung irreduzibel, werden die höheren symmetrischen Potenzen bis zur Schranke aus Satz \ref{1.31satz-algebr-beschr} betrachtet, um Rückschlüsse auf die Galoisgruppe zu ziehen (Abschnitte \ref{sec:dieder} über Diedergruppen, \ref{sec:non-split-tori} über nicht-zerfallende Tori und \ref{sec:irred-prim} über irreduzible primitive Gruppen). Sind alle diese Operatoren irreduzibel, müssen nur noch durch die multiplikative Differenzengleichung $\phi(y)=by$ erster Ordnung die Zwischengruppen von $\GL{2}{F^{\phi}}$ und $\SL{2}{F^{\phi}}$ unterschieden werden (vgl. Abschnitt \ref{sec:zwischen}).
+
+\section{Reduzible Gruppen}
+\label{sec:red}
+
+Wir haben mit Satz \ref{1.18satz-gl-red-gruppe-red} gesehen, dass
+die Galoisgruppe der Gleichung $L$ genau dann reduzibel ist, wenn
+auch die Gleichung im Sinne von Definition
+\ref{chap_diff_op_defn_reduzibel} reduzibel ist. Dies liefert ein
+erstes Entscheidungskriterium für die Berechnung der Galoisgruppe
+einer Differenzengleichung zweiter Ordnung.
+
+\begin{satz}Es sei $L(y)=0$ eine Differenzengleichung zweiter
+Ordnung. Dann gelten:\\
+(a) Es existiert genau dann eine Lösung $0 \neq u \in E$ mit
+$\frac{\phi(u)}{u}:=a_{1} \in F$, so dass $\phi-a_{1}$ den
+Operator $P_{L}$ von rechts teilt (d.h. er besitzt die Darstellung
+$P_{L}=(\phi-a_{2})(\phi-a_{1})$), wenn die Galoisgruppe $G$ eine
+Untergruppe der Borelgruppe
+\[\B{F^{\phi}}=\{ \left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha, \delta \in (F^{\phi})^{\times}, \gamma \in F^{\phi}\}\] ist.\\
+(b) Es existieren genau dann zwei linear unabhängige Lösungen $0
+\neq u_{1}, u_{2} \in E$ mit $\frac{\phi(u_{i})}{u_{i}}:=a_{i} \in
+F$, so dass $P_{L}=(\phi-a_{2})(\phi-a_{1})$ reduzibel ist, falls
+die
+Galoisgruppe $G$ eine Untergruppe der Gruppe der Diagonalmatrizen \[\T{F^{\phi}}=\{ \left(%
+\begin{array}{cc}
+  \delta_{1} & 0 \\
+  0 & \delta_{2} \\
+\end{array}%
+\right) \, | \, \delta_{i} \in (F^{\phi})^{\times}\}\] ist.
+\label{chap_diff_gl_grad_2_satz_red}
+\end{satz}
+
+\begin{bew}
+Dieser Satz ist ein Spezialfall von Satz
+\ref{1.18satz-gl-red-gruppe-red}. Dieser besagt, dass eine
+Differenzengleichung genau dann reduzibel ist, wenn der
+Lösungsraum $V=\Sol{\Phi}{E}{M_{L}}$ einen $G$-invarianten
+Untervektorraum $W$ besitzt. In Teil (a) korrespondiert die
+eindeutige Lösung $u$ mit $\frac{\phi(u)}{u}:=\tilde{a} \in F$ zu
+einem Rechtsfaktor vom Grad 1 und somit zu einem $G$-invarianten
+Unterraum $W$ der Dimension 1. Daher muss die Galoisgruppe in der
+Borelgruppe $\B{F^{\phi}}$ enthalten sein. In Teil (b)
+korrespondiert jede der beiden linear unabhängigen Lösungen
+$u_{1}, u_{2}$ zu je einem Rechtsfaktor, d.h. die Gleichung ist
+komplett reduzibel. Dies impliziert, dass die Faktoren kommutieren
+und zwei $G$-invariante Untervektorräume $W_{1}, W_{2}$
+existieren. Daher muss die Galoisgruppe in der Gruppe der
+Diagonalmatrizen $\T{F^{\phi}}$ enthalten sein.
+\end{bew}
+
+Mit Hilfe von Algorithmus \ref{chap_diff_gl_grad_1_algo_galois}
+für Differenzengleichungen erster Ordnung angewendet auf
+$\tilde{a}$ bzw. $a_{i}$ aus Satz
+\ref{chap_diff_gl_grad_2_satz_red} kann man weitere
+Einschränkungen machen und so die Galoisgruppe endgültig
+berechnen.\\
+
+
+Wir betrachten zunächst den Fall aus Satz
+\ref{chap_diff_gl_grad_2_satz_red} (a). Dann ist der Operator
+$P_{L}=(\phi-a_{2})(\phi-a_{1})$ reduzibel, aber nicht komplett
+reduzibel, d.h. die Galoisgruppe $G$ von $L$ ist in der Gruppe der
+oberen Dreiecksmatrizen enthalten. Dies folgt einerseits
+unmittelbar aus Satz \ref{1.18satz-gl-red-gruppe-red},
+andererseits können wir durch einen geschickten
+Frobenius-Basiswechsel die Darstellungsmatrix von $\Phi$ auf obere
+Dreiecksgestalt transformieren. Dies gelingt mit der folgenden
+Basiswechselmatrix:
+\begin{align*}
+T_{1}&=\left(%
+\begin{array}{cc}
+  1-a_{1} & 1 \\
+  -a_{1} & 1 \\
+\end{array}%
+\right) & T_{1}^{-1}=\left(%
+\begin{array}{cc}
+  1 & -1 \\
+  a_{1} & 1-a_{1} \\
+\end{array}%
+\right).
+\end{align*}
+Die Darstellungsmatrix $A_{1}$ bezüglich der neuen Basis hat dann
+die folgende Gestalt:
+\begin{align*}
+A_{1} &= \phi(T_{1})A_{L}T_{1}^{-1}=\left(%
+\begin{array}{cc}
+  1-\phi(a_{1}) & 1 \\
+  -\phi(a_{1}) & 1 \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  0 & 1 \\
+  -b & -a \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  1 & -1 \\
+  a_{1} & 1-a_{1} \\
+\end{array}%
+\right)\\
+&= \left(%
+\begin{array}{cc}
+  a_{1} -\phi(a_{1})a_{1} - b -aa_{1} & 1-a_{1}-\phi(a_{1})+\phi(a_{1})a_{1} + b-a+aa_{1} \\
+  -\phi(a_{1})a_{1} - b - a a_{1} & -\phi(a_{1})+\phi(a_{1})a_{1} + b -a +aa_{1} \\
+\end{array}%
+\right).
+\end{align*}
+Da $\phi-a_{1}$ ein Rechtsfaktor von $P_{L}$ ist, gelten:
+\begin{align*}
+b&=a_{1}a_{2}, &a=-\phi(a_{1})-a_{2}.
+\end{align*}
+Aus diesen beiden Gleichungen erhält man au"serdem
+\begin{align*}
+\phi(a_{1}) &=\frac{-aa_{1}-b}{a_{1}}.
+\end{align*}
+Setzt man diese Gleichungen in die obige Matrix ein, ergibt sich
+\[A_{1}=\left(%
+\begin{array}{cc}
+  a_{1} & 1+a_{2}-a_{1} \\
+  0 & a_{2} \\
+\end{array}%
+\right).\] Man sieht nun der Darstellungsmatrix $A_{1}$ direkt an,
+dass die Galoisgruppe von $L$ in der Gruppe der oberen
+Dreiecksmatrizen enthalten sein muss. Die Gestalt der
+Diagonalelemente der Galoisgruppe hängt davon ab, welche
+Galoisgruppe die Faktoren von $P_{L}$ haben. Wenn z.B. für die
+Differenzengleichung erster Ordnung $\phi(y)=a_{1}y$ die Gruppe $H
+\leq \Gm{F^{\phi}}$ als Galoisgruppe auftritt, so kann jedes
+Element dieser Gruppe im entsprechenden Matrixkoeffizienten
+stehen. So lassen sich die Diagonalelemente der Galoisgruppe mit
+Hilfe von Algorithmus \ref{chap_diff_gl_grad_1_algo_galois}
+berechnen. Da aber die $\korp{G}_{a}(F^{\phi})$ im Falle
+$\Char(F)=p>0$ nicht-triviale abgeschlossene Untergruppen besitzt,
+müssen wir bezüglich des Elements oberhalb der Diagonalen weitere
+Kriterien finden, um die Galoisgruppe zu bestimmen. Wir können
+jedoch die Möglichkeiten einschränken, indem wir die
+Diagonalelemente
+untersuchen.\\
+Ist beispielsweise ein Diagonalelement beliebig aus der kompletten
+$\korp{G}_{m}(F^{\phi})$ auswählbar, so muss über der Diagonale
+die komplette $\korp{G}_{a}(F^{\phi})$ stehen. Dies folgt daraus,
+dass die Matrizen
+\begin{align*}
+M_{1} &=\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \textrm{ mit } \alpha \in \korp{G}_{m}(F^{\phi}), \gamma
+\in H \lneq \korp{G}_{a}(F^{\phi})
+\textrm{ beliebig und } \\
+M_{2} &=\left(%
+\begin{array}{cc}
+  1 & \beta \\
+  0 & 1 \\
+\end{array}%
+\right) \textrm{ mit } \beta \in H \lneq \korp{G}_{a}(F^{\phi})
+\textrm{ beliebig }
+\end{align*}
+und damit auch die Konjugierte $M_{1}\cdot M_{2} \cdot M_{1}^{-1}$
+in der Galoisgruppe $G$ liegen. Diese hat die Gestalt
+\begin{align*}
+M_{1}\cdot M_{2} \cdot M_{1}^{-1} &= \left(\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  1 & \beta \\
+  0 & 1 \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  \alpha^{-1} &  -\alpha ^{-1}\gamma \\
+  0 & 1 \\
+\end{array}%
+\right)\\
+&= \left(%
+\begin{array}{cc}
+  1 & \alpha \beta \\
+  0 & 1 \\
+\end{array}%
+\right) \in G
+\end{align*}
+und damit kann über der Diagonale jedes beliebige Element aus
+$\korp{G}_{a}(F^{\phi})$ stehen. Das selbe Ergebnis erhalten wir
+durch analoge Überlegungen mit der Konjugationsmatrix
+\[\tilde{M}_{1}=\left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & \alpha \\
+\end{array}%
+\right) \textrm{ mit } \alpha \in \korp{G}_{m}(F^{\phi}) \textrm{
+beliebig.}\] Liegen dagegen beide Diagonalelemente in einer
+endlichen Untergruppe von $\korp{G}_{m}(F^{\phi})$, d.h. beide
+Faktoren von $P_{L}$ haben eine endliche Gruppe als Galoisgruppe,
+müssen wir mehrere Fälle unterscheiden. Dazu benötigen wir die
+Ergebnisse aus Bemerkung \ref{chap_diff_gl_grad_1_bem_gew}. Wir
+betrachten nun wieder die transformierte Darstellungsmatrix
+$A_{1}$. Durch einen erneuten Basiswechsel mit der
+Transformationsmatrix
+\begin{align*}
+T_{2}&=\left(%
+\begin{array}{cc}
+  1 & -1 \\
+  0 & 1 \\
+\end{array}%
+\right) & T_{2}^{-1}=\left(%
+\begin{array}{cc}
+  1 & 1 \\
+  0 & 1 \\
+\end{array}%
+\right)
+\end{align*}
+erhalten wir dann
+\begin{align*}
+A_{2} &= \phi(T_{2})A_{1}T_{2}^{-1}=\left(%
+\begin{array}{cc}
+  1 & -1 \\
+  0 & 1 \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  a_{1} & 1+a_{1}-a_{1} \\
+  0 & a_{2} \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  1 & 1 \\
+  0 & 1 \\
+\end{array}%
+\right)= \left(%
+\begin{array}{cc}
+  a_{1} & 1 \\
+  0 & a_{2} \\
+\end{array}%
+\right).
+\end{align*}
+Sind nun sowohl $a_{1}$ als auch $a_{2}$ gewöhnlich, so ist die
+Galoisgruppe $G$ von $L$ endlich. Die Galoisgruppe $G$ ist damit
+isomorph zu
+\[\B{F^{\phi}}_{k,l,e,p}=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \, \alpha^{k}=1 , \delta^{l}=1,
+\alpha^{eg_{\alpha}}\delta^{g_{\delta}}=1, \gamma \in
+\Add(\galois{p}) \},\] denn die Gruppe $\Add(\galois{p})$ hat nur
+die triviale Gruppe als Untergruppe und diese haben wir bereits
+ausgeschlossen durch die Annahme, dass $G$ reduzibel aber nicht
+komplett reduzibel ist. \\
+Sind dagegen die Elemente $a_{1}$ und $a_{2}$ multiplikativ
+transformierbar mit Transformationselementen $f_{1}, f_{2}$, so
+können wir auf $A_{2}$ die folgende Basiswechselmatrix anwenden
+\begin{align*}
+T_{3}&=\left(%
+\begin{array}{cc}
+  f_{1} & 0 \\
+  0 & f_{2} \\
+\end{array}%
+\right) & T_{3}^{-1}=\left(%
+\begin{array}{cc}
+  f_{1}^{-1} & 0 \\
+  0 & f_{2}^{-1} \\
+\end{array}%
+\right).
+\end{align*}
+Dies liefert
+\begin{align*}
+A_{3} &= \phi(T_{3})A_{2}T_{3}^{-1}=\left(%
+\begin{array}{cc}
+  \phi(f_{1}) &  \\
+  0 & \phi(f_{2}) \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  a_{1} & 1 \\
+  0 & a_{2} \\
+\end{array}%
+\right) \cdot \left(%
+\begin{array}{cc}
+  f_{1}^{-1} &  \\
+  0 & f_{^2}^{-1} \\
+\end{array}%
+\right)\\
+&= \left(%
+\begin{array}{cc}
+  \tilde{a}_{1} & \phi(f_{1})f_{2}^{-1}  \\
+  0 & \tilde{a}_{2} \\
+\end{array}%
+\right),
+\end{align*}
+wobei $\tilde{\alpha}_{1}$ und $\tilde{\alpha}_{2}$ gewöhnlich
+sind. Dagegen ist $\phi(f_{1})f_{2}^{-1}$ i.A. nicht gewöhnlich.
+Als Galoisgruppe tritt also eine Gruppe von der Form
+\[\B{F^{\phi}}_{k,l,e,H}=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \, \alpha^{k}=1 , \delta^{l}=1,
+\alpha^{eg_{\alpha}}\delta^{g_{\delta}}=1, \gamma \in H \leq
+\Add(F^{\phi}) \}\] auf. Nun muss man noch unterscheiden, welche
+Gruppe $H$ für die Elemente über der Diagonale in Frage kommt. Es
+können die volle $\Add(\galois{p}(t))$, endliche Gruppen mit
+Primzahlpotenzordnung der Form $\galois{p} g_{1} \oplus \galois{p}
+g_{2} \oplus \ldots \oplus \galois{p} g_{m}$ mit $g_{i} \in
+F^{\phi}$ sowie, die $\Ga{\galois{p}}$ auftreten. Um
+herauszufinden welche Gruppe die gesuchte Gruppe ist, betrachten
+wir eine Basis des Lösungsraums $V=\Sol{\Phi}{E}{M_{L}}$. Da
+sowohl $\tilde{a}_{1}$ also auch $\tilde{a}_{2}$ gewöhnlich sind,
+finden wir Lösungen $\eta_{1}$ und $\eta_{2}$ in einem
+algebraischen Abschluss von $F^{ord}=\galois{q}(s)$ mit
+$\phi(\eta_{1})=\tilde{a}_{1} \eta_{1}$ und
+$\phi(\eta_{2})=\tilde{a}_{2} \eta_{2}$. Die beiden entsprechenden
+Vektoren $\left(%
+\begin{array}{c}
+  \eta_{1} \\
+  0 \\
+\end{array}%
+\right), \left(%
+\begin{array}{c}
+  0 \\
+  \eta_{2} \\
+\end{array}%
+\right)$ spannen allerdings noch nicht den Lösungsraum auf, denn
+für einen Lösungsvektor $ \left(%
+\begin{array}{c}y_{1} \\
+y_{2} \\
+\end{array}%
+\right)$ gilt mit $c:=\phi(f_{1})f_{2}^{-1}$
+\[
+\phi(\left(%
+\begin{array}{c}
+  y_{1} \\
+  y_{2} \\
+\end{array}%
+\right))=\left(%
+\begin{array}{cc}
+  \tilde{a}_{1} & c \\
+  0 & \tilde{a}_{2} \\
+\end{array}%
+\right)\left(%
+\begin{array}{c}
+  y_{1} \\
+  y_{2} \\
+\end{array}%
+\right)=\left(%
+\begin{array}{c}
+  \tilde{a}_{1}y_{1} + cy_{2} \\
+  \tilde{a}_{2}y_{2} \\
+\end{array}%
+\right).
+\]
+Also können wir als ersten Lösungsvektor einfach $\left(%
+\begin{array}{c}
+  \eta_{1} \\
+  0 \\
+\end{array}%
+\right)$ wählen. Für den zweiten setzen wir $y_{2}=\eta_{2}$ und
+für $y_{1}$ wählen wir die formale Lösung
+\[
+\eta:=-\eta_{1}\left(\sum\limits_{i=0}^{\infty} \phi^{i}\left(\frac{c\eta_{2}}{\tilde{a}_{1}\eta_{1}}\right)\right),
+\]
+denn es gilt
+\begin{align*}
+\phi(\eta)&=\phi(-\eta_{1}\left(\sum\limits_{i=0}^{\infty}
+\phi^{i}\left(\frac{c\eta_{2}}{\tilde{a}_{1}\eta_{1}}\right)\right))=-\phi(\eta_{1})
+\cdot \phi\left(\sum\limits_{i=0}^{\infty}
+\phi^{i}\left(\frac{c\eta_{2}}{\tilde{a}_{1}\eta_{1}}\right)\right)\\
+&=-\tilde{a}_{1} \eta_{1}
+\left(\sum\limits_{i=1}^{\infty}\phi^{i}\left(\frac{c\eta_{2}}{\tilde{a}_{1}\eta_{1}}\right)\right).
+\end{align*}
+Andererseits gilt auch
+\begin{align*}
+\tilde{a}_{1}\eta &=
+-\tilde{a}_{1}\eta_{1}\left(\sum\limits_{i=0}^{\infty}
+\phi^{i}\left(\frac{c\eta_{2}}{\tilde{a}_{1}\eta_{1}}\right)\right))=-\tilde{a}_{1}\eta_{1}
+\cdot \frac{c
+\eta_{2}}{\tilde{a}_{1}\eta_{1}}-\tilde{a}_{1}\eta_{1}\left(\sum\limits_{i=1}^{\infty}\phi^{i}\left(\frac{c\eta_{2}}{\tilde{a}_{1}\eta_{1}}\right)\right)\\
+&=-c\eta_{2} + \phi(\eta)
+\end{align*}
+und damit $\phi(\eta)=\tilde{a}_{1}\eta + c \eta_{2}$. Also wird
+der Lösungsraum $V$ über $F^{\phi}$ von $\left(%
+\begin{array}{c}
+  \eta_{1} \\
+  0 \\
+\end{array}%
+\right)$ und $\left(%
+\begin{array}{c}
+  \eta \\
+  \eta_{2} \\
+\end{array}%
+\right)$ aufgespannt, d.h. es gilt
+\[V=\Sol{\Phi}{E}{M_{L}}=<\left(%
+\begin{array}{c}
+  \eta_{1} \\
+  0 \\
+\end{array}%
+\right), \left(%
+\begin{array}{c}
+  \eta \\
+  \eta_{2} \\
+\end{array}%
+\right)>_{F^{\phi}}.\] Da $\eta_{2}$ sowieso algebraisch über
+$\galois{q}(s)$ ist, hängt die Antwort auf die Frage, ob die
+Galoisgruppe endlich ist, nur noch von der formalen Lösung $\eta$
+ab. Ist $\eta$ algebraisch über $F$, so ist $G$ endlich.
+Andernfalls liegt eine unendliche Gruppe vor und es gilt
+\[G=\B{F^{\phi}}_{k,l,e,H}=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \, \alpha^{k}=1 , \delta^{l}=1,
+\alpha^{eg_{\alpha}}\delta^{g_{\delta}}=1, \gamma \in H=
+\Add(F^{\phi}) \}.\] Wir wollen nun genauer untersuchen, wann die
+obige formale Lösung $\eta$ algebraisch (bzw. transzendent) und damit die
+Galoisgruppe endlich (bzw. unendlich) ist. Um die folgenden Rechnungen etwas zu vereinfachen ersetzen wir $\eta$ ohne Einschränkung durch
+$\tilde{\eta}:=\frac{\eta}{\eta_{1}}$. Damit gilt $\phi(\tilde{\eta})=\tilde{\eta} + \frac{\eta_{2}}{\eta_{1}}c$ wegen $\phi(\eta)=\tilde{a}_{1}\eta + \eta_{2}c$
+
+\begin{satz}Es sei $L(y)=0$ eine reduzible Differenzengleichung 
+zweiter Ordnung, d.h. es gilt $P_{L}=(\phi-a_{2})(\phi-a_{1})$. 
+Ferner seien die Elemente $a_{1}$ und $a_{2}$ multiplikativ transformierbar mit Transformationselementen $f_{1}$ bzw. $f_{2}$, d.h. 
+es gilt $\frac{\phi(f_{1})}{f_{1}}a_{1}=\tilde{a}_{1} \in \galois{q}$ bzw. 
+$\frac{\phi(f_{2})}{f_{2}}a_{2}=\tilde{a}_{2} \in \galois{q}$. Die Galoisgruppen $G_{i}$ der Gleichungen $\phi(y)=\tilde{a}_{i}y$ seien endliche zyklische Untergruppen von $\Gm{\galois{p}}$ mit $k:=\# G_{1}$ bzw. $l:=\# G_{2}$. Die Darstellungsmatrix $A_{L}$ von $\Phi$ des zugehörigen Frobenius-Modul $M_{L}$ lässt sich also durch einen Frobenius-Basiswechsel auf die folgende Gestalt transformieren:
+\[ A:=\left(
+\begin{array}{cc}
+\tilde{a}_{1} & c \\
+0 & \tilde{a}_{2}
+\end{array}
+\right) \quad \textrm{ mit } c:=\frac{\phi(f_{1})}{f_{2}}.\]
+Au"serdem sei $f \in F$ ein Transformationselement, so dass $\tilde{c}=c-(\phi(f)-f)$ additiv minimal ist.
+Dann gelten:\\
+(a) Ist $\tilde{c}$ ein Polynom in $\galois{g}(s)[t]$, so ist die Galoisgruppe
+\[G=\B{F^{\phi}}_{k,l,e,H}=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \, \alpha^{k}=1 , \delta^{l}=1,
+\alpha^{eg_{\alpha}}\delta^{g_{\delta}}=1, \gamma \in H <
+\Add(F^{\phi}) \}.\]
+(b) Ist $\tilde{c} \in F$ Körperlement mit ausschlie"slich $\phi$-periodischen Polstellen, so ist die Galoisgruppe
+\[G=\B{F^{\phi}}_{k,l,e,H}=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \, \alpha^{k}=1 , \delta^{l}=1,
+\alpha^{eg_{\alpha}}\delta^{g_{\delta}}=1, \gamma \in H <
+\Add(F^{\phi}) \}.\]
+(c) Ist $\tilde{c}$ ein Körperelement mit mindestens einer nicht $\phi$-periodischen Polstelle und (a) und (b) treten nicht auf, so ist die Galoisgruppe
+\[G=\B{F^{\phi}}_{k,l,e,H}=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \, \alpha^{k}=1 , \delta^{l}=1,
+\alpha^{eg_{\alpha}}\delta^{g_{\delta}}=1, \gamma \in H =
+\Add(F^{\phi}) \}.\]
+\label{chap_diff_gl_grad_2_satz_ga}
+\end{satz}
+
+\begin{bew} Wir betrachten die additive Differenzengleichung $\phi(y)=y+\frac{\eta_{2}}{\eta_{1}}c$. Diese hat genau dann eine algebraische Lösung, falls die Gleichung $\phi(y)=y+c$ eine algebraische Lösung besitzt, da $\eta_{1},\eta_{2}$ algebraisch über $F^{ord}$ sind. Diese Gleichung hat aber genau dann eine algebraische Lösung bzw. eine endliche Galoisgruppe, falls die Gleichung $\phi(y)=y+\tilde{c}$ eine algebraische Lösung besitzt. Mit Satz \ref{chap_diff_gl_grad_1_galois_add} erhalten wir die entsprechenden Aussagen. Nun wollen wir noch für die Fälle (a) und (b) Aussagen über das Minimalpolynom von $\tilde{\eta}$ machen. Da $\eta_{1},\eta_{2}$ algebraisch über $\galois{q}$ sind, existieren nach Bemerkung \ref{1.23bem_alg_exp} 
+natürliche Zahlen $m_{1},m_{2}$ mit $\eta_{i}^{m_{i}} \in \galois{q}$ und $c=\frac{c_{1}}{c_{2}}$ mit $c_{1} \in \galois{q}(s)[t]$ und $c_{2} \in \galois{q}[t]$. 
+Mit $k:=\kgV\{m_{1},m_{2}\}$ gilt auch $\left(\frac{\eta_{2}}{\eta_{1}}\right)^k \in \galois{q}$. Wir erhalten mit 
+\[ d:= \prod\limits_{i=0}^{l-1} \phi^{i}(c_{2}),\]
+die Gleichung
+\[\phi(\tilde{\eta}d)=\tilde{\eta}d + \frac{\eta_{2}}{\eta_{1}}cd\]
+mit $cd=\sum\limits_{j=0}^{h} b_{i}t^{i} \in \galois{q}(s)[t]$. Wie im Beweis zu Satz \ref{chap_diff_gl_grad_1_galois_add} erhalten wir für jeden Koeffizienten $b_{j}\neq 0$ eine algebraische 
+Lösung $\theta_{j}$ mit $\phi(\theta_{j})=\theta_{j}+b_{j}$ mit Minimalpolynom
+\[g_{\theta_{j}}=X^p-X-b_{j}.\]
+Damit gilt $\phi(\theta_{j}t^{j})=\theta_{j}t^{j}+b_{j}t^{j}$ und daher ist $\bar{\theta}_{j}:=\theta_{j}t^{j}$ eine algebraische Lösung der 
+Gleichung $\phi(y)=y+b_{j}t^{j}$ mit Minimalpolynom
+\[g_{\bar{\theta}_{j}}=X^p-(t^{j})^{p-1}X-b_{j}(t^{j})^{p}.\] 
+Da $\left(\frac{\eta_{2}}{\eta_{1}}\right)^k$ in $\galois{q}$ liegt, erhalten wir damit eine algebraische Lösung
+$\bar{\eta}_{j}$ mit $\phi(\bar{\eta}_{j})=\bar{\eta}_{j}+\frac{\eta_{2}}{\eta_{1}}b_{j}t^{j}$ mit Minimalpolynom
+\[ g_{\bar{\eta}_{j}}=(X^p-(t^{j})^{p-1}X)^{k}-\left( b_{j}(t^{j})^p\frac{\eta_{2}}{\eta_{1}} \right)^k.\]
+Damit lässt sich $\tilde{\eta}d$ schreiben als $\tilde{\eta}d=\sum\limits_{j=0}^{h} \bar{\eta}_{j}$. Wir erhalten das Minimalpolynom 
+$g_{\tilde{\eta}}$ als Teiler der Resultante der Polynome $g_{\bar{\eta}_{j}}$. Damit lassen sich wie in Satz \ref{chap_diff_gl_grad_1_galois_add} Abschätzungen für den Grad des Minimalpolynoms von $\tilde{\eta}$ und damit auch für die Elementanzahl des additiven Teils der Galoisgruppe machen.
+\end{bew}
+
+Zusammenfassend können also folgende
+Gruppen auftreten, falls die Galoisgruppe in der Gruppe der oberen
+Dreiecksmatrizen enthalten ist:
+\begin{align*}
+\B{F^{\phi}} &= \{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha, \delta \in \korp{G}_{m}(F^{\phi}), \gamma
+\in \korp{G}_{a}(F^{\phi})\},\\
+\B{F^{\phi}}_{l,\korp{G_{m}}} &=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha^{l}=1, \delta \in \korp{G}_{m}(F^{\phi}),
+\gamma
+\in \korp{G}_{a}(F^{\phi})\},\\
+\B{F^{\phi}}_{\korp{G_{m}},l} &= \{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha \in \korp{G}_{m}(F^{\phi}) , \delta^{l}=1,
+\gamma \in \korp{G}_{a}(F^{\phi})\},\\
+\B{F^{\phi}}_{k,l,e,H}&=\{\left(%
+\begin{array}{cc}
+  \alpha & \gamma \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \, \alpha^{k}=1 , \delta^{l}=1,
+\alpha^{eg_{\alpha}}\delta^{g_{\delta}}=1, \gamma \in H \leq
+\Add(F^{\phi}) \},\\
+\korp{G}_{a}(F^{\phi}) &\cong \{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \, \gamma \in \korp{G}_{a}(F^{\phi})\},\\
+H &= \{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \, \gamma \in \korp{G}_{a}(\tilde{F}) \textrm{ mit }
+\Add(\galois{p}) \lneq H \lneq
+\korp{G}_{a}(F^{\phi})\}\\
+\Add(\galois{p})&=\{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \, \gamma \in \Add(\galois{p})\}.
+\end{align*}
+
+Dies sind alle möglichen Gruppen, die als Galoisgruppe einer
+reduziblen aber nicht komplett reduziblen Differenzengleichungen
+mit $\phi|_{\galois{q}(s)}=\phi_{p}$ auftreten können.
+
+\section{Zerfallende Tori}
+\label{sec:split_tori}
+
+\begin{defn} Eine algebraische Gruppe über einem Körper $K$ hei"st
+\textbf{$K$-Torus}, falls sie über dem algebraischen Abschluss
+$\bar{K}$ isomorph zu einem direkten Produkt ${\Gm{\bar{K}}}^{d}$
+für eine natürliche Zahl $d \in \korp{N}$ ist. Für eine
+algebraische Erweiterung $\hat{K} \geq K$ hei"st ein $K$-Torus
+\textbf{$\hat{K}$-zerfallend}, falls er über $\hat{K}$ isomorph zu
+einem direkten Produkt ${\Gm{\hat{K}}}^{d}$ für eine natürliche
+Zahl $d \in \korp{N}$ ist.
+\end{defn}
+
+Es sei nun der Operator $P_{L}$ komplett reduzibel, d.h. es gilt
+\[P_{L}=(\phi-a_{2})(\phi-a_{1})=(\phi-a_{1})(\phi-a_{2}) \textrm{ mit } a_{1} \neq a_{2},\]
+so ist die Galoisgruppe nach Satz \ref{chap_diff_gl_grad_2_satz_red}(b) in einem $F^{\phi}$-zerfallenden Torus,
+also in der Gruppe der Diagonalmatrizen, enthalten. Da die beiden Faktoren kommutieren, also
+\begin{align*}
+(\phi-a_{2})(\phi-a_{1}) &= \phi^2+(-\phi(a_{2})-a_{1}) \phi +
+a_{1}a_{2}\\
+(\phi-a_{1})(\phi-a_{2}) &=\phi^2+(-\phi(a_{1})-a_{2}) \phi +
+a_{1}a_{2},
+\end{align*}
+gilt, folgt durch Koeffizientenvergleich, dass
+$-\phi(a_{2})-a_{1}=-\phi(a_{1})-a_{2}$ bzw.
+\[a_{1}-a_{2}=\phi(a_{1})-\phi(a_{2})=\phi(a_{1}-a_{2})\] gelten muss, d.h.
+die Differenz $a_{1}-a_{2}$ ist $\phi$-invariant. Daher können wir
+mit den Basiswechselmatrizen
+\begin{align*}
+T_{4}&=\left(%
+\begin{array}{cc}
+  -a_{2} & 1 \\
+  -a_{1} & 1 \\
+\end{array}%
+\right) & T_{4}^{-1}=\left(%
+\begin{array}{cc}
+  \frac{1}{a_{1}-a_{2}} & \frac{-1}{a_{1}-a_{2}} \\
+  \frac{a_{1}}{a_{1}-a_{2}} & \frac{-a_{2}}{a_{1}-a_{2}} \\
+\end{array}%
+\right)
+\end{align*}
+die Darstellungsmatrix 
+\[A_{L}=\left(%
+\begin{array}{cc}
+  0 & 1 \\
+  -b & -a \\
+\end{array}%
+\right)\]
+auf die folgende Gestalt bringen
+\begin{align*}
+D &= \phi(T_{4})A_{L}T_{4}^{-1}=
+\left(%
+\begin{array}{cc}
+  -a_{2} & 1 \\
+  -a_{1} & 1 \\
+\end{array}%
+\right)
+\left(%
+\begin{array}{cc}
+  0 & 1 \\
+  -b & -a \\
+\end{array}%
+\right)
+\left(%
+\begin{array}{cc}
+  \frac{1}{a_{1}-a_{2}} & \frac{-1}{a_{1}-a_{2}} \\
+  \frac{a_{1}}{a_{1}-a_{2}} & \frac{-a_{2}}{a_{1}-a_{2}} \\
+\end{array}%
+\right)
+\\
+&= \left(%
+\begin{array}{cc}
+  \frac{-b-\phi(a_{2})a_{1}-aa_{1}}{a_{1}-a_{2}} & \frac{b+\phi(a_{2})a_{2}+aa_{2}}{a_{1}-a_{2}} \\
+  \frac{-b-\phi(a_{1})a_{1}-aa_{1}}{a_{1}-a_{2}} & \frac{b+\phi(a_{1})a_{2}-aa_{2}}{a_{1}-a_{2}} \\
+\end{array}%
+\right).
+\end{align*}
+Wegen 
+$b=a_{1}a_{2}$,
+$a =-\phi(a_{1})-a_{2}$ und 
+$\phi(a_{1})=\frac{-aa_{1}-b}{a_{1}}$
+erhalten wir daraus
+\[ D=\left(%
+\begin{array}{cc}
+  a_{1} & 0 \\
+  0 & a_{2} \\
+\end{array}%
+\right)\] und damit muss die Galoisgruppe in einem $F^{\phi}$-zerfallenden 
+Torus enthalten sein. Wir können nun Algorithmus \ref{chap_diff_gl_grad_1_algo_galois}
+für Differenzengleichungen erster Ordnung auf die Diagonalelemente
+$a_{1}$ und $a_{2}$ anwenden und erhalten damit eine
+Darstellungsmatrix, an der wir direkt die Galoisgruppe der
+Gleichung ablesen können. Damit kommen also die folgenden Gruppen
+als Galoisgruppe in Frage:
+\begin{align*}
+ \T{F^{\phi}}&=\{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha,\delta \in \korp{G}_{m}(F^{\phi}) \}, \tag{1}\\
+\T{F^{\phi}}_{\korp{G}_{m},l}&=\{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha \in \korp{G}_{m}(F^{\phi}), \delta^{l}=1\}\\
+&\cong \{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha^{l}=1 , \delta\in \korp{G}_{m}(F^{\phi})\}, \tag{2}\\
+\T{F^{\phi}}_{\korp{G}_{m}} &=\{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & \alpha^{-1} \\
+\end{array}%
+\right) \, | \, \alpha \in \korp{G}_{m}(F^{\phi})\} \cong \{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & \alpha^2\ \\
+\end{array}%
+\right) \, | \, \alpha\in \korp{G}_{m}(F^{\phi})\} \cong \ldots \\
+&\cong
+\korp{G}_{m}(F^{\phi}), \tag{3}\\
+H &\leq \T{\galois{p}} \leq \GL{2}{\galois{p}}, \tag{4}\\
+I &\cong \{ \left(%
+\begin{array}{cc}
+  1 & 0 \\
+  0 & 1 \\
+\end{array}%
+\right)\}. \tag{5}
+\end{align*}
+
+Die Liste der obigen Gruppen entspricht den verschiedenen
+Möglichkeiten für die Galoisgruppen der Faktoren. Diese können mit
+Hilfe von Algorithmus \ref{chap_diff_gl_grad_1_algo_galois}
+berechnet werden. Es tritt als Galoisgruppe also genau dann
+\begin{enumerate}[label=(\arabic*)]
+    \item auf, falls für beide Faktoren die volle
+    $\korp{G}_{m}(F^{\phi})$ als Galoisgruppe auftritt. Dann sind weder
+    $a_{1}$ noch $a_{2}$ multiplikativ transformierbar.
+    \item auf, falls für einen Faktor die volle
+    $\korp{G}_{m}(F^{\phi})$ und für den anderen eine echte
+    Untergruppe von $\korp{G}_{m}(F^{\phi})$
+    als Galoisgruppe auftritt. Also ist ohne Einschränkung $a_{1}$
+    multiplikativ transformierbar und $a_{2}$ ist nicht multiplikativ
+    transformierbar mit $a_{2}=a_{1}-\gamma$, wobei $\gamma$ ein
+    $\phi$-invariantes Element ist.
+    \item auf, falls beide Faktoren nicht multiplikativ
+    transformierbar sind, aber $a_{1}=a_{2}^{-1}$ oder
+    $a_{1}=a_{2}^{2}$ etc. gilt.
+    \item auf, falls für beide Faktoren eine echte
+    Untergruppe von $\korp{G}_{m}(F^{\phi})$ als Galoisgruppe
+    auftritt. In diesem Fall müssen sowohl $a_{1}$ als auch $a_{2}$
+    multiplikativ transformierbar sein. Wir wollen zeigen, dass beide sogar
+    gewöhnlich sein müssen. Dazu nehmen wir ohne Einschränkung an, dass 
+    $a_{1}$ multiplikativ transformierbar, aber nicht gewöhnlich ist. Damit besitzt $a_{1}$ 
+    nach Anmerkung \ref{chap_diff_gl_grad_1_anm_gew} die Darstellung
+    \[a_{1}=\alpha \cdot \underbrace{\frac{p_{1} p_{2} \cdots p_{r}
+        \cdots \phi^{e_{r+1}}(p_{r+1}) \cdots
+        \phi^{e_{x}}(p_{x})}{\phi^{e_{1}}(p_{1}) \cdots
+        \phi^{e_{r}}(p_{r}) p_{r+1} \cdots p_{x}}}_{\textrm{$=:\tilde{a}_{1}$}}.\]
+    Au"serdem muss $a_{2}=a_{1}-\gamma$ mit $\gamma \in F^{\phi}$
+    gelten. Mit der Darstellung \[\gamma=\tilde{\gamma}\cdot \frac{q_{1} \cdots q_{r}}{\hat{q}_{1} \cdots \hat{q}_{s}},\]
+    wobei $\tilde{\gamma}$ in $\galois{p}$ und die $q_{i},
+    \hat{q}_{i}$ in $\galois{p}[t]$ liegen, erhalten wir für
+    $a_{2}$ die folgende Darstellung:
+    \[ a_{2}=\frac{\tilde{\gamma} \cdot \textrm{Nenner}(\tilde{a}_{1})\cdot q_{1} \cdots q_{r} + \alpha \cdot \textrm{Zähler}(\tilde{a}_{1})
+    \cdot \hat{q}_{1} \cdots \hat{q}_{s}}{\textrm{Nenner}(\tilde{a}_{1}) \cdot \hat{q}_{1} \cdots
+    \hat{q}_{s}}.\] Da die $\hat{q}_{i}$ in $F^{\phi}$ liegen,
+    muss $r=s$ und $q_{i}=\hat{q}_{i}$ für alle $i=1 ,\ldots, r$ gelten, denn sonst kann $a_{2}$ nicht
+    multiplikativ transformierbar sein. Daher gilt
+    \[a_{2}=\frac{\tilde{\gamma} \cdot \textrm{Nenner}(\tilde{a}_{1}) + \alpha \cdot
+    \textrm{Zähler}(\tilde{a}_{1})}{\textrm{Nenner}(\tilde{a}_{1})}.\]
+     Damit $a_{2}$ multiplikativ transformierbar ist, muss der
+    Zähler die Gestalt $\delta \cdot
+    \textrm{Zähler}(\tilde{a}_{1})$ haben. Dies liefert $\tilde{\gamma}=(\alpha-\delta)\cdot
+    a_{1}$. Da aber $\tilde{\gamma}$ in $\galois{p}$ liegen muss,
+    aber $a_{1}$ nicht in $\galois{p}$ liegt, erhalten wir einen
+    Widerspruch. Also müssen sowohl $a_{1}$ als auch $a_{2}$
+    gewöhnlich sein. Damit ist $G$ eine Untergruppe
+    $\T{\galois{p}} \leq \GL{2}{\galois{p}}$. Die Elementanzahl
+    hängt von der Elementanzahl der Galoisgruppen von
+    $\phi(y)=a_{i}y$ ab.
+    \item auf, falls für beide Faktoren die triviale Gruppe als
+    Galoisgruppe auftritt.
+\end{enumerate}
+
+
+Ist $L$ dagegen irreduzibel, müssen wir weitere Kriterien finden,
+um die Galoisgruppe zu bestimmen.
+
+\section{Diedergruppen}
+\label{sec:dieder}
+
+Wir gehen davon aus, dass die Differenzengleichung
+$L(y)=\phi^{2}(y)+a\phi(y)+by=0$ irreduzibel ist. Nach Satz
+\ref{1.31satz-algebr-beschr} wissen wir: Falls eine
+$\phi$-Liouvillsche Lösung existiert, so existiert auch eine
+Lösung $\eta \in E$ mit $u:=\frac{\phi(\eta)}{\eta}$ algebraisch
+vom Grad höchstens $I(m,n,p)$. Es sei nun $P_{u}(X) \in F[X]$ das
+Minimalpolynom von $u$. Dabei ist die Schranke $I(m,n,p)$
+unabhängig von $L$. Die Konjugierten $\sigma(u)$ für $\sigma \in
+G$ sind ebenfalls Nullstellen von $P_{u}(X)$, denn es gilt
+\[P_{u}(\sigma(u))=\sigma(P_{u}(u))=\sigma(0)=0.\]
+Au"serdem gilt für die Konjugierten
+\[\sigma(u)=\frac{\sigma(\phi(\eta))}{\sigma(\eta)}=\frac{\phi(\sigma(\eta))}{\sigma(\eta)}=\frac{\phi(\eta_{2})}{\eta_{2}},\]
+wobei $\eta_{2}=\sigma(\eta)$ ebenfalls eine Lösung von $L$ ist.
+Wir können also das Minimalpolynom $P_{u}(X)$ schreiben als
+\[P_{u}(X)=\prod\limits_{i=1}^{d}(X-\frac{\phi(\eta_{i})}{\eta_{i}}),\]
+wobei $\eta_{1}:=\eta$ und $\eta_{i}$ für $i=2, \ldots, d$ weitere
+Lösungen von $L$ sind. Durch Ausmultiplizieren ergibt sich
+\[P_{u}(X)=X^{d} \underbrace{-\sum\limits_{i=1}^{d}\frac{\phi( \eta_{i})}{\eta_{i}}}_{\textrm{$:=b_{d-1}$}}X^{d-1} +
+\ldots + \underbrace{(-1)^{d} \prod\limits_{i=1}^{d}
+\frac{\phi(\eta_{i})}{\eta_{i}}}_{\textrm{$:=b_{0}$}}.\] Man sieht
+am niedrigsten Koeffizienten $b_{0}$, dass dieses Minimalpolynom
+nur dann in $F$ liegen kann, falls die $d$-te symmetrische Potenz
+$\Sym_{d}(L)$ von $L$ eine $\phi$-exponentielle Lösung besitzt. Um
+die übrigen Koeffizienten zu berechnen, gehen wir folgenderma"sen
+vor: Jeder Koeffizient $b_{d-j}$ ist ein elementar symmetrisches
+Polynom in den $u_{i}=\frac{\phi(\eta_{i})}{\eta_{i}}$. Dies
+liefert die folgende Darstellung:
+\begin{align*}
+\binom{d}{i} b_{d-i}&=\sum\limits_{\pi \in S_{d}}
+\frac{\phi(\eta_{\pi(1)} \cdots
+\eta_{\pi(i)})}{\eta_{\pi(1)}\cdots \eta_{\pi(i)}}\\
+&=\frac{\sum\limits_{\pi \in S_{d}} \phi(\eta_{\pi(1)} \cdots
+\eta_{\pi(i)})\eta_{\pi(i+1)} \cdots \eta_{\pi(d)}}{\eta_{1}
+\cdots \eta_{d}},
+\end{align*}
+wobei $S_{d}$ die Gruppe der Permutationen von $d$ Elementen
+bezeichnet. Wie oben bereits erwähnt, ist $\phi-b_{0}$ mit
+$b_{0}=\prod\limits_{i=1}^{d} \frac{\phi(\eta_{i})}{\eta_{i}}$ ein
+Rechtsfaktor der $d$-ten symmetrischen Potenz $\Sym_{d}(L)$.
+Au"serdem ist für $i=1, \ldots, m-1$ das Element $(\eta_{1} \cdots
+\eta_{d})b_{d-i}$ eine Lösung der Gleichung
+\[L_{i}:=\Sym_{d-i}(L) \otimes \Sym_{i}(L^{\phi}).\]
+Diese muss also einen Rechtsfaktor vom Grad $1$ haben, denn
+\[\frac{\phi((\eta_{1} \cdots
+\eta_{d})b_{d-i})}{(\eta_{1} \cdots
+\eta_{d})b_{d-i}}=\frac{\phi(\eta_{1} \cdots \eta_{d})}{\eta_{1}
+\cdots \eta_{d}} \cdot \frac{\phi(b_{d-i})}{b_{d-i}}=b_{0}\cdot
+\frac{\phi(b_{d-i})}{b_{d-i}}\] liegt in $F$. Also finden wir
+einen Rechtsfaktor $\phi-x$ vom Grad $1$ von $L_{i}$ mit
+$x=b_{0}\cdot \frac{\phi(b_{d-i})}{b_{d-i}}$. Daraus erhalten wir
+den Koeffizienten $b_{d-i}$ als rationale Lösung der
+Differenzengleichung ersten Grades $\phi(y)=\frac{x}{b_{0}} y$.
+Dies liefert einen Algorithmus zur Berechnung des Minimalpolynoms
+von $u$.\\
+Zur Erinnerung (vgl. Kapitel \ref{chap_diff_op}): alle $d$-fachen
+Produkte von Lösungen von $L$ sind Lösungen von $\Sym_{d}(L)$.
+Zusammen mit den Sätzen \ref{1.30satz-bahn} und
+\ref{1.31satz-algebr-beschr} ist nun klar, wie weiter vorzugehen
+ist. Wir berechnen die $d$-te symmetrische Potenz $\Sym_{d}(L)$
+bis zur vorgegebenen Schranke $d\leq I(m,n,p)$. Falls diese eine
+nicht-triviale $\phi$-exponentielle Lösung besitzt, ist die
+Galoisgruppe eine echte Untergruppe von $\GL{2}{F^{\phi}}$. Um
+welche Gruppe es sich handelt hängt vom Grad der minimalen
+symmetrischen Potenz $\Sym_{d}(L)$ ab, die eine
+$\phi$-exponentielle Lösung besitzt. Hat dagegen keine der
+symmetrischen Potenzen $\Sym_{d}(L)$ für $d \leq I(m,n,p)$ eine
+$\phi$-exponentielle Lösung, so kommen als Galoisgruppe nur noch
+die Gruppen $\SL{2}{F^{\phi}}$ und $\GL{2}{F^{\phi}}$, sowie deren
+Zwischengruppen in Frage.
+
+\begin{satz} Es sei $L(y)=0$ eine irreduzible Differenzengleichung zweiter
+Ordnung mit Galoisgruppe $G\leq \GL{2}{F^{\phi}}$. Diese ist in
+der unendlichen Diedergruppe
+\[D_{\infty}=\{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & \delta \\
+\end{array}%
+\right) \, | \, \alpha, \delta \in F^{\phi}\} \cup \{ \left(%
+\begin{array}{cc}
+  0 & \beta \\
+  \gamma & 0 \\
+\end{array}%
+\right) \, | \, \beta, \gamma \in F^{\phi}\}\] enthalten, falls
+die zweite symmetrische Potenz $\Sym_{2}(L)$ eine
+$\phi$-exponentielle Lösung, d.h. einen Rechtsfaktor vom Grad 1
+besitzt und $P_{L}$ über der entsprechenden algebraischen
+Erweiterung in nicht-kommutierende Linearfaktoren zerfällt.
+\label{chap_diff_gl_grad_2_satz_imprimitive}
+\end{satz}
+
+\begin{bew} Es sei $E$ ein PV-Körper von $L$ und
+$V:=\Sol{\phi}{E}{M_{L}}=F^{\phi}\eta_{1}+F^{\phi}\eta_{2}$ der
+Lösungsvektorraum mit Basis $\eta_{1},\eta_{2}$. Nach Satz
+\ref{chap_diff_op_sym_power_sol} (c) ist $\Sym_{2}(V)$ isomorph zu
+$\Sol{\phi}{E}{M_{\Sym_{2}(L)}}$. Die Gerade $F^{\phi}\eta_{1}
+\cdot \eta_{2}$ in $\Sym_{2}(V)$ ist also $G$-invariant, falls
+$\Sym_{2}(L)$ eine $\phi$-exponentielle Lösung besitzt. Da
+$D_{\infty}$ eine endliche $G$-Bahn besitzt, deren Länge höchstens
+$2$ ist, folgt dann mit den Sätzen \ref{1.30satz-bahn} und
+\ref{1.31satz-algebr-beschr} die Behauptung.
+\end{bew}
+
+Die Galoisgruppe $\DGal(L)$ ist also in der Diedergruppe
+$D_{\infty}$ enthalten, wenn die zweite symmetrische Potenz
+$\Sym_{2}(L)$ eine rationale Lösung besitzt. Dann besitzt aber die
+ursprüngliche Gleichung $L$ eine Lösung $\eta$, für die
+$u:=\frac{\phi(\eta)}{\eta}$ algebraisch vom Grad 2 über $F$ ist.
+Also zerfällt der zugehörige Operator $P_{L}$ über der
+algebraischen Erweiterung $F(u)/F$ vom Grad 2 in Linearfaktoren,
+nämlich $P_{L}=(\phi-\tilde{u})(\phi-u)$. Um nun zu entscheiden,
+ob die volle unendliche Diedergruppe oder eine endliche
+Untergruppe als Galoisgruppe auftritt, müssen wir die Galoisgruppe
+der Differenzengleichung $\phi(y)=uy$ vom Grad 1 über dem
+Frobenius-Körper $F(u)$ bestimmen. Ist diese eine endliche
+Untergruppe der $\Gm{F^{\phi}}$, so besitzt die Gleichung
+$\phi(y)=uy$ und damit auch unsere ursprüngliche Gleichung $L$ nur
+algebraische Lösungen. In diesem Fall muss die Galoisgruppe eine
+endliche Untergruppe der Diedergruppe sein. Tritt dagegen die
+volle $\Gm{F^{\phi}}$ als Galoisgruppe von $\phi(y)=uy$ auf, so
+muss die Galoisgruppe $\DGal(L)$ die volle Diedergruppe
+$D_{\infty}$ sein.
+
+\section{Nicht-Zerfallende Tori}
+\label{sec:non-split-tori}
+
+\begin{satz} Ein $K$-Torus $\korp{T}$ zerfällt über einer endlichen
+Galoiserweiterung $\hat{K}$ von $K$.
+\end{satz}
+
+\begin{bew}
+\cite[III Theorem 1.4.1]{Tits}
+\end{bew}
+
+\begin{satz} Es sei $\korp{T}\leq \GL{n}{F^{\phi}}$ ein $F^{\phi}$-Torus.
+Dann existiert eine Körpererweiterung $K \geq F^{\phi}$ vom Grad
+höchstens $n!$, so dass $\korp{T}$ ein $K$-zerfallender Torus ist.
+\label{chap_diff_gl_grad_2_satz_tori_schranke}
+\end{satz}
+
+\begin{bew} Nach \cite[III Theorem 1.6.4.]{Tits} existiert ein Element 
+$T \in \korp{T}$, das eine Untergruppe $H \leq \korp{T}$ erzeugt, die Zariski-dicht 
+in $\korp{T}$ liegt. Es sei $p_{T}(X) \in F^{\phi}[X]$ das charakteristische Polynom 
+mit $\deg(p_{T})=n$ dieses Erzeugers. Nach \cite[Satz 6.5.4]{Meyberg} existiert eine Körpererweiterung 
+$K \geq F^{\phi}$ vom Grad höchstens $n!$, über der dieses Polynom $p_{T}$ in Linearfaktoren 
+zerfällt. Also ist $T$ über $K$ diagonalisierbar, d.h. es existiert ein Element 
+$A \in \GL{n}{K}$ mit 
+\[ATA^{-1}=\left(
+\begin{array}{ccc}
+d_{1} & & \\
+ & \ddots &  \\
+ & & d_{n}
+\end{array}
+\right)=:D.\]
+Die von $D=ATA^{-1}$ erzeugte Untergruppe liegt dicht in $\korp{T}$ und ist abgeschlossen. 
+Daher ist jedes Element von $\korp{T}$ über $K$ diagonalisierbar und damit 
+ist $\korp{T}$ ein $K$-zerfallender Torus. 
+\end{bew}
+
+\begin{satz} Es sei $L(y)=0$ eine irreduzible Differenzengleichung zweiter
+Ordnung mit Galoisgruppe $G\leq \GL{2}{F^{\phi}}$. Diese ist in
+einem nicht-zerfallenden Torus $\korp{T}$ enthalten, falls die
+zweite symmetrische Potenz $\Sym_{2}(L)$ eine $\phi$-exponentielle
+Lösung, d.h. einen Rechtsfaktor vom Grad 1 besitzt und $P_{L}$
+über der entsprechenden algebraischen Erweiterung in kommutierende
+Linearfaktoren zerfällt. \label{chap_diff_gl_grad_2_satz_tori}
+\end{satz}
+
+\begin{bew} Besitzt die zweite symmetrische Potenz $\Sym_{2}(L)$ eine $\phi$-exponentielle
+Lösung, d.h. einen Rechtsfaktor vom Grad 1, so zerfällt $P_{L}$
+über einer algebraischen Erweiterung $K$ vom Grad $2$ in
+Linearfaktoren. Falls diese darüber hinaus kommutieren, ist die
+Galoisgruppe von $L$ über $K$ nach Satz
+\ref{chap_diff_gl_grad_2_satz_red} in einem zerfallenden Torus
+$\korp{T}$ enthalten. Da $L$ irreduzibel über $F$ ist, ist
+$\korp{T}$ nicht-zerfallend über $F^{\phi}$.
+\end{bew}
+
+Wir berechnen also die zweite symmetrische Potenz $\Sym_{2}(L)$
+und suchen eine rationale Lösung. Existiert eine solche Lösung
+erhalten wir daraus wie oben das Minimalpolynom eines Elements
+$u$, so dass $P_{L}$ über $F(u)$ in die Linearfaktoren
+$(\phi-\tilde{u})(\phi-u)$ zerfällt. Kommutieren diese Faktoren, so
+ist die Galoisgruppe $\DGal(L)$ in einem nicht-zerfallenden Torus
+$\korp{T}$ enthalten. Durch Berechnung der Galoisgruppen von
+$\phi(y)=uy$ bzw. $\phi(y)=\tilde{u}y$ erhalten wir die Struktur
+des Torus bzw. eine Darstellungsmatrix $A$ von $M_{L}$ über
+$F(u)$. Lösen wir das lineare Gleichungssystem $MAM^{-1}=B$ mit $B
+\in F$, so erhalten wir eine Darstellungsmatrix von $M_{L}$ über
+$F$, an der wir die Struktur des Torus $\korp{T}$ über $F^{\phi}$
+ablesen können. Wegen Satz \ref{1.15satz-galois-obere-grenze} ist die Galoisgruppe in der kleinsten Gruppe, die $B$ enthält, enthalten.
+Nicht-zerfallende Tori von höherer Dimension als
+$2$ können wegen Satz \ref{chap_diff_gl_grad_2_satz_tori_schranke}
+nicht auftreten.
+
+\section{Irreduzible primitive Gruppen}
+\label{sec:irred-prim}
+Falls die bisherigen Kriterien noch keine Ergebnisse geliefert
+haben, kommen als Galoisgruppe noch die irreduziblen primitiven
+Untergruppen von $\GL{2}{F^{\phi}}$ und Gruppen $H$ mit
+$\SL{2}{F^{\phi}} \leq H \leq \GL{2}{F^{\phi}}$ in Frage. Der
+folgende Satz liefert ein weiteres Entscheidungskriterium, welche
+dieser Gruppen als Galoisgruppe auftritt.
+
+\begin{satz}Es sei $L(y)=0$ eine irreduzible Differenzengleichung zweiter
+Ordnung mit Galoisgruppe $G\leq \GL{2}{F^{\phi}}$, deren zweite
+symmetrische Potenz $\Sym_{2}(L)$ ebenfalls irreduzibel ist. Dann
+gelten:\\
+(a) Die vierte symmetrische Potenz $\Sym_{4}(L)$ besitzt genau
+dann eine $\phi$-exponentielle Lösung, falls die Galoisgruppe $G$
+isomorph
+zur Tetraeder-Gruppe $A_{4}^{\GL{2}{F^{\phi}}}$ ist. \\
+(b) Es sei die vierte symmetrische Potenz $\Sym_{4}(L)$
+irreduzibel. Dann besitzt die sechste symmetrische Potenz
+$\Sym_{6}(L)$ genau dann eine $\phi$-exponentielle Lösung, falls
+die Galoisgruppe $G$ isomorph
+zur Oktaeder-Gruppe $S_{4}^{\GL{2}{F^{\phi}}}$ ist. \\
+(c) Es seien die vierte symmetrische Potenz $\Sym_{4}(L)$ und die
+sechste symmetrische Potenz $\Sym_{6}(L)$ irreduzibel. Dann
+besitzt die zwölfte symmetrische Potenz $\Sym_{12}(L)$ genau dann
+eine $\phi$-exponentielle Lösung, falls die Galoisgruppe $G$
+isomorph zur Ikosaeder-Gruppe $A_{5}^{\GL{2}{F^{\phi}}}$ ist.
+\label{chap_diff_gl_grad_2_satz_primitive}
+\end{satz}
+
+\begin{bew} Die Gruppen-Operationen von $A_{4}, S_{4}, A_{5}$ auf $\korp{P}^{1}(F^{\phi})$ haben minimale
+Bahnen der Länge $4, 6, 12$. Dies liefert mit analogen Argumenten
+wie im Beweis zu Satz \ref{chap_diff_gl_grad_2_satz_imprimitive}
+zusammen mit den Sätzen \ref{1.30satz-bahn} und
+\ref{1.31satz-algebr-beschr} die Behauptungen.
+\end{bew}
+
+Benutzt man die Zerlegung der Charaktere von $\Sym_{m}(V)$, wobei
+$V=\Sol{\Phi}{E}{M_{L}}$ den Lösungsvektorraum von $L$ bezeichnet,
+in Verbindung mit Satz \ref{chap_diff_op_sym_power_sol}, so kann
+man Satz \ref{chap_diff_gl_grad_2_satz_primitive} zu folgendem
+Satz umformulieren.
+
+\begin{satz} Es sei $L(y)=0$ eine irreduzible Differenzengleichung zweiter
+Ordnung mit Galoisgruppe $G\leq \GL{2}{F^{\phi}}$, deren zweite
+symmetrische Potenz $\Sym_{2}(L)$ ebenfalls irreduzibel ist. Dann
+gelten:\\
+(a) Die dritte symmetrische Potenz $\Sym_{3}(L)$ ist genau dann
+reduzibel über $F$, falls die Galoisgruppe $G$ isomorph zur
+Tetraeder-Gruppe $A_{4}^{\GL{2}{F^{\phi}}}$ ist. In diesem Fall
+haben die Faktoren $\Sym_{3}(L)=L_{1}L_{2}$ beide Ordnung 2.\\
+(b) Es sei die dritte symmetrische Potenz $\Sym_{3}(L)$
+irreduzibel. Dann ist die vierte symmetrische Potenz $\Sym_{4}(L)$
+genau dann reduzibel über $F$, falls die Galoisgruppe $G$ isomorph
+zur Oktaeder-Gruppe $S_{4}^{\GL{2}{F^{\phi}}}$ ist. In diesem Fall
+haben die Faktoren $\Sym_{4}(L)=L_{1}L_{2}$ Ordnung 3 bzw. 2.\\
+(c) Es seien die dritte symmetrische Potenz $\Sym_{3}(L)$ und die
+vierte symmetrische Potenz $\Sym_{4}(L)$ irreduzibel. Dann ist die
+sechste symmetrische Potenz $\Sym_{6}(L)$ genau dann reduzibel
+über $F$, falls die Galoisgruppe $G$ isomorph zur Ikosaeder-Gruppe
+$A_{5}^{\GL{2}{F^{\phi}}}$ ist. In diesem Fall haben die Faktoren
+$\Sym_{6}(L)=L_{1}L_{2}$ Ordnung 4 bzw. 3.
+\label{chap_diff_gl_grad_2_satz_primitive01}
+\end{satz}
+
+Der Vorteil an Satz \ref{chap_diff_gl_grad_2_satz_primitive01}
+gegenüber Satz \ref{chap_diff_gl_grad_2_satz_primitive} ist, dass
+man die symmetrischen Potenzen nur bis Grad 6 anstatt bis Grad 12
+berechnen muss. Dafür muss man diese faktorisieren und nicht nur
+einen Rechtsfaktor vom Grad 1 bestimmen. An dieser Stelle
+benötigen wir die Faktorisierungsalgorithmen aus Kapitel
+\ref{chap_fakt_diff}.
+
+\section{Zwischengruppen von $\SL{2}{F^{\phi}}$ und $\GL{2}{F^{\phi}}$}
+\label{sec:zwischen}
+
+Sind alle symmetrischen Potenzen $\Sym_{d}(L)$ für $d\leq
+I(m,n,p)$ der Differenzengleichung $L(y)=\phi^2(y)+a\phi(y)+by=0$ irreduzibel, so kommen als Galoisgruppe nur noch Gruppen
+$H$ mit $\SL{2}{F^{\phi}} \leq H \leq \GL{2}{F^{\phi}}$ in Frage.
+Solche Gruppen lassen sich für eine natürliche Zahl $m \in \korp{N}$ folgenderma"sen charakterisieren:
+\[H_{m}=\{ A \in \GL{2}{F^{\phi}} \,| \, \det(A)^m=1\}.\] Die spezielle
+lineare Gruppe $\SL{2}{F^{\phi}}$ ist in jeder dieser Gruppen
+enthalten. Nach Satz \ref{1.15satz-galois-obere-grenze} ist die
+Galoisgruppe $G$ eine Untergruppe von $H$, falls es eine Matrix
+$T\in \GL{2}{F}$ gibt, so dass
+\[\phi(T)\cdot A_{L}\cdot T^{-1} \in H(F)\]
+liegt. Dazu genügt es Matrizen der Form
+$D=\left(%
+\begin{array}{cc}
+  f & 0 \\
+  0 & 1 \\
+\end{array}%
+\right)$ zu betrachten, denn man kann jede Matrix $T=\left(%
+\begin{array}{cc}
+  t_{11} & t_{12} \\
+  t_{21} & t_{22} \\
+\end{array}%
+\right) \in
+\GL{2}{F}$ schreiben als
+\[T=S\cdot D \textrm{ mit } S=\left(%
+\begin{array}{cc}
+  \frac{t_{11}}{\det(T)} & t_{12} \\
+  \frac{t_{21}}{\det(T)} & t_{22} \\
+\end{array}%
+\right) \in \SL{2}{F} \textrm{ und } D=\left(%
+\begin{array}{cc}
+  \det(T) & 0 \\
+  0 & 1 \\
+\end{array}%
+\right).\] Falls also
+\[\phi(T)\cdot A_{L} \cdot T^{-1}=\phi(S)\cdot \underbrace{\phi(D)\cdot A_{L}\cdot D^{-1}}_{\textrm{ $:=B$}} \cdot S^{-1} \in
+H(F)\] liegt, muss schon $B \in H(F)$ liegen.\\
+Wir wollen nun untersuchen, in welchen Fällen eine Transformation
+der Form
+\begin{equation}
+\phi\left(%
+\begin{array}{cc}
+  f & 0 \\
+  0 & 1 \\
+\end{array}%
+\right)\cdot A_{L} \cdot \left(%
+\begin{array}{cc}
+  \frac{1}{f} & 0 \\
+  0 & 1 \\
+\end{array}%
+\right) \in H(F)\label{chap_diff_gl_grad_2_equ_1}
+\end{equation}
+möglich ist. Rechnen wir also (\ref{chap_diff_gl_grad_2_equ_1})
+direkt aus, erhalten wir die Matrix \[B:=\left(%
+\begin{array}{cc}
+  0 & \phi(f) \\
+  -\frac{b}{f} & -a \\
+\end{array}%
+\right).\] Die Determinante dieser Matrix ist
+$\det(B)=\frac{\phi(f)}{f}b$. Um nun die Galoisgruppe $G$ der
+Gleichung $L$ zu bestimmen, müssen wir die Galoisgruppe der
+Differenzengleichung erster Ordnung $\phi(y)=by$ berechnen. Dazu
+verwenden wir Algorithmus \ref{chap_diff_gl_grad_1_algo_galois}.
+Besitzt diese Gleichung eine rationale Lösung $\eta \in F$, so
+erhalten wir mit $f:=\eta^{-1}$ für die obige Determinante
+$\det(B)=1$ und damit als Galoisgruppe die spezielle lineare
+Gruppe $\SL{2}{F^{\phi}}$. Tritt dagegen eine endliche Untergruppe
+von $(F^{\phi})^{\times}$, etwa mit Ordnung $m$, als Galoisgruppe
+von $\phi(y)=by$ auf, so besitzt die Gleichung $\phi(y)=b^{m}y$
+eine rationale Lösung $\eta$. Mit $f:=\eta^{-1}$ erhalten wir für
+die obige Determinante $\det(B)^m=\frac{\phi(f^m)}{f^m}b^m=1$ und
+damit ist die Galoisgruppe $G$ von $L$ isomorph zur Gruppe
+\[H_{m}=\{ A \in \GL{2}{F^{\phi}} \,| \, \det(A)^m=1\}.\]
+Andernfalls ist die Galoisgruppe der Gleichung $\phi(y)=by$ die
+volle multiplikative Gruppe $(F^{\phi})^{\times}$ und als
+Galoisgruppe $G$ bleibt nur noch die volle $\GL{2}{F^{\phi}}$
+übrig. Diese Erkenntnisse wollen wir im folgenden Satz festhalten.
+
+\begin{satz} Es sei $L(y)=\phi^{2}(y)+a\phi(y)+by=0$ eine irreduzible Differenzengleichung zweiter
+Ordnung mit Galoisgruppe $G\leq \GL{2}{F^{\phi}}$. Au"serdem seien alle symmetrischen Potenzen $\Sym_{d}(L)$ für $d\leq
+I(m,n,p)$ irreduzibel. Dann gelten:\\
+(a) Die Galoisgruppe $G$ ist genau dann isomorph zur $\SL{2}{F^{\phi}}$, falls für die Differenzengleichung $\phi(y)=by$ erster Ordnung 
+die triviale Gruppe als Galoisgruppe auftritt.\\
+(b) Die Galoisgruppe $G$ ist genau dann isomorph zur Gruppe
+\[H_{m}=\{ A \in \GL{2}{F^{\phi}} \,| \, \det(A)^m=1\},\]
+falls für die Differenzengleichung $\phi(y)=by$ erster Ordnung 
+eine endliche zyklische Gruppe der Ordnung $m$ als Galoisgruppe auftritt.\\
+(c) Die Galoisgruppe $G$ ist genau dann isomorph zur vollen Gruppe $\GL{2}{F^{\phi}}$, falls für die Differenzengleichung $\phi(y)=by$ erster Ordnung 
+die volle $\Gm{F^{\phi}}$ als Galoisgruppe auftritt.
+\label{satz:zwischengruppen}
+\end{satz}
+
+Damit endet der Algorithmus für Differenzengleichungen vom
+Grad $2$.
+
+\section{Beispiele}
+
+Zum Abschluss des Kapitels wollen wir noch zu einigen Gleichungen zweiter Ordnung die Galoisgruppe bestimmen. Dabei soll veranschaulicht werden, wie sich die Ergebnisse der einzelnen Abschnitte auf die entsprechenden Beispiele anwenden lassen.
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) - (t+1) \phi(y) + t y=0$ bzw.
+der zugehörige Differenzen-Operator $P_{L}$ ist komplett reduzibel
+mit der Zerlegung
+\[P_{L}=(\phi-t)(\phi-1)=(\phi-1)(\phi-t).\]
+Daher erhalten wir als Begleitmatrix
+\[\left(%
+\begin{array}{cc}
+  t & 0 \\
+  0 & 1 \\
+\end{array}%
+\right),\] wobei für die Faktoren als Differenzengleichungen
+ersten Grades die $\Mult(\galois{p}(t))$ bzw. die triviale Gruppe
+als Galoisgruppe auftreten. Daher ergibt sich als Galoisgruppe von
+$L$
+\[\DGal(L)=\{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \, \alpha \in \Mult(\galois{p}(t))\}.\]
+\end{bsp}
+
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) - \frac{(t^2+1)}{t} \phi(y)
++ y=0$ bzw. der zugehörige Differenzen-Operator $P_{L}$ ist
+komplett reduzibel mit der Zerlegung
+\[P_{L}=(\phi-t)(\phi-\frac{1}{t})=(\phi-\frac{1}{t})(\phi-t).\]
+Daher erhalten wir als Begleitmatrix
+\[\left(%
+\begin{array}{cc}
+  t & 0 \\
+  0 & \frac{1}{t} \\
+\end{array}%
+\right),\] wobei für die Faktoren als Differenzengleichungen
+ersten Grades die volle $\Gm{F^{\phi}}$ als Galoisgruppe
+auftreten. Daher ergibt sich als Galoisgruppe von $L$
+\[\DGal(L)=\{ \left(%
+\begin{array}{cc}
+  \alpha & 0 \\
+  0 & \alpha^{-1} \\
+\end{array}%
+\right) \, | \, \alpha \in \Mult(\galois{p}(t))\}.\]
+\end{bsp}
+
+
+\begin{bsp} Es sei $F=\galois{9}(s,t)=\Quot(\galois{9}[s,t])$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{9}(s)}=\phi_{3}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{3}(t)$. Ferner sei $w$ ein
+Erzeuger der multiplikativen Gruppe $\galois{9}^{\times}$. Die
+Differenzengleichung $L(y)=\phi^2(y) + w^2 \phi(y) + w y=0$ bzw. der
+zugehörige Differenzen-Operator $P_{L}$ ist reduzibel, aber nicht
+komplett reduzibel mit der Zerlegung
+\[P_{L}=(\phi+w)(\phi+1).\]
+Daher erhalten wir als Begleitmatrix nach den oben beschriebenen
+Basiswechseln
+\[\left(%
+\begin{array}{cc}
+  1 & w^2 \\
+  0 & w^5 \\
+\end{array}%
+\right),\] wobei für die Faktoren als Differenzengleichungen
+ersten Grades die triviale Gruppe bzw. die $\Mult(\galois{3})$ als
+Galoisgruppe auftreten. Daher ergibt sich als Galoisgruppe von
+$L$
+\[\DGal(L)=\{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & \alpha \\
+\end{array}%
+\right) \, | \, \alpha \in \Mult(\galois{3}), \gamma \in
+\Add(\galois{3})\}\] eine zyklische Gruppe der Ordnung $6=2 \cdot
+3$.
+\end{bsp}
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$.  Die
+Differenzengleichung $L(y)=\phi^2(y) +
+(\frac{s^{p^2}+t}{s^p+t})\phi(y) + (\frac{s^p+t}{s+t}) y=0$ bzw. der
+zugehörige Differenzen-Operator $P_{L}$ ist reduzibel, aber nicht
+komplett reduzibel mit der Zerlegung
+\[P_{L}=(\phi-\frac{s^{p^{2}}+t}{s^p+t})(\phi-\frac{s^p+t}{s+t}).\]
+Daher erhalten wir als Begleitmatrix nach den oben beschriebenen
+Basiswechseln zunächst
+\[\left(%
+\begin{array}{cc}
+  \frac{s^p+t}{s+t} & 1 \\
+  0 & \frac{s^{p^2}+t}{s^p+t} \\
+\end{array}%
+\right)\]  und nach einem weiteren Basiswechsel mit
+Basiswechselmatrix \[\left(%
+\begin{array}{cc}
+  \frac{1}{s+t} & 0 \\
+  0 & \frac{1}{s^p+t} \\
+\end{array}%
+\right)\] schlie"slich
+\[\left(%
+\begin{array}{cc}
+  1 & 1 \\
+  0 & 1 \\
+\end{array}%
+\right),\] wobei für die Faktoren als Differenzengleichungen
+ersten Grades jeweils die triviale Gruppe als Galoisgruppe
+auftritt. Daher ergibt sich als Galoisgruppe von $L$
+\[\DGal(L)=\{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \,  \gamma \in \Add(\galois{p})\}\] eine zyklische
+Gruppe der Ordnung $p$.
+\end{bsp}
+
+\begin{bsp} Es sei $F=\galois{9}(s,t)=\Quot(\galois{9}[s,t])$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{9}(s)}=\phi_{3}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{3}(t)$.  Die
+Differenzengleichung $L(y)=\phi^2(y) +
+(\frac{2s^{10}+2s^9t+2s^6+s^3t+2st+t^2}{s^4+s^3t+st+t^2})\phi(y) +
+(\frac{s^6+2s^3t+t^2}{s^2+2st+t^2}) y=0$ bzw. der zugehörige
+Differenzen-Operator $P_{L}$ ist reduzibel, aber nicht komplett
+reduzibel mit der Zerlegung
+\[P_{L}=(\phi-\frac{s^3+t}{s+t})(\phi-\frac{s^3+t}{s+t}).\]
+Daher erhalten wir als Begleitmatrix nach den oben beschriebenen
+Basiswechseln zunächst
+\[\left(%
+\begin{array}{cc}
+  \frac{s^3+t}{s+t} & 1 \\
+  0 & \frac{s^3+t}{s+t} \\
+\end{array}%
+\right)\]  und nach einem weiteren Basiswechsel mit
+Basiswechselmatrix \[\left(%
+\begin{array}{cc}
+  \frac{1}{s+t} & 0 \\
+  0 & \frac{1}{s+t} \\
+\end{array}%
+\right)\] schlie"slich
+\[\left(%
+\begin{array}{cc}
+  1 & \frac{s+t}{s^3+t} \\
+  0 & 1 \\
+\end{array}%
+\right),\] wobei für die Faktoren als Differenzengleichungen
+ersten Grades jeweils die triviale Gruppe als Galoisgruppe
+auftritt. Da $c=\frac{s+t}{s^3+t}$ additiv minimal ist und eine nicht $\phi$-periodische Polstelle besitzt, ergibt sich als Galoisgruppe von $L$
+\[\DGal(L)=\{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \,  \gamma \in \Add(\galois{3}(t))\}.\]
+\end{bsp}
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) -
+(\frac{s^{p}+s+t}{s-t})\phi(y) + (\frac{s^p-t}{s-t}) y=0$ bzw. der
+zugehörige Differenzen-Operator $P_{L}$ ist reduzibel, aber nicht
+komplett reduzibel mit der Zerlegung
+\[P_{L}=(\phi-\frac{s^{p}-t}{s-t})(\phi-1).\]
+Daher erhalten wir als Begleitmatrix nach den oben beschriebenen
+Basiswechseln zunächst
+\[\left(%
+\begin{array}{cc}
+  1 & 1 \\
+  0 & \frac{s^{p}-t}{s-t} \\
+\end{array}%
+\right)\]  und nach einem weiteren Basiswechsel mit
+Basiswechselmatrix \[\left(%
+\begin{array}{cc}
+  1 & 0 \\
+  0 & \frac{1}{s-t} \\
+\end{array}%
+\right)\] schlie"slich
+\[\left(%
+\begin{array}{cc}
+  1 & s-t \\
+  0 & 1 \\
+\end{array}%
+\right),\] wobei für die Faktoren als Differenzengleichungen
+ersten Grades jeweils die triviale Gruppe als Galoisgruppe
+auftritt. Da $c=s-t$ additiv minimal und ein Polynom in $\galois{q}(s)[t]$ ist, ergibt sich nach Satz \ref{chap_diff_gl_grad_2_satz_ga} als Galoisgruppe von $L$
+\[\DGal(L)=\{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \,  \gamma \in H < \Add(\galois{p}(t))\}\] eine endliche
+Gruppe der Ordnung $\#H$. Um diese zu bestimmen, müssen wir das Minimalpolynom von $\eta$ mit $\phi(\eta)=\eta+s-t$ bestimmen. Dazu schreiben wir $\eta$ als Summe $\eta=\eta_{1}+\eta_{2}$ mit $\phi(\eta_{1})=\eta_{1}+s$ und $\phi(\eta_{1})=\eta_{1}-t$. Die zugehörigen Minimalpolynome sind 
+\begin{align*}
+g_{\eta_{1}}(X) &= X^p-X-s \quad \textrm{ bzw. }\\
+g_{\eta_{2}}(X) &= X^p-t^{p-1}X+t^{p}.
+\end{align*}
+Dann erhalten wir das Minimalpolynom $g_{\eta}$ als Teiler der Resultante
+\[\Resul_{T}(g_{\eta_{1}}(X-T),g_{\eta_{2}}(T)).\]
+Dies ist ein Polynom vom Grad $p^2$ und damit gilt für die Galoisgruppe
+\[\DGal(L)=\{ \left(%
+\begin{array}{cc}
+  1 & \gamma \\
+  0 & 1 \\
+\end{array}%
+\right) \, | \,  \gamma \in H < \Add(\galois{p}(t))\}\]
+mit $\#H \leq p^2$. Daher ist $G$ eine endliche Gruppe der Ordnung höchstens $p^2$. Wie in Beispiel \ref{bsp:add} ist 
+\[g_{\eta}=\Resul_{T}(g_{\eta_{1}}(X),g_{\eta_{2}}(X-T))\]
+für den Spezialfall $p=3$ und $q=9$. In diesem Fall ist also die Galoisgruppe eine Gruppe der Ordnung $3^2=9$.
+\end{bsp}
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) +ty=0$ ist irreduzibel. Die zweite
+symmetrische Potenz $\Sym_{2}(L)=-\frac{1}{t^2}\phi^3 - \frac{1}{t^2}\phi^2+\phi+1$ hat einen Rechtsfaktor vom
+Grad 1, nämlich $\phi+t$. Daher zerfällt $P_{L}$ über
+$F(\sqrt{t})$ in die Faktoren \[P_{L}=\phi^2 +
+t=(\phi+\sqrt{t})(\phi-\sqrt{t})=(\phi-\sqrt{t})(\phi+\sqrt{t}).\]
+Wir erhalten also als Galoisgruppe einen nicht-zerfallenden Torus. Über $F(\sqrt{t})$ hat die Darstellungsmatrix von $\Phi$ die folgende Gestalt:
+\[A:=\left(
+\begin{array}{cc}
+\sqrt{t} & 0 \\
+0 & -\sqrt{t}
+\end{array}
+\right).\]
+Mit der Konjugationsmatrix
+\begin{align*}
+M&:=\left(
+\begin{array}{cc}
+\sqrt{t} & -\sqrt{t} \\
+1 & 1
+\end{array}
+\right), 
+&M^{-1}=\left(
+\begin{array}{cc}
+\frac{-1}{t\sqrt{t}} & -1 \\
+\frac{1}{t\sqrt{t}} & -1
+\end{array}
+\right)
+\end{align*}
+ergibt sich
+\[M \cdot A \cdot M^{-1}=\left(
+\begin{array}{cc}
+0 & t \\
+1 & 0
+\end{array}
+\right)\]
+und damit als Galoisgruppe
+\[\DGal(L)\leq\{ \left(%
+\begin{array}{cc}
+  \alpha & \beta t \\
+  \beta & \alpha \\
+\end{array}%
+\right) \in \GL{2}{F^{\phi}} \, | \,  \alpha,\beta \in \Gm{\galois{p}(t)}, \alpha^2+\beta^2t \neq 0 \} .\]
+\end{bsp}
+
+
+\begin{bsp} Es sei $F=\galois{9}(s,t)=\Quot(\galois{9}[s,t])$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{9}(s)}=\phi_{3}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{3}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) - s^2t^2 y=0$ bzw. der
+zugehörige Differenzen-Operator $P_{L}$ ist irreduzibel. Die zweite
+symmetrische Potenz $\Sym_{2}(L)=\frac{2}{s^{12}t^4} \phi^{3} +
+\frac{2}{s^{4}t^4} \phi^2 + \phi +1$ hat einen Rechtsfaktor vom
+Grad 1, nämlich $\phi+st^2$. Daher zerfällt $P_{L}$ über
+$F(\sqrt{s})$ in die Faktoren \[P_{L}=\phi^2 -
+s^2t^2=(\phi+\sqrt{s^3}t)(\phi-\sqrt{s}t).\] Die beiden Faktoren
+haben über $F(\sqrt{s})$ die volle $\Gm{F^{\phi}}$ als
+Galoisgruppe. Daher ist $\DGal(L)$ isomorph zur unendlichen
+Diedergruppe $D_{\infty}$.
+\end{bsp}
+
+\begin{bsp} Es sei $F=\galois{9}(s,t)=\Quot(\galois{9}[s,t])$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{9}(s)}=\phi_{3}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{3}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) - s^2 y=0$ bzw. der zugehörige
+Differenzen-Operator $P_{L}$ ist irreduzibel. Die zweite
+symmetrische Potenz $\Sym_{2}(L)=\frac{2}{s^{12}} \phi^{3} +
+\frac{2}{s^{4}} \phi^2 + \phi +1$ hat einen Rechtsfaktor vom Grad
+1, nämlich $\phi+s$. Daher zerfällt $P_{L}$ über $F(\sqrt{s})$ in
+die Faktoren \[P_{L}=\phi^2 -
+s^2=(\phi+\sqrt{s^3})(\phi-\sqrt{s}).\] Die beiden Faktoren haben
+über $F(\sqrt{s})$ eine endliche Untergruppe von $\Gm{F^{\phi}}$
+als Galoisgruppe, da man die Gleichung als gewöhnliche Gleichung
+betrachten kann. Daher ist $\DGal(L)$ isomorph zu einer endlichen
+Untergruppe der Diedergruppe $D_{\infty}$.
+\end{bsp}
+
+\begin{bsp} Es sei $F=\galois{9}(s,t)=\Quot(\galois{9}[s,t])$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{9}(s)}=\phi_{3}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{3}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) - s y=0$ bzw. der zugehörige
+Differenzen-Operator $P_{L}$ ist irreduzibel. Die zweite
+symmetrische Potenz $\Sym_{2}(L)=\frac{2}{s^{6}} \phi^{3} +
+\frac{2}{s^{2}} \phi^2 + \phi +1$ ist ebenfalls irreduzibel. Die vierte symmetrische Potenz
+$\Sym_{4}(L)=\frac{2s^{12}+2}{s^120} \phi^5 + \frac{2s^4+2}{s^40}
+\phi^{4}+ \phi^3 + \phi^2 +\phi+1$ hat dagegen einen Rechtsfaktor vom Grad
+1, nämlich $\phi+s$. Daher ist $\DGal(L)$ isomorph zur
+Tetraedergruppe $A_{4}^{\GL{2}{F^{\phi}}}$.
+\end{bsp}
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) +\frac{s^p+t}{s+t}y=0$ ist irreduzibel. Alle symmetrischen Potenzen von $P_{L}$ bis zum Grad $12$ sind ebenfalls irreduzibel. 
+Als Galoisgruppe kommen also nur Zwischengruppen $H$ von $\SL{2}{F^{\phi}}$ und $\GL{2}{F^{\phi}}$ in Frage, d.h. es gilt $\SL{2}{F^{\phi}} \leq H \leq \GL{2}{F^{\phi}}$. Die Galoisgruppe der Gleichung $\phi(y)=by$ ersten Grades mit $b=\frac{s^p+t}{s+t}$ ist die triviale Gruppe. Damit ist $\SL{2}{\galois{p}(t)}$ die Galoisgruppe von $L$.
+\end{bsp}
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) +s \frac{s^p+t}{s+t}y=0$ ist irreduzibel. Alle symmetrischen Potenzen von $P_{L}$ bis zum Grad $12$ sind ebenfalls irreduzibel. 
+Als Galoisgruppe kommen also nur Zwischengruppen $H$ von $\SL{2}{F^{\phi}}$ und $\GL{2}{F^{\phi}}$ in Frage, d.h. es gilt $\SL{2}{F^{\phi}} \leq H \leq \GL{2}{F^{\phi}}$. Die Galoisgruppe der Gleichung $\phi(y)=by$ ersten Grades mit $b=s\frac{s^p+t}{s+t}$ ist eine zyklische Gruppe der Ordnung $p-1$. Damit gilt für die Galoisgruppe 
+\[\DGal(L)=H_{p-1}=\{ A \in \GL{2}{F^{\phi}} \,| \,  \det(A)^{p-1}=1\}.\]
+\end{bsp}
+
+
+\begin{bsp} Es sei $p$ eine Primzahl und $F=\galois{q}(s,t)=\Quot(\galois{q}[s,t])$ mit $q=p^{n}$ der Frobenius-Körper
+mit Endomorphismus $\phi|_{\galois{q}(s)}=\phi_{p}$ und
+$\phi(t)=t$, also $F^{\phi}=\galois{p}(t)$. Die
+Differenzengleichung $L(y)=\phi^2(y) +t\frac{s^p+t}{s+t}y=0$ ist irreduzibel. Alle symmetrischen Potenzen von $P_{L}$ bis zum Grad $12$ sind ebenfalls irreduzibel. 
+Als Galoisgruppe kommen also nur Zwischengruppen $H$ von $\SL{2}{F^{\phi}}$ und $\GL{2}{F^{\phi}}$ in Frage. Die Galoisgruppe der Gleichung $\phi(y)=by$ ersten Grades mit $b=t\frac{s^p+t}{s+t}$ ist die volle $\Gm{F^{\phi}}$. Daher tritt die volle $\GL{2}{\galois{p}(t)}$ als Galoisgruppe von $L$ auf.
+\end{bsp}

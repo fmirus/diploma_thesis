@@ -1,0 +1,1049 @@
+\chapter{Differenzen-Galoistheorie und Frobenius-Moduln}
+\label{chap-frob-mod}
+
+Wir wollen in diesem ersten Kapitel zunächst die grundlegenden
+Definitionen und Sätze über Frobenius-Ringe und Frobenius-Moduln
+zusammenstellen. Diese bilden die Grundlage für die
+Differenzengleichungen, die wir betrachten wollen. Dabei folgen
+wir hier hauptsächlich den Methoden und Resultaten von B. H.
+Matzat. Ausführlichere Abhandlungen über Frobenius-Moduln finden
+sich in \cite{Matzat01}, \cite{Matzat02} und \cite{Matzat03}.
+
+\section{Grundlegende Definitionen}
+\label{sec1.1}
+
+\begin{defn} Ein Integritätsbereich $R$ mit $\Char(R)>0$ zusammen
+mit einem Endomorphismus $\phi \in \End(S)$ hei"st
+\textbf{gewöhnlicher Frobenius-Ring}, falls eine natürliche Zahl
+$d \in \korp{N}$ existiert, so dass
+\[\abbger{\phi=\phi_{q}}{R}{R}{x}{x^q} \]
+mit $q=p^{d}$ gilt. Das Paar $(R,\phi)$ hei"st \textbf{relativer
+Frobenius-Ring}, falls ein $\phi$-invariantes Primideal, ein
+sogenanntes \textbf{$\phi$-Ideal} $Q\unlhd R$, d.h. mit
+$\phi(Q)\subseteq Q$ existiert, so dass das Paar
+$(\bar{R}:=R/Q,\bar{\phi})$, wobei $\bar{\phi}$ den induzierten
+Endomorphismus bezeichnet, einen gewöhnlichen Frobenius-Ring
+bildet. In diesem Fall hei"st $Q$ \textbf{definierendes
+Primideal}. Falls in Zukunft ein Frobenius-Ring nicht explizit als
+gewöhnlich bezeichnet wird, ist immer ein relativer Forbenius-Ring
+gemeint. Die Menge
+\[R^{\phi}=\{ r \in R \; | \, \phi(r)=r\}\]
+hei"st \textbf{Ring der Frobenius-Invarianten}.
+\label{1.1defn-frob-ring}
+\end{defn}
+
+\begin{defn}Es sei $(R, \phi)$ ein Frobenius-Ring. Ein freier
+$R$-Modul $M$ mit einem Endomorphismus $\Phi \in \End(M)$ hei"st
+\textbf{Frobenius-Modul} über $R$, falls $\Phi$ eine
+$\phi$-semilineare Abbildung ist, d.h. für alle $x,y \in M$ und
+alle $r \in R$ gilt
+\[ \Phi(x+y)= \Phi(x) + \Phi(y) \textrm{ und } \Phi(r\cdot x)=\phi(r)\cdot \Phi(x).\]
+Die Menge
+\[\Sol{\Phi}{}{M}:=\{x \in M \, | \, \Phi(x)=x\}\]
+hei"st \textbf{Lösungsraum} von $(M, \Phi)$. \\
+Für einen Frobenius-Ring  $(E,\phi_{E})$ mit $E \geq R$ und
+$\phi_{E}|_{R}=\phi=\phi_{R}$ wird der Modul
+$M_{E}:=E\otimes_{R}M$ zu einem Frobenius-Modul über $E$ mit
+fortgesetzter Frobenius-Operation $\Phi_{E}=\phi_{E} \otimes
+\Phi$. Die Menge
+\[\Sol{\Phi}{E}{M}:=\Sol{\Phi_{E}}{}{E\otimes_{R}M}=(E\otimes_{R}M)^{\Phi_{E}}=\{x \in E\otimes_{R}M \ | \, \Phi_{E}(x)=x\}\]
+hei"st \textbf{Lösungsraum} von $M$ über $E$. Der Modul $M$ hei"st
+\textbf{trivial} über $E$, falls $\Sol{\Phi}{E}{M}$ eine $E$-Basis
+von $M_{E}$ enthält. In diesem Fall hei"st $E$
+\textbf{Lösungsring} des Frobenius-Moduls $M$.
+\label{1.2defn_frob_mod}
+\end{defn}
+
+\begin{satz}Es sei $R$ ein gewöhnlicher Frobenius-Ring. Ferner sei
+$(M,\Phi)$ ein Frobenius-Modul über dem Quotientenkörper
+$(F:=\Quot(R),\phi)$ von $R$ mit $\dim_{F}(M):=n$. Dann gelten:\\
+(a) Für jede Frobenius-Körpererweiterung $(E,\phi_{E})$ von $F$
+ist der Lösungsraum $\Sol{\Phi}{E}{M}$ ein $F^{\phi}$-Vektorraum
+der Dimension \[ \dim_{F^{\phi}}(\Sol{\Phi}{E}{M}) \leq \dim_{E}(E
+\otimes_{F}M)=n.\] (b) Es existiert eine endliche
+Frobenius-Körpererweiterung $E/F$ mit \[
+\dim_{F^{\phi}}(\Sol{\Phi}{E}{M})=n.\] (c) Die minimale
+Frobenius-Körpererweiterung $E/F$ mit $
+\dim_{F^{\phi}}(\Sol{\Phi}{E}{M})=n$ ist (in einer gegeben
+algebraisch abgeschlossenen Hülle von $F$) eindeutig bestimmt und
+galoissch über $F$. \label{1.3satz_sol_ring}
+\end{satz}
+
+\begin{bew}Offensichtlich ist $\Sol{\Phi}{E}{M}$ ein $F^{\phi}$-Vektorraum.
+Nehmen wir $\dim_{F^{\phi}}(\Sol{\Phi}{E}{M})$ echt grö"ser $n$
+an, so existiert eine Menge Elemente $\{ x_{i}\in \Sol{\Phi}{E}{M}
+\, | \, i=1, \ldots, k \}$ mit $k$ minimal, die linear unabhängig
+über $F^{\phi}$ aber linear abhängig über $E$ ist. Daraus erhalten
+wir eine nicht-triviale Relation $x_{1}=\sum\limits_{i=2}^{k}
+a_{i}x_{i}$ mit $a_{i} \in E$, wobei wir ohne Einschränkung $a_{1}
+\neq 0$ annehmen. Wendet man darauf $\phi$ an, so erhält man
+$x_{1}=\sum\limits_{i=2}^{k} \phi(a_{i})x_{i}$. Subtraktion der
+beiden Gleichungen liefert eine nicht-triviale Relation der
+$x_{2},\ldots, x_{k}$ über $E$. Dies steht im Widerspruch zur
+Annahme, dass $k$ minimal gewählt war.\\
+Um (b) zu zeigen, wählen wir eine Basis $B=\{b_{1}, \ldots,
+b_{n}\}$ von $M$. Durch $\Phi(b_{j})=\sum\limits_{i=1}^{n}
+d_{ij}b_{i}$ mit $d_{ij} \in F$ erhalten wir eine
+Darstellungsmatrix $D:=D_{B}(\Phi)=(d_{ij})_{i,j=1}^{n} \in F^{n
+\times n}$ von $\Phi$ zur Basis $B$. Sei nun
+$B\multi{y}=\sum\limits_{i=1}^{n}b_{i}y_{i}$ mit
+$\multi{y}=(y_{1}, \ldots,y_{n})^{tr}\in E^{n}$ eine Lösung von
+$M$ über $E$. Dann gilt
+\[B\multi{y}=\Phi(B\multi{y})=\Phi(B)\phi(\multi{y})=B \cdot D \cdot \phi(\multi{y})\]
+mit $\phi(\multi{y})=(\phi(y_{1}),\ldots,\phi(y_{n}))^{tr}$. Diese
+Gleichung definiert ein System von algebraischen Gleichungen
+$\multi{y}-D\phi(\multi{y})=0$ für $y_{i}$ über $F$. Nach dem Satz
+von Bézout hat dieses System höchstens $q^n$ verschiedene Lösungen
+in einer algebraisch abgeschlossenen Hülle $\overline{F}$ von $F$.
+Alle Lösungen sind einfach, da die Jaocbi-Matrix
+$\J=\left(\frac{\partial y_{i}}{\partial
+y_{k}}\right)_{i,k=1}^{n}$ die Einheitsmatrix ist, denn es gilt
+\begin{eqnarray*} \frac{\partial
+y_{i}}{\partial y_{k}} &=& 1 \textrm{ , für } i=k \textrm{ und sonst} \\
+\frac{\partial y_{i}}{\partial
+y_{k}}&=&\frac{\partial(\sum\limits_{j=1}^{n}
+d_{ij}\phi(y_{j}))}{\partial y_{k}}=
+\frac{\partial(\sum\limits_{j=1}^{n} d_{ij}y_{j}^{q})}{\partial
+y_{k}}=d_{ik} \cdot q \cdot y_{k}^{q-1}=d_{ik} \cdot p\cdot
+p^{d-1} \cdot y_{k}^{q-1}=0.\end{eqnarray*} Der Körper $E/F$, der
+von diesen Lösungen erzeugt wird, hat die gewünschten
+Eigenschaften.\\
+$E$ ist minimal in $\overline{F}$ und hängt nicht von der Wahl der
+Basis ab. Da alle Nullstellen von $\multi{y}-D\phi(\multi{y})=0$
+einfach sind, ist $E/F$ separabel und normal, also galoissch.
+\end{bew}
+
+\begin{anm}
+Die Gleichung $\multi{y}-D\phi(\multi{y})=0$ aus dem Beweis zu
+Satz \ref{1.3satz_sol_ring} ist äquivalent zu der
+Differenzengleichung (vgl. Definition
+\ref{1.16defn-diff-gleichung}) $\phi(\multi{y})=A\multi{y}$ mit
+$A:=D_{B}(\Phi)^{-1} \in \GenL_{n}(F).$
+\label{1.4anm-diff-gleichung}
+\end{anm}
+
+\begin{cor}
+Unter den Voraussetzungen von Satz \ref{1.3satz_sol_ring}
+existiert eine Matrix $Y=(y_{ij})_{i,j=1}^{n}$ in $\GenL_{n}(E)$
+mit $\phi_{E}(Y)=AY$ und $E$ wird über $F$ von den Einträgen von
+$Y$ erzeugt, d.h. es gilt $E=F(y_{ij} \, | \, i,j=1, \ldots, n)$.
+\label{1.5cor_fundamental-matrix}
+\end{cor}
+
+\begin{defn}
+Eine Matrix $Y=(y_{ij})_{i,j=1}^{n} \in \GenL_{n}(E)$ wie in
+Korollar \ref{1.5cor_fundamental-matrix} mit der Eigenschaft
+$\phi_{E}(Y)=AY$ hei"st \textbf{Fundamental-Matrix} von $(M,
+\Phi)$. \label{1.5defnfundamental-matrix}
+\end{defn}
+
+\begin{bem}Es sei $R$ ein gewöhnlicher Frobenius-Ring mit
+Quotientenkörper $F:=\Quot(R)$ und Lösungskörper $E$ zum
+Frobenius-Modul $(M,\Phi)$ über $F$. Dann unterscheiden sich zwei
+Fundamental-Matrizen $Y_{1}$ und $Y_{2}$ von $M$ nur durch
+Multiplikation mit einer Matrix $C \in \GenL_{n}(F^{\phi})$, d.h.
+es gilt
+\[Y_{1}=Y_{2}C.\]
+\label{1.6bem-fundamental-invariant}
+\end{bem}
+
+\begin{bew}
+Die durch $C:=Y_{1}^{-1}Y_{2}$ definierte Matrix existiert, da
+$Y_{1},Y_{2} \in \GenL_{n}(E)$ liegen. Um zu zeigen, dass $C \in
+\GenL_{m}(F^{\phi})$ liegt, wenden wir $\phi$ auf $C$ an und
+erhalten durch
+\[\phi(C)=\phi(Y_{1}^{-1}Y_{2})=\phi(Y_{1})^{-1}\phi(Y_{2})=Y_{1}^{-1}A^{-1}AY_{2}=Y_{1}^{-1}Y_{2}=C\]
+die Behauptung.
+\end{bew}
+
+\section{Lösungsringe für relative Frobenius-Moduln}
+
+Um die Existenz minimaler Lösungsringe von Frobenius-Moduln zu beweisen, 
+benötigen wir einige grundlegende Kenntnisse über algebraische 
+Funktionenkörper. Diese wollen wir nun kurz zusammentragen. \\
+Wir bezeichnen mit $\korp{P}$ die Menge aller Primdivisoren bzw. Stellen eines algebraischen 
+Funktionenkörpers $F$ einer Variablen mit Konstantenkörper $K$. Mit $v_{\mathfrak{p}}$ bezeichnen wir die zu einer solchen 
+Stelle $\mathfrak{p} \in \korp{P}$ gehörige Bewertung mit Bewertungsring
+\begin{align*}
+\mathcal{O}_{\mathfrak{p}}& =\{x \in F \, | \, v_{\mathfrak{p}}(x) \geq 0\} \textrm{ bzw. Bewertungsideal } \\
+\mathfrak{p} &= \{x \in F \, | \, v_{\mathfrak{p}}(x) > 0\}
+\end{align*}
+und Restklassenkörper $R_{\mathfrak{p}}=\mathcal{O}_{\mathfrak{p}}/\mathfrak{p}$.
+\begin{defn} Eine Primstelle $\mathfrak{p} \in \korp{P}$ eines algebraischen Funktionenkörpers $F/K$ vom Grad 
+$\deg(\mathfrak{p})=[ R_{\mathfrak{p}}:K ]=1$
+ hei"st \textbf{rationale Stelle} bzw. \textbf{rationaler Punkt}.
+\label{rational_place}
+\end{defn}
+Es sei $R$ ein relativer Frobenius-Ring mit definierendem
+Bewertungsideal $Q \unlhd R$. Wir setzen $R$ als
+Integritätsbereich voraus. Damit bildet $Q$ nach dem
+Erweiterungssatz von Chevalley (siehe \cite{Eng} Theorem 3.1.1)
+ein Bewertungsideal in $\Quot(R)$. Dann wird die Vervollständigung
+$(R_{Q},\phi)$ von $R$ bezüglich $Q$ ein Hensel'scher
+Integritätsbereich mit stetig fortgesetztem
+Frobenius-Endomorphismus. Wir bezeichnen mit
+$(R_{Q}^{\ur},\phi^{\ur})$ die ganz abgeschlossene Hülle in einer
+maximal unverzweigten algebraischen Erweiterung von $\Quot(R_{Q})$
+mit der eindeutigen Fortsetzung $\phi^{\ur}$ von $\phi$, die mit
+dem gewöhnlichen Frobenius-Endomorphismus auf dem Restklassenring
+$R_{Q}^{\ur}/(Q)$ verträglich ist. Also ist die Vervollständigung
+$(\hat{R}_{Q}^{\ur},\hat{\phi})$ von $R_{Q}^{\ur}$ bezüglich $(Q)
+\unlhd R_{Q}^{\ur}$ wieder ein Hensel'scher Integritätsbereich mit
+stetig fortgesetzter Frobenius-Operation. Daher erzeugt $Q$ nicht
+nur ein Ideal in $R$, sondern auch in $R_{Q},R_{Q}^{\ur}$ und
+$\hat{R}_{Q}^{\ur}$ und diese sind auch Bewertungsideale.
+
+\begin{satz}(\textbf{Matzat}) Es sei $(R,\phi)$ ein relativer Frobenius-Integritätsbereich, dessen
+definierendes Ideal $Q$ ein Bewertungsideal in $\Quot(R)$ bildet
+und $(M,\Phi)$ ein Frobenius-Modul über $(R,\phi)$. Dann besitzt
+$M$ einen minimalen Lösungsring in
+$(\hat{R}_{Q}^{\ur},\hat{\phi})$. \label{1.7bem-semi-trivial}
+\end{satz}
+
+\begin{bew}
+Wir nehmen an, dass $Q=(r)$ eine diskrete Bewertung induziert, da
+der nicht-diskrete Fall für unsere Anwendungen nicht relevant ist.
+Wir bezeichnen mit $D:=D_{B}(\Phi)\in \GenL_{n}(R)$ die
+Darstellungsmatrix von $\Phi$ bezüglich einer Basis $B$ von $M$
+und deren Inverse mit $A:=D^{-1}$. Die Restklassenmatrix
+$\overline{A} \mod r$ liegt in $\GenL_{n}(\overline{R})$, wobei
+$\overline{R}:=R/Q$ den Restklassenkörper bezeichnet. Durch die
+Surjektivität der Lang-Isogenie
+\[\abbil{\pi}{\GenL_{n}(\overline{R}^{sep})}{\GenL_{n}(\overline{R}^{sep})}\]
+erhalten wir eine Matrix $\overline{D}_{0}\in
+\GenL_{n}(\overline{R}^{sep})$ mit
+$\overline{A}=\overline{\phi}(\overline{D}_{0})\overline{D}_{0}^{-1}$.
+Genauer gesagt liegen die Einträge von $\overline{D}_{0}$ in einer
+endlichen Erweiterung $\overline{R}_{0}/\overline{R}$. Daher
+existiert eine unverzweigte Ringerweiterung mit geliftetem
+Frobenius-Endomorphismus $(\tilde{R}_{0},\phi_{\tilde{R}_{0}})$
+von endlichem Grad über $(R, \phi)$ und eine Matrix $D_{0}\in
+\GenL_{n}(\tilde{R}_{0})$, so dass gilt
+\[A=\phi_{\tilde{R}_{0}}(D_{0})(I+rG_{0})D_{0}^{-1} \textrm{ mit } G_{0} \in \tilde{R}_{0}^{n \times n}.\]
+Wir wollen nun die daraus resultierende Kongruenz $A\equiv
+\phi_{\tilde{R}_{0}}(D_{0}) D_{0}^{-1} \mod r$ noch weiter
+verfeinern, nämlich modulo höherer Potenzen von $r$. Der nächste
+Approximationsschritt mit $D_{1}=I+rH_{1}$ und $\phi(r)=er$ würde
+zu einer Kongruenz der Form
+\begin{eqnarray*}
+I+rG_{0} & \equiv& \phi_{\tilde{R}_{1}}(D_{1}) (I+r^{2}G_{1})
+D_{1}^{-1}\\
+&\equiv& (I+\phi_{\tilde{R}_{}1}(rH_{1}))(I-rH_{1})\\
+& \equiv& I+er\phi_{\tilde{R}_{1}}(H_{1})-rH_{1} \mod r^2.
+\end{eqnarray*}
+führen. Da die reduzierte Gleichung $\overline{G}_{0}=\overline{e}
+\overline{\phi}_{\overline{R}_{1}}(\overline{H}_{1})-\overline{H}_{1}$
+eine Lösungsmatrix $\overline{H}_{1}$ über einer endlichen
+Erweiterung $\overline{R}_{1}/ \overline{R}_{0}$ besitzt, existiert
+eine unverzweigte $R$-Ringerweiterung
+$(\tilde{R}_{1},\phi_{\tilde{R}_{1}})$ von endlichem Grad über
+$(\tilde{R}_{0},\phi_{\tilde{R}_{0}})$ und eine Matrix
+$D_{1}=I+rH_{1} \in \GenL_{n}(\tilde{R}_{1})$, so dass
+\[ A = \phi_{\tilde{R}_{0}}(D_{0})\phi_{\tilde{R}_{1}}(D_{1}) (I+r^{2}G_{1}) D_{1}^{-1} D_{0}^{-1} \textrm{ mit } G_{1} \in \tilde{R}_{1}^{n \times n}\]
+gilt. Durch Induktion erhalten wir einen Turm von unverzweigten
+Ringerweiterungen $R \leq \tilde{R}_{0} \leq \tilde{R}_{1} \leq
+\cdots \leq \tilde{R}_{l}$ innerhalb von $\hat{R}_{Q}^{\ur}$ und
+Matrizen $D_{l} \in \GenL_{n}(\tilde{R}_{l})$ mit
+\[A \equiv \phi_{\tilde{R}_{0}}(D_{0}) \cdots \phi_{\tilde{R}_{l}}(D_{l})D_{l}^{-1} \cdots D_{0}^{-1} \mod r^{l+1}. \]
+Da $D_{l}=I+r^{l}H_{l} \in \GenL_{n}(\hat{R}_{Q}^{\ur})$ liegt,
+konvergiert das Produkt $D_{0} \cdots D_{l}$ in
+$\GenL_{n}(\hat{R}_{Q}^{\ur})$. Daher existiert eine Matrix $Y \in
+\GenL_{n}(\hat{R}_{Q}^{\ur})$ mit $A=\phi(Y)Y^{-1}$, also nach
+Definition eine Fundamentalmatrix von $(M,\Phi)$. \\
+\end{bew}
+
+\begin{anm}
+Ein minimaler Lösungsring wie in Satz
+\ref{1.7bem-semi-trivial} kann im Allgemeinen Nullteiler enthalten
+(siehe \cite[Example 1.6]{vdPut01}) und ist nur dann bis auf
+Isomorphie eindeutig bestimmt, wenn der Grundring ein algebraisch
+abgeschlossener Körper ist (vgl. \cite[Theorem 1.8]{vdPut01}).
+\end{anm}
+
+\begin{cor} Es sei $(R,\phi)$ ein Frobenius-Ring mit
+Quotientenkörper $F:=\Quot(R)$. Ein Erweiterungskörper $E/F$ ist
+Lösungskörper des Frobenius-Moduls $(M,\Phi)$ über $F$, falls die
+beiden folgenden Bedingungen erfüllt sind:\\
+(a) Es existiert eine Fundamentalmatrix $Y \in \GenL_{n}(E)$.\\
+(b) $E/F$ wird von den Einträgen von $Y$ erzeugt, d.h. $E=F(Y)$.
+\label{1.11cor-Lösungskörper-char}
+\end{cor}
+
+\begin{defn} Es sei $(R,\phi)$ ein Frobenius-Ring und $(M,\Phi)$ ein
+Frobenius-Modul über $R$. Ein Frobenius-Ring $(E,\phi_{E})$ mit $E
+\geq R$ und $\phi_{E}|_{R}=\phi$ hei"st
+\textbf{Picard-Vessiot-Ring} oder kurz ein \textbf{PV-Ring}, falls
+die beiden folgenden Bedingungen erfüllt sind:
+\begin{enumerate}[label=(\emph{\roman*})]
+    \item $E$ ist ein minimaler Lösungsring von $M$.
+    \item Die $\phi$-Invarianten von $E$ stimmen mit den
+    $\phi$-Invarianten von $R$ überein, d.h. es gilt $E^{\phi}=R^{\phi}$.
+\end{enumerate}
+\end{defn}
+
+\begin{anm} Ein minimaler Lösungsring existiert nach Satz \ref{1.7bem-semi-trivial}, 
+falls der zugrundeliegende Frobenius-Ring ein
+Integritätsbereich ist. Es können allerdings beim Übergang zu $(\hat{R}_{Q}^{\ur},\hat{\phi})$ neue 
+$\phi$-Invarianten auftreten. Setzten wir aber die Existenz einer rationalen, für den Modul $M$ regulären Stelle 
+(vgl. Definition \ref{rational_place} bzw. \cite[Chap. 5.2]{Matzat02})
+voraus, so kommen beim Übergang von $R$
+zu $(\hat{R}_{Q}^{\ur},\hat{\phi})$ keine neuen $\phi$-Invarianten
+hinzu und somit existiert in diesem Fall sogar ein PV-Ring. Dies ist in unseren Anwendungsbeispielen 
+($\galois{q}(s,t)$ rationaler Funktionenkörper) immer gewährleistet und daher wollen wir von nun an 
+immer implizit die Existenz einer solchen Stelle voraussetzen, wenn wir die Existenz eines PV-Rings bzw. PV-Körpers benötigen.
+\end{anm}
+
+
+\begin{satz}Es sei $R$ ein relativer Frobenius-Ring. Ferner sei
+$(M,\Phi)$ ein Frobenius-Modul über dem Quotientenkörper
+$(F:=\Quot(R),\phi)$ von $R$ mit $\dim_{F}(M):=n$. Dann gelten:\\
+(a) Für jede Frobenius-Körpererweiterung $(E,\phi_{E})$ von $F$
+ist der Lösungsraum $\Sol{\Phi}{E}{M}$ ein $E^{\phi}$-Vektorraum
+der Dimension \[ \dim_{E^{\phi}}(\Sol{\Phi}{E}{M}) \leq \dim_{E}(E
+\otimes_{F}M)=n.\] (b) Es gilt Gleichheit, falls eine
+Fundamentalmatrix in $\GenL_{m}(E)$ für $(M,\Phi)$ existiert.\\
+(c) Zwei Fundamentalmatrizen $Y_{1},Y_{2}$ unterscheiden sich nur
+durch Multiplikation mit einer Matrix $C \in \GenL_{n}(F^{\phi})$,
+d.h. es gilt $Y_{1}=Y_{2}C$. \label{1.12satz-lösungsraum-dim}
+\end{satz}
+
+\begin{bew}
+Die Beweise verlaufen völlig analog zu den Beweisen aus Abschnitt
+\ref{sec1.1} mit einem gewöhnlichen Frobenius-Ring $R$.
+\end{bew}
+
+\section{Die Galoisgruppe eines Frobenius-Modul}
+
+\begin{defn}
+Es sei $R$ ein Frobenius-Ring. Ferner sei $(M,\Phi)$ ein
+Frobenius-Modul über dem Quotientenkörper $(F:=\Quot(R),\phi)$ von
+$R$ und $E$ ein PV-Körper von $M$. Wir definieren durch
+\[\Auto^{\Phi}(M)=\{ \sigma \in \Auto(E/F) \, | \,
+\sigma(\phi(x))=\phi(\sigma(x)) \textrm{ für alle } x\in E\}\] die
+\textbf{Frobenius-Automorphismengruppe} des Frobenius-Moduls
+$M$.\\
+Au"serdem definieren wir das \textbf{Galoisgruppenschema} als Funktor von
+der Kategorie der $F^{\phi}$-Algebren in die Kategorie der Gruppen
+\[\abb{\underline{\Auto}^{\Phi}(E/F)}{F^{\phi}\textrm{-Alg}}{\textrm{Gruppen}}{A}{\Auto^{\Phi}(E \otimes_{F^{\phi}} A/F\otimes_{F^{\phi}}A)}.\]
+Dieser wird über $F^{\phi}$ durch die $F^{\phi}$-Algebra $(E
+\otimes_{F} E)^{\phi_{E} \otimes \phi_{E}}$ dargestellt. Das
+zugehörige affine Gruppenschema bezeichnen wir mit
+$\mathcal{G}^{\Phi}=\underline{\DGal}^{\Phi}(E/F)$ und nennen dies
+das \textbf{Frobenius-Galoisgruppenschema}.
+ \label{1.13defn-galois-gruppe}
+\end{defn}
+
+\begin{anm}
+In unseren Anwendungsbeispielen liegt die Gruppe der rationalen
+Punkte
+\[\DGal^{\Phi}(E/F):=\mathcal{G}_{F^{\phi}}^{\Phi}(F^{\phi})=\Auto^{\Phi}(E/F)\]
+des Frobenius-Galoisgruppenschemas
+$\underline{\DGal}^{\Phi}(E/F)=\mathcal{G}^{\Phi}$ Zariski-dicht.
+Dies impliziert $F=E^{\DGal^{\Phi}(E/F)}$. Also wird
+$\DGal^{\Phi}(E/F)$ die \textbf{$\Phi$-Galoisgruppe} von $E/F$
+und $\underline{\DGal}^{\Phi}(E/F)$ ist durch $\DGal^{\Phi}(E/F)$
+eindeutig bestimmt. Daher können wir der Einfachheit halber ab
+sofort mit der Frobenius Galoisgruppe
+$\DGal^{\Phi}(M):=\DGal^{\Phi}(E/F)$ selbst arbeiten anstatt mit
+dem darunterliegenden Gruppenschema.
+\end{anm}
+
+\begin{bem}Es sei $R$ ein Frobenius-Ring. Ferner sei $(M,\Phi)$ ein
+Frobenius-Modul über dem Quotientenkörper $(F:=\Quot(R),\phi)$ von
+$R$ und $E$ ein PV-Körper von $M$. Dann lässt sich die zugehörige
+Galoisgruppe $\DGal^{\Phi}(M)$ injektiv in die
+$\GenL_{n}(F^{\phi})$ einbetten. \label{1.14bem-galois-einbettung}
+\end{bem}
+
+\begin{bew}
+Da $E$ ein Lösungskörper von $M$ ist, existiert eine
+Fundamentalmatrix $Y \in \GenL_{n}(E)$. Da alle $\sigma \in
+\DGal^{\Phi}(M)$ mit $\phi$ verträglich sind, ist auch $\sigma(Y)$
+eine Fundamentalmatrix. Nach Satz \ref{1.12satz-lösungsraum-dim}
+(c) existiert eine Matrix $C_{\sigma} \in \GenL_{n}(F^{\phi})$ mit
+$\sigma(Y)=YC_{\sigma}$. Daher definiert die Abbildung
+\[\abbger{\Psi}{\DGal^{\Phi}(M)}{\GenL_{n}(F^{\phi})}{\sigma}{C_{\sigma}}\]
+eine lineare Darstellung. Es bleibt nur noch zu zeigen, dass
+$\Psi$ injektiv ist. Dazu wählen wir ein $\gamma \in \Kern(\Psi)$,
+d.h. es gilt $\Psi(\gamma)=C_{\gamma}=\id$. Damit operiert $\gamma$ 
+trivial auf $F(Y)$, denn $Y$ ist invariant unter $\gamma$. Da aber $E$ als
+Lösungskörper von $M$ durch die Einträge von $Y$ über $F$ erzeugt
+wird, operiert $\gamma=\id_{E}$ trivial auf $E$, d.h. $\Psi$ ist
+injektiv. Damit erhalten wir die Behauptung $\DGal^{\Phi}(M)\simeq
+\Bild(\Psi) \leq \GenL_{n}(F^{\phi})$.
+\end{bew}
+
+\begin{satz}Es sei $R$ ein Frobenius-Ring und $(M,\Phi)$ ein
+Frobenius-Modul über dem Quotientenkörper $(F:=\Quot(R),\phi)$ von
+$R$, sowie $E$ ein PV-Körper von $M$. Ferner sei $\mathcal{G}$
+eine reduzierte zusammenhängende lineare Gruppe über $F^{\phi}$.
+Falls eine Basis $B$ von $M$ mit $D:=D_{B}(\Phi) \in
+\mathcal{G}(F)$ existiert, so gilt für die Galoisgruppe
+\[ \DGal^{\Phi}(M) \leq \mathcal{G}(F^{\phi}).\]
+\label{1.15satz-galois-obere-grenze}
+\end{satz}
+
+\begin{bew}
+Die Abbildung
+\[\abbger{\pi}{\mathcal{G}(F^{sep})}{\mathcal{G}(F^{sep})}{(x_{ij})_{i,j=1}^{n}}{\phi(x_{ij})(x_{ij})^{-1}}\]
+ist surjektiv nach einem Satz von S. Lang (vgl. \cite[Theorem 4.4.17]{Springer}).
+Daher existiert ein Element $Y \in \mathcal{G}(F^{sep})$ mit
+$\phi(Y)Y^{-1}=D^{-1}$. Nach Satz \ref{1.12satz-lösungsraum-dim}
+ist $F(Y)$ ein Lösungskörper von $M$, d.h. für jedes $\sigma \in
+\DGal^{\Phi}(M)$ gilt $C_{\sigma}=Y^{-1}\sigma(Y) \in
+\mathcal{G}(E) \cap \GenL_{m}(F^{\phi})$, also $C_{\sigma} \in
+\mathcal{G}(F^{\phi})$.
+\end{bew}
+
+\begin{defn} Es sei $R$ ein Frobenius-Ring. Ferner sei $(M,\Phi)$ ein
+Frobenius-Modul über dem Quotientenkörper $(F:=\Quot(R),\phi)$ von
+$R$ mit PV-Körper $E$ und Galoisgruppenschema $\underline{\Auto}^{\Phi}(E/F)$ gemä"s Definition \ref{1.13defn-galois-gruppe}. Für eine $R$-Algebra $S$ sei $\mathcal{H}/R$ ein Untergruppenfunktor des Funktors $\Scheme{S/R}$, d.h. für jede $R$-Algebra $L$ ist die Menge der $L$-rationalen Punkte $\mathcal{H}(L)$ eine Gruppe und operiert funktoriell auf $S_{L}:=S\otimes_{R} L$. Ein Element $s \in S$ hei"st \textbf{invariant}, falls das Element $s\otimes 1 \in S_{L}$ für alle $L$ invariant unter $\mathcal{H}(L)$ ist. Wir bezeichnen den Invariantenring mit $S^{\mathcal{H}}$. Ein Element $\frac{r}{s} \in E_{S}:=\Quot(S)$ hei"st \textbf{invariant} unter $\mathcal{H}$, falls 
+\[h.(r\otimes 1)\cdot (s\otimes 1)=(r\otimes 1)\cdot h.(s\otimes 1) \in S_{L}=S \otimes_{R}L\]
+für alle $R$-Algebren $L$ und für jedes Element $h \in \mathcal{H}(L)$ gilt. Wir bezeichnen den Invariantenkörper mit $E_{S}^{\mathcal{H}}$. Es lä"st sich leicht nachprüfen, dass diese Definition eines invarianten Elements $e \in E_{S}$ unabhängig von der Vertreterwahl $\frac{r}{s}$ ist. 
+\label{defn:invariant}
+\end{defn}
+
+\begin{satz}(Galoiskorrespondenz)\\
+Es sei $R$ ein Frobenius-Ring und $(M,\Phi)$ ein
+Frobenius-Modul über dem Quotientenkörper $(F:=\Quot(R),\phi)$ von
+$R$, $E$ ein PV-Körper von $M$ und $\mathcal{G}$ das zugehörige Galoisgruppen-Schema. 
+Ferner bezeichnen wir mit 
+\[\mathcal{K}:=\{ (K,\phi_{K}) \textrm{ Frobenius-Körper } \mid F \leq K \leq E , \textrm{ mit } E/K \textrm{ separabel }\}\]
+die Menge aller Frobenius-Zwischenkörper und mit
+\[\mathcal{H}:=\{ H \leq \mathcal{G} \mid H \textrm{ reduziertes Untergruppen-Schema } \}\]
+die Menge aller reduzierten Untergruppen-Schemata von $\mathcal{G}$. Dann gelten:\\
+(a) Für jeden Körper $K \in \mathcal{K}$ ist $\underline{\DGal}^{\Phi}(E/K)$ ein reduziertes Untergruppen-Schema
+von $G$.\\
+(b) Für jedes reduzierte Gruppen-Schema $H \in \mathcal{H}$ liegen die $H$-Invarianten $E^{H}$ (vgl. Definition \ref{defn:invariant}) in $\mathcal{K}$.\\
+(c) Die beiden Abbildungen
+\[\abb{\alpha}{\mathcal{K}}{\mathcal{H}}{K}{\underline{\DGal}^{\Phi}(E/K)}\]
+und 
+\[\abb{\beta}{\mathcal{H}}{\mathcal{K}}{H}{E^{H}}\]
+sind zueinander invers.
+\end{satz}
+
+\begin{bew} Diese Galoiskorrespondenz folgt aus der allgemeinen Korrespondenz in \cite[Theorem 3.9]{Amano}.
+\end{bew}
+
+\section{Differenzengleichungen über Frobenius-Körpern}
+
+\begin{defn}
+Es sei $(R,\phi)$ ein relativer Frobenius-Ring mit definierendem
+Ideal $Q$ und $F:=\Quot(R)$ der Quotientenkörper von $R$. Eine
+Gleichung der Form $L(y)=0$ mit
+\[ L(y):= \phi^{n}(y) + \sum\limits_{i=0}^{n-1} a_{i} \phi^{i}(y) \, \textrm{ mit } a_{i} \in F \]
+hei"st \textbf{ Differenzengleichung (oder $\phi$-Gleichung) vom
+Grad $n$ über $F$}. Eine Gleichung der Form \[ \phi(\multi{y}) = A
+\multi{y} \textrm{ mit } A\in \GenL_{n}(F)\] hei"st
+\textbf{Matrix-Differenzengleichung vom Grad $n$ über
+$F$}.\label{1.16defn-diff-gleichung}
+\end{defn}
+
+\begin{anm} Durch die Abbildung $y \rightarrow \multi{y}:=(y,\phi(y),\phi^{2}(y), \ldots,
+\phi^{n-1}(y))^{tr}$ erhalten wir die zu $L$ \textbf{assoziierte
+Matrixgleichung}
+\[\phi(\multi{y})=A_{L}\cdot \multi{y}=\left(%
+\begin{array}{ccccc}
+  0 & 1 & 0 & \cdots & 0 \\
+  0 & \ddots & \ddots &  & \vdots \\
+  \vdots &  & \ddots & \ddots & 0 \\
+  0 & \cdots & \cdots & 0 & 1 \\
+  -a_{0} & -a_{1} & \cdots & -a_{n-2} & -a_{n-1} \\
+\end{array}%
+\right) \cdot \multi{y}.\] Diese induziert einen Frobenius-Modul
+$M_{L}$ via $D_{B}(\Phi)^{-1}:=A_{L}$ mit Lösungskörper $E$ gemä"s
+Satz \ref{1.7bem-semi-trivial}, Galoisgruppe
+$G:=\DGal(L):=\DGal^{\Phi}(M_{L})$ und Lösungsraum
+$V:=\Sol{\Phi}{E}{M_{L}}$. \label{1.17anm-diff-gl-frob-mod}
+\end{anm}
+
+\begin{satz}
+Es sei $L(y)=0$ eine Differenzengleichung vom Grad $n$ über einem
+Frobenius-Körper $(F:=\Quot(R),\phi)$ mit zugehöriger Galoisgruppe
+$G:=\DGal(L)$, wobei $R$ ein relativer Frobenius-Ring mit
+definierendem Ideal $Q$ ist. Dann
+sind äquivalent:\\
+(a) Es existieren $L_{n-m}(y), L_{m}(y)$
+vom Grad $n-m$ bzw. $m$ über $F$, so dass $L(y)=L_{n-m}(L_{m}(y))$
+ist.\\
+(b) Es existiert ein $m$-dimensionaler $G$-invarianter
+Untervektorraum $W \leq V=\Sol{\Phi}{E}{M_{L}}$, d.h. mit
+$\sigma(W) \subseteq W$ für alle $\sigma \in G$.
+\label{1.18satz-gl-red-gruppe-red}
+\end{satz}
+
+Um diesen Satz zu beweisen benötigen wir die folgende Definition
+sowie zwei kleine Lemmata.
+
+\begin{defn} Es sei $(R,\phi)$ ein Frobenius-Ring und $y_{1}, \ldots , y_{r} \in
+R$ Ringelemente. Die durch \[\Mo{y_{1}, \ldots, y_{r}}:=\left(%
+\begin{array}{ccc}
+  y_{1} & \cdots & y_{r} \\
+  \phi(y_{1}) & \cdots & \phi(y_{r}) \\
+  \vdots & \ddots & \vdots \\
+  \phi^{r-1}(y_{1}) & \cdots & \phi^{r-1}(y_{r}) \\
+\end{array}%
+\right)\] definierte Matrix hei"st \textbf{Moore-Matrix} bezüglich
+$\phi$. Ihre Determinante
+\[\Moore{\phi}{y_{1},\ldots,y_{r}}:=\det(\Mo{y_{1},
+\ldots,y_{r}})\] nennen wir die \textbf{Moore-Determinante}.
+\label{1.19defn-wrons-det}
+\end{defn}
+
+\begin{lemma}
+Es sei $\phi(y)=A\cdot y$ eine Matrix-Differenzengleichung vom
+Grad $n$ über einem Frobenius-Körper $F$. Ferner sei $M$ der
+zugehörige Frobenius-Modul und $v_{1},\ldots,v_{r} \in
+V=\Sol{\Phi}{E}{M}$ Lösungen der Gleichung, d.h. es gilt
+$\phi(v_{i})=A\cdot v_{i}$ für alle $i=1, \ldots, r$. Dann sind
+die $v_{i}$ genau dann linear abhängig über $F$, wenn sie linear
+abhängig über $F^{\phi}$ sind. \label{1.20lemma-lin-ab}
+\end{lemma}
+
+\begin{bew}
+Falls die $v_{i}$ linear abhängig über $F^{\phi}$ sind, sind sie
+offensichtlich auch linear abhängig über $F$. Also gehen wir davon
+aus, dass die $v_{i}$ linear abhängig über $F$ sind und wollen nun
+durch Induktion nach $r$ beweisen, dass sie auch abhängig über
+$F^{\phi}$ sind. Für $r=1$ ist die Aussage trivial. Sei also $r >
+1$ und $v_{1}, \ldots, v_{r}$ linear abhängig über $F$, aber jede
+echte Teilmenge von $\{v_{1}, \ldots, v_{r} \}$ linear unabhängig.
+Wir können also ohne Einschränkung $v_{1}$ als
+$F$-Linearkombination der anderen $v_{i}$ darstellen, d.h. es
+existieren $a_{i} \in F$ für $i=2, \ldots r$, so dass
+$v_{1}=\sum\limits_{i=2}^{r}a_{i}v_{i}$ gilt. Damit erhalten wir
+die folgende Gleichungskette:
+\begin{eqnarray*}
+0 &=& \phi(v_{1})-A\cdot v_{1} = \phi\left(\sum\limits_{i=2}^{r}a_{i}
+v_{i}\right)-A\cdot\left(\sum\limits_{i=2}^{r}a_{i} v_{i}\right)\\
+&=&\sum\limits_{i=2}^{r}\phi(a_{i})\phi(v_{i})-a_{i}\cdot A \cdot
+v_{i} = \sum\limits_{i=2}^{r}\phi(a_{i})\cdot A \cdot v_{i} -
+a_{i}\cdot A \cdot v_{i} \\
+&=& \sum\limits_{i=2}^{r}(\phi(a_{i})-a_{i})\cdot A \cdot v_{i}.
+\end{eqnarray*}
+Da $v_{2}, \ldots, v_{r}$ linear unabhängig über $F$ sind, muss
+also $\phi(a_{i})=a_{i}$ und damit $a_{i} \in F^{\phi}$ für alle
+$i=2, \ldots, r$ gelten. Also sind $v_{1}, \ldots, v_{r}$ linear
+abhängig über $F^{\phi}$.
+\end{bew}
+
+\begin{lemma} Die Elemente $y_{1}, \ldots , y_{n} \in F$ eines
+Frobenius-Körpers $F$ sind genau dann linear unabhängig über
+$F^{\phi}$, wenn $\Moore{\phi}{y_{1}, \ldots, y_{n}}=0$ gilt.
+\label{1.21lemma-lin-ab-wrons}
+\end{lemma}
+
+\begin{bew}
+Zunächst ist klar, dass $\Moore{\phi}{y_{1}, \ldots , y_{n}}=0$
+genau dann gilt, wenn $y_{1}, \ldots , y_{n}$ linear unabhängig
+über $F$ sind. Und dies ist nach Lemma \ref{1.20lemma-lin-ab}
+genau dann der Fall, wenn $L(y)$ mit
+$L(y_{i})=0$ für alle $i=1, \ldots , n$ existiert. Also
+konstruieren wir eine solche Gleichung induktiv:
+\begin{eqnarray*}
+L_{1}(y) &:=& \phi(y)- \frac{\phi(y_{1})}{y_{1}}y,\\
+L_{2}(y) &:=& \phi(L_{1}(y))-
+\frac{\phi(L_{1}(y_{2}))}{L_{1}(y_{2})}L_{1}(y),\\
+&\vdots& \\
+L_{n}(y)&:=&\phi(L_{n-1}(y))-
+\frac{\phi(L_{n-1}(y_{n}))}{L_{n-1}(y_{n})}L_{n-1}(y).
+\end{eqnarray*}
+Alle $y_{i}$ für $i=1, \ldots, n$ sind Lösungen der
+Differenzengleichung $L(y):=L_{n}(y)=0$, d.h. es gilt $L(y_{i})=0$.
+Betrachten wir die zu $L$ assoziierte Matrix-Differenzengleichung
+$\phi(\multi{y})=A_{L}\cdot \multi{y}$, so gilt ebenfalls
+$\phi(\multi{y}_{i})=A_{L} \multi{y}_{i}$, d.h. die
+$\multi{y}_{i}$ liegen in $\Sol{\Phi}{E}{M_{L}}$. Die Behauptung
+folgt jetzt unter Verwendung von Lemma \ref{1.20lemma-lin-ab}.
+\end{bew}
+
+\begin{proof}[Beweis zu Satz \ref{1.18satz-gl-red-gruppe-red}]
+$\,$\\
+Wir setzen zunächst voraus, dass $L_{n-m}(y), L_{m}(y)$ mit $L(y)=L_{n-m}(L_{m}(y))$ existieren.
+Dann existiert nach Satz \ref{1.7bem-semi-trivial} ein
+Lösungskörper $\tilde{E} \leq E$ mit
+$W:=\Sol{\Phi}{\tilde{E}}{M_{L_{m}}}$. Damit gilt
+$\dim_{F^{\phi}}(W)=\dim_{F}(M_{L_{m}})=m$ nach Satz
+\ref{1.12satz-lösungsraum-dim}. Für alle $w \in W$ und $\sigma \in
+G$ gilt dann
+\[L_{m}(\sigma(w))=\sigma(L_{m}(w))=\sigma(0)=0.\]
+Also liegt für jedes Element $w \in W$ auch $\sigma(w) \in W$ 
+für alle $\sigma \in G$, d.h. es gilt
+$\sigma(W)\subseteq W$ für alle $\sigma \in G$.\\
+Sei nun umgekehrt ein $G$-invarianter Untervektorraum $W \leq
+V=\Sol{\Phi}{E}{M_{L}}$ der Dimension $\dim_{F^{\phi}}(W)=m<n$
+gegeben. Dann wählen wir ein geeignetes Fundamentalsystem von
+Lösungen $\eta_{1}, \ldots, \eta_{n}$ von $L$, so dass jedes
+Element $\sigma$ der Galoisgruppe $G$ die folgende Gestalt hat:
+\[\left(%
+\begin{array}{cc}
+  B_{1} & \ast \\
+  0 & B_{2} \\
+\end{array}%
+\right),\] wobei $B_{1},B_{2}$ Blockmatrizen der Grö"se $m$ bzw.
+$n-m$ sind. Also wird der Untervektorraum $W$ über $F^{\phi}$ von
+den Lösungen $\eta_{1}, \ldots, \eta_{m}$ erzeugt. Wir definieren
+die Differenzengleichung
+\[L_{m}(y):=\frac{\Moore{\phi}{y,\eta_{1}, \ldots,
+\eta_{m}}}{\Moore{\phi}{\eta_{1}, \ldots, \eta_{m}}}.\] Durch
+Laplace-Entwicklung nach der ersten Spalte der oberen Determinante
+ergibt sich für $L_{m}(y)$ folgende Gestalt:
+\begin{eqnarray*}
+L_{m}(y)=\phi^{m}(y) &+& \underbrace{\frac{\det\left(%
+\begin{array}{ccc}
+  \eta_{1} & \cdots & \eta_{m} \\
+  \vdots & \ddots & \vdots \\
+  \phi^{m-2}(\eta_{1}) & \cdots & \phi^{m-2}(\eta_{m}) \\
+  \phi^{m}(\eta_{1}) & \cdots & \phi^{m}(\eta_{m}) \\
+\end{array}%
+\right)}{\Moore{\phi}{\eta_{1}, \ldots,
+\eta_{m}}}}_{\textrm{$:=a_{m-1}$}}\phi^{m-1}(y) \\
+&+& \ldots \\
+&+& \underbrace{\frac{\Moore{\phi}{\phi(\eta_{1}), \ldots ,
+\phi(\eta_{m})}}{\Moore{\phi}{\eta_{1},\ldots,
+\eta_{m}}}}_{\textrm{$:=a_{0}$}}y.
+\end{eqnarray*}
+Da $W$ ein $G$-invarianter Unterraum ist, werden die ersten $m$
+der $\eta_{i}$ von $G$ permutiert, d.h. für jedes $i \in \{1,
+\ldots, m\}$ existiert ein $j \in \{1, \ldots, m\}$ mit
+$\sigma(\eta_{i})=\eta_{j}$ für alle $\sigma \in G$. Damit gilt
+aber $\sigma(a_{i})=a_{i}$ für die Koeffizienten von $L_{m}(y)$,
+d.h. für jeden Index $1 \leq i \leq m$ liegt $a_{i}$ in $F$. Da alle
+$\eta_{i}$ für $i=1, \ldots, m $ nach Lemma
+\ref{1.21lemma-lin-ab-wrons} Lösungen von $L_{m}(y)$ sind, ist $W$
+der Lösungsraum von $L_{m}$. Au"serdem ist $L_{m}$ nach
+Konstruktion minimal. Dies liefert $L(y)=L_{n-m}(L_{m}(y))$ und
+damit die Behauptung.
+\end{proof}
+
+\section{Lösungen von Differenzengleichungen}
+
+\begin{defn}Es sei $(R,\phi)$ ein relativer Frobenius-Ring mit definierendem
+Ideal $Q$ und $F:=\Quot(R)$ der Quotientenkörper von $R$. Ein
+Frobeniuskörper $(K,\phi_{K})$ mit $K \geq F$ und
+$\phi_{K}|_{F}=\phi_{F}$ hei"st
+\textbf{$\phi$-Liouville-Erweiterung}, falls ein Körperturm
+\[F =K_{0} \leq K_{1} \leq \ldots \leq K_{n}=K \]
+mit $K_{i}=K_{i-1}(t_{i})$ für $i=1, \ldots,n$ existiert und eine
+der folgenden Bedingungen erfüllt ist:
+\begin{itemize}
+    \item $\phi(t_{i})-t_{i} \in K_{i-1}$,
+    \item $t_{i} \neq 0$ und $\frac{\phi(t_{i})}{t_{i}} \in
+    K_{i-1}$,
+    \item $t_{i}$ ist algebraisch über $K_{i-1}$.
+\end{itemize}
+ \label{1.22defn_liouville_erw}
+\end{defn}
+
+\begin{defn} Es sei $L(y)=0$ eine Differenzengleichung vom Grad $n$ über
+einem Frobenius-Körper $(F:=\Quot(R),\phi)$ mit PV-Körper $E$ und
+zugehöriger Galoisgruppe $G:=\DGal(L)$, wobei $R$ ein relativer
+Frobenius-Ring mit definierendem Ideal $Q$ ist. Eine Lösung $\eta
+\in E$ mit $L(\eta)=0$ hei"st
+\begin{itemize}
+    \item \textbf{rational}, falls $\eta \in F$ liegt.
+    \item \textbf{$\phi$-additiv}, falls $\phi(\eta)-\eta \in F$ liegt.
+    \item \textbf{$\phi$-exponentiell}, falls $\frac{\phi(\eta)}{\eta} \in
+          F$ liegt.
+    \item \textbf{algebraisch}, falls $\eta$ algebraisch über $F$
+          ist.
+    \item \textbf{$\phi$-Liouvillesch}, falls $\eta$ in einem
+          $\phi$-Liouvilleschen Teilkörper $K \leq E$ liegt.
+\end{itemize}
+\end{defn}
+
+
+\begin{bem}Es sei $L(y)=0$ eine Differenzengleichung über
+einem Frobenius-Körper $(F:=\Quot(R),\phi)$ mit PV-Körper $E$ und
+zugehöriger Galoisgruppe $G:=\DGal(L)$, wobei $R$ ein relativer
+Frobenius-Ring mit definierendem Ideal $Q$ ist. Weiter sei $\eta
+\in E\setminus F$ eine algebraische und $\phi$-exponentielle Lösung, d.h. es gilt
+$\frac{\phi(\eta)}{\eta}=u \in F$ mit $u \neq 0$. Dann existiert eine natürliche
+Zahl $m \in \korp{N}$ mit $\eta^{m}=a \in F$.
+\label{1.23bem_alg_exp}
+\end{bem}
+
+\begin{bew} Es sei $X^{m}+a_{m-1}X^{m-1}+ \ldots + a_{1}X+a_{0}$ das Minimalpolynom
+von $\eta$ über $F$, d.h. die $a_{i}$ liegen in $F$ und es gilt
+\[
+\eta^{m}+a_{m-1}\eta^{m-1}+ \ldots + a_{1}\eta+a_{0}=0.
+\] Wenden wir auf diese Gleichung
+$\phi$ an, so erhalten wir mit $\phi(\eta)=u\eta$ die Gleichung
+\[
+u^{m}\eta^{m}+\phi(a_{m-1})u^{m-1}\eta^{m-1}+ \ldots + \phi(a_{1})u\eta+\phi(a_{0})=0.
+\]
+Multiplizieren wir andererseits die erste Gleichung mit $u^{m}$, ergibt sich
+\[
+u^{m}\eta^{m}+a_{m-1}u^{m}\eta^{m-1}+ \ldots + a_{1})u^{m}\eta+a_{0}u^{m}=0.
+\]
+Subtrahieren wir nun diese beiden neuen Gleichungen, erhalten wir
+\[
+b_{m-1}u^{m-1}\eta^{m-1}+b_{m-2}u^{m-2}\eta^{m-2} + \ldots
+b_{1}u^{m}\eta + b_{0}=0
+\]
+mit $b_{m-i}:=(\phi(a_{m-i})-a_{m-i}u^{i})$ und damit eine Gleichung vom Grad echt kleiner als $m$ die $\eta$ annuliert. Da aber die erste Gleichung minimal
+gewählt war, müssen alle Koeffizienten in der letzten Gleichung gleich $0$ sein. Da wir $u\neq 0$ vorausgesetzt haben, muss
+\[ b_{m-i}=(\phi(a_{m-i})-a_{m-i}u^{i})=0 \quad \textrm{ für alle } 1 \leq i \leq m\]
+gelten. Schreiben wir dies um, ergibt sich
+\[\phi(a_{m-i})=u^{i}a_{m-i} \quad \textrm{ für alle } 1 \leq i \leq m.\]
+Also ist $a_{m-i}\in F$ eine rationale Lösung der Differenzengleichung $\phi(y)=u^{i}y$ und unterscheidet sich daher
+nur durch eine Konstante $c_{i}$ von $\eta^{i}$, d.h. es gilt $\eta^{i}c_{i}=a_{m-i}$. Dies steht aber für alle Indizes $1\leq i < m$ im Widerspruch
+zur Voraussetzung $\eta \in E \setminus F$. Es gelten also $a_{m-i}=0$ für alle $1\leq i < m$ und $\eta^{m}=a:=\frac{a_{0}}{c_{m}}$, und damit
+ist die Aussage bewiesen.
+\end{bew}
+
+
+\begin{satz}Es sei $L(y)=0$ eine Differenzengleichung vom Grad $n$ über
+einem Frobenius-Körper $(F:=\Quot(R),\phi)$ mit PV-Körper $E$ und
+zugehöriger Galoisgruppe $G:=\DGal(L)$, wobei $R$ ein relativer
+Frobenius-Ring mit definierendem Ideal $Q$
+ist. Dann gelten:\\
+(a) $L$ besitzt genau dann nur algebraische Lösungen, falls
+$\DGal(L)$ eine endliche Gruppe ist.\\
+(b) Die Zusammenhangskomponente der Eins $G^{\circ}$ ist eine
+auflösbare algebraische Gruppe bzgl. der Zariski-Topologie, falls
+$L$ nur $\phi$-Liouvillesche Lösungen besitzt. Die Umkehrung gilt
+nur, falls
+ $F^{\phi}$ algebraisch abgeschlossen ist. \\
+(c) Falls $L$ eine $\phi$-Liouvillesche Lösung besitzt, so besitzt
+$L$ eine Lösung $\eta \in E$, für die $\frac{\phi(\eta)}{\eta}$
+algebraisch über $F$ ist. \label{1.24satz-liouville}
+\end{satz}
+
+\begin{bew}$\,$\\
+(a) Falls $G$ eine endliche Gruppe ist, so ist $E/F$ eine endliche
+Galoiserweiterung und alle Lösungen von $L$ sind algebraisch.
+Die umgekehrte Richtung zeigen wir im nächsten Teil des Beweises.\\
+(b) Wir gehen zunächst davon aus, dass $F^{\phi}$ algebraisch
+abgeschlossen ist und beweisen die Aussage durch einen Ringschluss
+der folgenden Aussagen:
+\begin{enumerate}
+    \item $G^{\circ}$ ist auflösbar.
+    \item $E$ ist eine $\phi$-Liouville-Erweiterung von $F$.
+    \item $E$ ist in einer $\phi$-Liouville-Erweiterung $M$ von $F$ enthalten.
+\end{enumerate}
+Die Voraussetzung, dass $F^{\phi}$ algebraisch abgeschlossen ist benötigen wir nur an
+einer Stelle, nämlich beim ersten Schritt von 1. nach 2. Wir bezeichnen mit
+$V:=\Sol{\Phi}{E}{M_{L}} \subseteq E$ den Lösungsraum und mit
+$G=\DGal^{\Phi}(M_{L})=\DGal^{\Phi}(E/F)$ die Galoisgruppe von
+$L$. Au"serdem sei $G^{\circ}$ die Zusammenhangskomponente von $G$
+und $F_{0}=E^{G^{\circ}} \geq E^{G}=F$ der Fixkörper von
+$G^{\circ}$. Dann ist $E$ ein PV-Körper von $L$ über $F_{0}$ mit
+Galoisgruppe $G^{\circ}$. Nach dem Satz von Lie-Kolchin (siehe
+\cite[Theorem A.46]{vdPut}) besitzt $V$ eine Basis $\eta_{1},
+\ldots, \eta_{n}$ über $F^{\phi}$, bezüglich der $G^{\circ}
+\subseteq \GL{n}{F^{\phi}}$ nur aus oberen Dreiecksmatrizen
+besteht. Hier geht die Voraussetzung ein, dass $F^{\phi}$
+algberaisch abgeschlossen ist, da der Satz von Lie-Kolchin nur
+über algebraisch abgeschlossenen Körpern gilt. Nun wollen wir die
+Behauptung durch Induktion nach $n$ und der Dimension von
+$G^{\circ}$ zeigen. Dazu müssen wir zwei Fälle unterscheiden. Es
+sei zunächst $\eta_{1} \notin F_{0}$. Dann existiert zu jedem
+$\sigma \in G^{\circ}$ eine $\phi$-Invarariante $c_{\sigma} \in
+F^{\phi}$ mit $\sigma(\eta_{1})=c_{\sigma}\eta_{1}$, d.h.
+$\frac{\phi(\eta_{1})}{\eta_{1}}$ ist $G^{\circ}$-invariant und liegt
+damit in $F_{0}$. Nun ist aber $E$ ein
+PV-Körper von $L$ über $F_{0}(\eta_{1})$ und die zugehörige
+Galoisgruppe ist eine echte Untergruppe von $G^{\circ}$. Nach der
+Induktionsvoraussetzung ist damit $E \supseteq F_{0}(\eta_{1})$
+eine $\phi$-Liouville-Erweiterung und
+damit auch $E \supseteq F$.\\
+Als nächstes soll $\eta_{1} \in F_{0}$ gelten. Dann hat die
+Gleichung $\hat{L}(y):=L(y\cdot \eta_{1})$ über $F_{0}$ die
+Lösungen $1, \frac{\eta_{2}}{\eta_{1}}, \ldots,
+\frac{\eta_{n}}{\eta_{1}}$. Daher besitzt der zugehörige Operator
+(vgl. Kapitel \ref{chap_diff_op}) $P_{\hat{L}}$ den Rechtsfaktor
+$\phi-1$. Daraus ergibt sich die Darstellung
+$P_{\hat{L}}=P_{\tilde{L}}(\phi-1)$. Der Lösungsraum der zum
+Linksfaktor $P_{\tilde{L}}$ assoziierten Gleichung $\tilde{L}(y)$
+liegt in $E$ und wird von $\phi(\frac{\eta_{2}}{\eta_{1}})-
+\frac{\eta_{2}}{\eta_{1}}, \ldots,
+\phi(\frac{\eta_{n}}{\eta_{1}})- \frac{\eta_{n}}{\eta_{1}}$
+erzeugt. Also liegt ein PV-Körper $\tilde{E}$ von $\tilde{L}$ in
+$E$ und die zugehörige Galoisgruppe ist eine zusammenhängende
+auflösbare Gruppe. Nach Induktionsannahme ist damit die
+Erweiterung $F \subseteq \tilde{E}$ eine
+$\phi$-Liouville-Erweiterung. Au"serdem ist
+$E=\tilde{E}(t_{2},\ldots, t_{n})$ mit
+$t_{i}=\frac{\eta_{i}}{\eta_{1}}$ nach Definition eine
+$\phi$-Liouville-Erweiterung, denn  es gilt $\phi(t_{i})- t_{i}
+\in \tilde{E}$ für $i=2, \ldots, n$. Daher ist sowohl $E \supseteq
+\tilde{E}$ als auch $\tilde{E} \supseteq F$ und damit $E
+\supseteq F$ insgesamt eine $\phi$-Liouville-Erweiterung.\\
+Die Inklusion von 2. nach 3. ist trivial, also wollen wir direkt
+den letzten Teil des Ringschlusses, nämlich 3. nach 1. zeigen.
+Diese Richtung gilt allgemein und wir benötigen nicht mehr die
+Voraussetzung, dass $F^{\phi}$ algebraisch abgeschlossen ist. Dazu
+sei $M=F(t_{1}, \ldots ,t_{m})$ eine $\phi$-Liouville-Erweiterung,
+die $E$ enthält. Wir wollen durch Induktion nach $m$ zeigen, dass
+die Zusammenhangskomponente $G^{\circ}$ auflösbar ist. Dazu zeigen
+wir, dass $G$ eine Normalreihe mit abelschen oder endlichen
+Faktoren besitzt. Dies ist für $m=0$ trivial, also nehmen wir
+$m>0$ an und gehen davon aus, dass für jeden Index $<m$ eine
+solche Normalreihe existiert. $E(t_{1}) \subseteq M$ ist ein
+PV-Körper von $L$ über $F(t_{1})$. Also ist
+$\DGal^{\Phi}(E(t_{1})/F(t_{1}))=:H$ eine abgeschlossene
+Untergruppe von $G$. Der Invariantenkörper ist $E^{H}=E(t_{1})^{H}
+\cap E=F(t_{1}) \cap E$. Da $E$ auch ein PV-Körper von $L$ über
+$F(t_{1}) \cap E$ ist, gilt für die Galoisgruppe
+$\DGal^{\Phi}(E/F(t_{1}) \cap E)=H$. Diese besitzt nach
+Induktionsannahme eine Normalreihe mit abelschen oder endlichen
+Faktoren und damit ist $H^{\circ}$ auflösbar. Falls $F(t_{1}) \cap
+E=F$ gilt, so folgt $H=G$ und die Aussage ist bewiesen.
+Andernfalls müssen wir die drei möglichen Fälle für $t_{1}$
+durchgehen. Falls $t_{1}$ algebraisch über $F$ ist, so ist die
+Erweiterung $F(t_{1}) \cap E$ algebraisch über $F$ und liegt im
+Fixkörper $E^{G^{\circ}}$. Au"serdem liegen alle Nullstellen des
+Minimalpolynoms von $t_{1}$ in $F(t_{1})$ und damit lässt die
+Galoisgruppe $F(t_{1}) \cap E$ als Menge invariant. Daher ist $H$
+ein Normalteiler in $G$ und es gilt $G/H \cong \Auto((F(t_{1})
+\cap E)/F)$, also ist die Faktorgruppe endlich. Dies beweist
+einerseits die Rückrichtung von Teil (a) und andererseits gilt für
+die
+Zusammenhangskomponenten $H^{\circ}=G^{\circ}$. \\
+Falls dagegen $t_{1}$ transzendent über $F$ ist, so gilt $F(t_{1}) \cap
+E \neq F$. Liegt au"serdem $\phi(t_{1})-t_{1} \in F$, so
+ist die Galoisgruppe
+$\DGal^{\Phi}(F(t_{1})/F)=\korp{G}_{a}(F^{\phi})$. Diese hat nur
+endliche abelsche algebraische Untergruppen von
+Primzahlpotenzordnung. Also ist die folgende Sequenz von Gruppen
+exakt
+\[
+\begin{xy}
+\xymatrix{
+  1 \ar[r] & \DGal^{\Phi}(E/F(t_{1}) \cap E) \ar[r]\ar@{}[d]|{\rotatebox{270}{$\cong$}
+} & \DGal^{\Phi}(E/F) \ar[r]\ar@{}[d]|{\rotatebox{270}{$\cong$} }
+& \DGal^{\Phi}(F(t_{1})/F)
+\ar[r]\ar@{}[d]|{\rotatebox{270}{$\cong$} } &
+  1\\
+  1 \ar[r] & H \ar[r] & G \ar[r] & \korp{G}_{a}(F^{\phi}) \ar[r] &
+  1.
+}
+\end{xy}
+\]
+Da $H^{\circ}$ und $\korp{G}_{a}(F^{\phi})$  auflösbar sind, ist
+auch
+$G^{\circ}$ auflösbar.\\
+Ist schlie"slich $t_{1}$ transzendent und $\phi(t_{1})=at_{1}$ mit
+$a \in F$, so gilt für die Galoisgruppe
+$\DGal^{\Phi}(F(t_{1})/F)=\korp{G}_{m}(F^{\phi})$. Die einzigen
+nicht-trivialen algebraischen Untergruppen sind endliche zyklische
+Gruppen. Also ist $F(t_{1})\cap E=F(t_{1}^{d})$, mit $1 \leq d \in
+\korp{N}$. Wie oben erhalten wir damit eine exakte Sequenz von
+Gruppen
+\[
+\begin{xy}
+\xymatrix{
+  1 \ar[r] & \DGal^{\Phi}(E/F(t_{1}^{d})) \ar[r]\ar@{}[d]|{\rotatebox{270}{$\cong$}
+} & \DGal^{\Phi}(E/F) \ar[r]\ar@{}[d]|{\rotatebox{270}{$\cong$} }
+& \DGal^{\Phi}(F(t_{1})/F)
+\ar[r]\ar@{}[d]|{\rotatebox{270}{$\cong$} } &
+  1\\
+  1 \ar[r] & H \ar[r] & G \ar[r] & \korp{G}_{m}(F^{\phi}) \ar[r] &
+  1.
+}
+\end{xy}
+\]
+und die Behauptung, dass $G^{\circ}$ auflösbar ist.\\
+(c) Es sei nun $F(t_{1}, \ldots, t_{m})$ eine
+$\phi$-Liouville-Erweiterung von $F$ mit $\eta \in F(t_{1},
+\ldots, t_{m})$, so dass $L(\eta)=0$ gilt. Wir wollen die Aussage
+durch Induktion nach $m$ beweisen.\\
+Es sei also zunächst $m=1$ und $t_{1}$ algebraisch über $F$. Damit
+sind aber auch $\eta$ und $\frac{\phi(\eta)}{\eta}$ algebraisch
+über $F$. \\
+Falls dagegen $t_{1}$ transzendent über $F$ mit
+$\phi(t_{1})-t_{1}=a \in F$ ist, so ist die Galoisgruppe
+$\DGal^{\Phi}(F(t_{1})/F)=\korp{G}_{a}(F^{\phi})$. Daher operieren
+alle $\sigma \in \DGal^{\Phi}(F(t_{1})/F)$ durch
+$\sigma(t_{1})=t_{1}+f$ mit $f \in F^{\phi}$ und weiterhin sind
+sowohl $\sigma(\eta)$ als auch $\sigma(\eta)-\eta$ Lösungen von
+$L$. Also hat $L$ bereits eine Lösung im Grundkörper $F$.\\
+Ist schlie"slich $t_{1}$ transzendent über $F$ und
+$\frac{\phi(t_{1})}{t_{1}}=a \in F^{\times}$, so ist die
+Galoisgruppe $\DGal^{\Phi}(F(t_{1})/F)=\korp{G}_{m}(F^{\phi})$.
+Die Elemente $\sigma \in \DGal^{\Phi}(F(t_{1})/F)$ operieren durch
+$\sigma(t_{1})=ft_{1}$ mit $f\in F^{\phi^{\times}}$ auf
+$F(t_{1})$. Au"serdem sind für jedes $\sigma \in
+\DGal(F(t_{1})/F)$ und jedes $f \in F^{\phi}$ die Elemente
+$\sigma(\eta)-d\eta$ Lösungen von $L$. Also muss $F(t_{1})$ eine Lösung
+der Form $\eta=bt_{1}^{d}$ mit $b \in F^{\times}$ und $d \in
+\korp{Z}$ enthalten. Für diese Lösung gilt
+$\frac{\phi(\eta)}{\eta}=\frac{\phi(b)}{b}
+\left(\frac{\phi(t_{1})}{t_{1}}\right)^{d} \in F$.\\
+Es sei nun $0 \neq y \in F(t_{1}, \ldots ,t_{n+1})$ eine Lösung von
+$L$. Nach Induktionsannahme besitzt die Gleichung $L$ über dem
+algebraischen Abschluss $\overline{F(t)}$ mit $t:=t_{1}$ einen
+Rechtsfaktor vom Grad 1, denn es existiert eine Lösung mit
+$\frac{\phi(y)}{y}=a \in \overline{F(t)}$. Ist $t$ algebraisch
+über $F$, so sind wir fertig. Ist dagegen $t$ transzendent über
+$F$, so betrachten wir einen PV-Körper $E(t)$ von $L$ über $F(t)$.
+Weiterhin sei $E_{\overline{F(t)}}$ ein PV-Körper von $L$ über
+$\overline{F(t)}$. Au"serdem sei $V \subset E$ der Lösungsraum von
+$L$ und $0 \neq y \in V$ mit $\frac{\phi(y)}{y}$ algebraisch über
+$F(t)$. Dann haben die Elemente $\sigma(y)$ für jedes $\sigma \in
+\DGal(E/F)$ diesselbe Eigenschaft. Wir wählen nun $\sigma_{1}
+,\ldots , \sigma_{s} \in \DGal(E/F)$ mit $s$ maximal, so dass
+$\sigma_{1}(y), \ldots, \sigma_{s}(y)$ linear unabhängig über
+$F^{\phi}$ sind. Der Vektorraum $W=<\sigma_{1}(y), \ldots,
+\sigma_{s}(y)>_{F^{\phi}} \subset V$ ist also invariant unter
+$\DGal(E/F)$. Sei nun $\tilde{L}=\phi^{s}(y)+a_{s-1}\phi^{s-1}+
+\ldots + a_{0}\phi^{0}(y)$ die eindeutige Differenzengleichung
+über $E$, für die $\tilde{L}(\sigma_{i}(y))=0$ gilt. Da für jedes
+$\sigma\in \DGal(E/F)$ die Gleichung $\sigma(\tilde{L})$ denselben
+Lösungsraum $W$ besitzt, gilt $\sigma(\tilde{L})=\tilde{L}$ und
+damit, dass die Koeffizienten von $\tilde{L}$ in $F$ liegen. Wir
+betrachten nun die $\phi$-Liouville-Erweiterung $F(t,u_{1},\ldots,
+u_{s},\sigma_{1}(y), \ldots, \sigma_{s}(y)) \subset
+E_{\overline{F(t)}}$, wobei die
+$u_{i}=\frac{\sigma_{i}(\phi(y))}{\sigma_{i}(y)}$ algebraisch über
+$F(t)$ sind. Diese Erweiterung enthält einen PV-Körper von
+$\tilde{L}$ über $F$. Also gilt nach Teil (b) für die Galoisgruppe
+$H$ von $\tilde{L}$ über $F$, dass $H^{\circ}$ auflösbar ist. Sei
+nun $0\neq \eta \in W$ ein Eigenvektor von $H^{\circ}$. Dann ist
+$\frac{\phi(\eta)}{\eta}$ invariant unter $H^{\circ}$ und damit
+algebraisch über $F$. Da aber der Vektorraum $W$ ein
+Untervektorraum von $V$ ist, muss $\eta$ eine Lösung von $L$ sein,
+d.h. es gilt $L(\eta)=0$.
+\end{bew}
+
+\begin{satz}(C. Jordan)\\
+Es sei $C$ ein algebraisch abgeschlossener Körper mit
+$\Char(C)=0$. Dann existiert eine ganzzahlige Funktion $J(n)$, so
+dass jede endliche Untergruppe von $\GL{n}{C}$ einen abelschen
+Normalteiler vom Index höchstens $J(n)$
+besitzt.\label{1.26satz-jordan}
+\end{satz}
+
+Der Beweis dieses klassischen Satzes von Jordan findet sich unter
+anderem in \cite{Blich} und in einer moderneren Version in
+\cite{Curtis}. Blichtfeldt gibt als Schranke $J(n) <
+n!(6^{n-1})^{\pi(n+1)+1}$ an, wobei $\pi(x)$ die Anzahl der
+Primzahlen kleiner oder gleich $x$ bezeichnet. Er gibt au"serdem
+die Werte $J(2)=12, J(3)=360, J(4)=25920$ an. Eine andere
+Schranke, nämlich $J(n) \leq
+(\sqrt{8n}+1)^{2n^{2}}-(\sqrt{8n}-1)^{2n^{2}}$, wurde von Schur
+entdeckt. Ein moderner Beweis findet sich in \cite{Curtis}. Satz
+\ref{1.26satz-jordan} bildet die Grundlage für den
+Kovacic-Algorithmus (vgl. \cite{Kovacic02}) für
+Differentialgleichungen in Charakteristik 0, der als Vorlage für
+unseren Algorithmus dienen soll. Daher benötigen wir einen
+analogen Satz in positiver Charakteristik. Diesen erhalten wir
+durch die folgenden drei Resultate.
+
+\begin{satz}(L.E. Dickson)\\
+Es sei $F$ ein Körper mit $\Char(F)=p>0$ und $G$ eine endliche
+Untergruppe von $\GL{n}{F}$ mit $\ggT\{p, \# G\}=1$. Dann ist $G$
+isomorph zu einer Untergruppe von $\GL{n}{\korp{C}}$.
+\label{1.27satz-dickson}
+\end{satz}
+
+\begin{cor}(I. Schur)\\
+Es sei $F$ ein Körper mit $\Char(F)=p>0$ und $G$ eine endliche
+Untergruppe von $\GL{n}{F}$, wobei $G$ kein Element der Ordnung
+$p$ enthält. Dann enthält $G$ einen abelschen Normalteiler vom
+Index höchstens $J(n)$. \label{1.28cor-schur}
+\end{cor}
+
+\begin{satz}(R. Brauer und W. Feit)\\
+Es sei $F$ ein Körper mit $\Char(F)=p>0$ und $G$ eine endliche
+Untergruppe von $\GL{n}{F}$. Falls die $p$-Sylowgruppen von $G$
+höchstens Ordnung $p^m$ haben, dann enthält $G$ einen abelschen
+Normalteiler vom Index höchstens $f(m,n,p)$, wobei $f$ eine
+ganzzahlige Funktion ist, die nur von $m,n$ und $p$ abhängt.
+\label{1.29satz-brauer}
+\end{satz}
+
+Für die Beweise der Sätze \ref{1.27satz-dickson} und
+\ref{1.28cor-schur} verweisen wir auf \cite{Wehr}. Ein
+ausführlicher Beweis zu Satz \ref{1.29satz-brauer} findet sich in
+\cite{Brauer}. Dieser verwendet den ursprünglichen Satz
+\ref{1.26satz-jordan} von Jordan. Zusammen mit den folgenden
+beiden Sätzen liefert Satz \ref{1.29satz-brauer} die Grundlage für
+unseren Algorithmus.
+
+\begin{satz} Es sei $F$ ein Körper mit $\Char(F)=p>0$ und $G$ eine
+Untergruppe von $\GL{n}{F}$, die auf den Ursprungsgeraden in
+$F^{n}$, also auf $\korp{P^{n}}(F)=\korp{P}(F^{n-1})$ operiert.
+Falls $G$ auf $\korp{P^{n}}(F)$ eine endliche Bahn besitzt und die
+Voraussetzungen von Satz \ref{1.29satz-brauer} erfüllt, so hat $G$
+auch eine Bahn, deren Länge durch eine Funktion
+$I(m,n,p):=\max\limits_{r\leq n}\{ [\frac{n}{r}]f(m,r,p)\}$ in
+Abhängigkeit von $f(m,n,p)$ aus Satz \ref{1.29satz-brauer}
+beschränkt ist. \label{1.30satz-bahn}
+\end{satz}
+
+\begin{bew}
+Wir gehen ohne Einschränkung davon aus, dass $G$ eine lineare
+algebraische Gruppe ist, denn wir können die Gruppe $G$ durch
+ihren Zariski-Abschluss in $\GL{n}{F}$ ersetzen. Au"serdem setzen
+wir voraus, dass die Gerade $Fw \subset V:=F^{n}$ eine endliche
+Bahn $\{ Fw_{1}, \ldots, Fw_{s}\}$ unter $G$ besitzt. Dann ist die
+Menge
+\[H=\{ h \in G \, | \, h(Fw_{i})=Fw_{i} \textrm{ für alle } i\}\]
+ein Normalteiler in $G$ vom Index höchstens $s!$. Seien $\chi_{1},
+\ldots \chi_{t}$ die verschiedenen Charaktere
+\[\abbil{\chi_{i}}{G}{F^{\times}},\]
+so dass der Vektorraum
+\[V_{\chi_{i}}:=\{ v \in V \, | \, h(v)=\chi_{i}(h)v \textrm{ für alle } h \in H \}\]
+nicht der Nullraum ist. Dann ist $\bigoplus\limits_{i=1}^{t}
+V_{\chi_{i}}$ ein Untervektorraum von $V$. Da $H$ ein Normalteiler
+von $G$ ist, permutiert $G$ die Räume $V_{\chi_{i}}$ und damit ist
+$\bigoplus\limits_{i=1}^{t} V_{\chi_{i}}$ ein $G$-invarianter
+Unterraum von $V$. Es sei nun $H_{1} \subset G$ der Stabilisator
+von $V_{\chi_{1}}$. Dann ist der Index von $H_{1}$ in $G$
+höchstens $t$. Also gilt $[G:H_{1}] \leq [\frac{n}{r}]$, wobei $r$
+die Dimension von $V_{\chi_{1}}$ bezeichnet. Falls also $r=1$ ist,
+so hat die Gerade $V_{\chi_{1}}$ eine $G$-Bahn der Länge
+höchstens $n$.\\
+Wir nehmen nun an, dass $r>1$ gilt. Dann induziert die Operation
+von $H_{1}$ auf $V_{\chi_{1}}$ eine Operation der endlichen Gruppe
+$H_{1}/H \subset \PGL{n}{F}=\PSL{n}{F}$ auf dem projektiven Raum
+$\korp{P}(V_{\chi_{1}})=\korp{P}^{r-1}(F)$. Also operiert $H$ auf
+$V_{\chi_{1}}$ durch seinen Charakter $\chi_{1}$. Es sei $H_{2}
+\subset \SL{r}{F}$ das Urbild von $H_{1}/H$. Wendet man nun Satz
+\ref{1.29satz-brauer} auf die endliche Gruppe $H_{2}$, erhalten
+wir einen abelschen Normalteiler $H_{3} \subset H_{2}$ vom Index
+höchstens $f(m,r,p)$. Dieser ist der Stabilisator einer Geraden $L
+\subset V_{\chi_{1}}$. Die $H_{2}$-Bahn von $L$ hat höchstens die
+Länge $[H_{2}:H_{3}] \leq f(m,r,p)$. Die $H_{1}$-Bahn von $L$
+stimmt mit der $H_{2}$-Bahn überein. Letztendlich hat also die
+$G$-Bahn von $L$ die Länge höchstens $[G:H_{1}]$ mal die Länge der
+$H_{1}$-Bahn von $L$. Also ist die Länge der $G$-Bahn von $L$
+beschränkt durch $[\frac{n}{r}]f(m,r,p)$.
+\end{bew}
+
+\begin{satz}
+Es sei $L(y)=0$ eine Differenzengleichung vom Grad $n$ über einem
+Frobenius-Körper $(F:=\Quot(R),\phi)$ mit PV-Körper $E$ und
+zugehöriger Galoisgruppe $G:=\DGal(L)$, wobei $R$ ein relativer
+Frobenius-Ring mit definierendem Ideal $Q$ ist. Falls die Gleichung $L(y)=0$ eine
+$\phi$-Liouvillesche Lösung besitzt, so besitzt $L$ eine Lösung
+$\eta \in E$ für die $\frac{\phi(\eta)}{\eta}$ algebraisch vom
+Grad höchstens $I(m,n,p)$ über $F$ ist.
+\label{1.31satz-algebr-beschr}
+\end{satz}
+
+\begin{bew}
+Es sei $E$ ein PV-Körper von $L$ über $F$ und
+$V:=\Sol{\Phi}{E}{M_{L}}$ der Lösungsvektorraum. Die Galoisgruppe
+$G$ von $L$ operiert auf diesem Lösungsraum. Nach Satz
+\ref{1.24satz-liouville} (c) existiert eine Lösung $0\neq \eta \in
+V$, so dass $u:=\frac{\phi(\eta)}{\eta}\in E$ algebraisch über $F$
+ist. Mit $P_{u}(T) \in F(T)$ bezeichnen wir das zugehörige
+Minimalpolynom vom Grad $d$. Dann sind $\sigma(u)$ für jedes
+$\sigma \in G$ ebenfalls Nullstellen von $P_{u}$. Daraus ergibt
+sich, dass die Zusammenhangskomponente $G^{\circ}$ von $G$ trivial
+auf $u$ operiert, bzw. dass $u \in F^{G^{\circ}}$ gilt. Da
+$F^{G^{\circ}}/F$ eine gewöhnliche Galoiserweiterung mit der
+endlichen Galoisgruppe $G/G^{\circ}$ ist, besteht die $G$-Bahn von
+$u$ aus allen Nullstellen von $P_{u}$ und hat die Länge $d$. Also
+hat die
+$G$-Bahn der Geraden $F^{\phi} \eta \subset V$ ebenfalls die Länge $d$.\\
+Umgekehrt impliziert eine Gerade $F^{\phi} \eta$ in $V$ mit
+endlicher $G$-Bahn ein Element $u:=\frac{\phi(\eta)}{\eta}\in E$
+mit endlicher $G$-Bahn. Also muss $u$ algebraisch über $F$ sein.
+Wie oben folgt, dass der Grad von $u$ über $F$ mit der Länge der
+$G$-Bahn von $F^{\phi} \eta$ übereinstimmt. Nun können wir Satz
+\ref{1.30satz-bahn} anwenden und erhalten damit die Behauptung.
+\end{bew}
